@@ -1,0 +1,76 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+palette = "catppuccin_mocha"
+
+format = """
+$lua\
+$nodejs\
+$rust\
+$python\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$username\
+$hostname\
+$directory\
+$character"""
+
+add_newline = false
+command_timeout = 600
+
+[directory]
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "../"
+style = "blue"
+
+[character]
+success_symbol = "[❯](pink)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = ' on [$symbol$branch]($style) '
+style = "bright-black"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style)) '
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+
+[lua]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+style = "sapphire"
+
+[nodejs]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+style = "green"
+
+[rust]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+style = "bold red"
+
+[python]
+format = "[$virtualenv]($style) "
+symbol = " "
+style = "bright-yellow"
+
+[palettes.catppuccin_mocha]
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"

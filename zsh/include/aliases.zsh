@@ -5,6 +5,7 @@ alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 
 alias del='rm -rf'
 
+alias gcl='git clone --recursive'
 alias gls='git ls'
 alias gap='git add --patch'
 alias gcb='git checkout -b'

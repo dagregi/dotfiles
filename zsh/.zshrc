@@ -3,6 +3,7 @@ eval "$(starship init zsh)"
 # Plugins
 plugins=(
     zsh-syntax-highlighting
+    zsh-autosuggestions
 )
 
 export ZSH=$HOME/.oh-my-zsh

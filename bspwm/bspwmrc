@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+feh --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg/tanya.png &
+
+bspc monitor -d 1 2 3 4 5
+
+bspc config border_width         2
+bspc config window_gap           8
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true

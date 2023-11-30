@@ -7,8 +7,8 @@ alt + t
 	st
 
 # program launcher
-super + r
-	rofi -show drun
+super + {d,r}
+    sh $HOME/.config/rofi/scripts/{launcher,runner}
 
 # make sxhkd reload its configuration files:
 super + Escape

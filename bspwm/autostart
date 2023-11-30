@@ -1,10 +1,9 @@
-#!/data/data/com.termux/files/usr/bin/sh
 #!/usr/bin/env bash
 
 killall -q picom dunst
 
 xrdb $HOME/.Xresources
-picom &
+picom -b
 dunst &
-feh --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg/tanya1.jpeg &
+feh -z --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg &
 $XDG_CONFIG_HOME/polybar/launch.sh

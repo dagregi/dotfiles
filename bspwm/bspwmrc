@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 
+# Autostart
 pgrep -x sxhkd > /dev/null || sxhkd &
-feh --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg &
-picom &
-$XDG_CONFIG_HOME/polybar/launch.sh
+$XDG_CONFIG_HOME/bspwm/autostart
 
 bspc monitor -d 1 2 3 4 5 6
 

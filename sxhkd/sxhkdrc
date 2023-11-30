@@ -4,7 +4,7 @@
 
 # terminal emulator
 alt + t
-	st -e tmux
+	st
 
 # program launcher
 super + r

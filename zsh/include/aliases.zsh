@@ -26,3 +26,6 @@ alias gpu='git push -u origin $(git_current_branch)'
 alias yolo='git push --force'
 alias gra='git remote add'
 alias grrm='git remote remove'
+
+# CONFIG
+alias reloadst="xrdb merge $XDG_CONFIG_HOME/.Xresources && kill -USR1 $(pidof st)"

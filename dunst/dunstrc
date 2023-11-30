@@ -1,0 +1,58 @@
+[global]
+monitor = 0
+follow = mouse
+indicate_hidden = yes
+shrink = yes
+transparency = 0
+separator_height = 4
+padding = 12
+horizontal_padding = 12
+frame_width = 3
+frame_color = "#e27878"
+separator_color = "#20242d"
+sort = no
+idle_threshold = 120
+font = JetBrainsMono Nerd Font 13
+line_height = 6
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = left
+show_age_threshold = 60
+word_wrap = yes
+ignore_newline = no
+stack_duplicates = false
+hide_duplicate_count = yes
+show_indicators = yes
+icon_position = left
+max_icon_size= 80
+sticky_history = no
+history_length = 6
+browser = firefox
+always_run_script = true
+title = Dunst
+class = Dunst
+corner_radius = 2 
+
+mouse_left_click = close_current
+mouse_middle_click = do_action
+mouse_right_click = close_all
+
+close = ctrl+space
+close_all = ctrl+shift+space
+history = ctrl+Escape
+context = ctrl+shift+period
+
+[urgency_low]
+timeout = 3
+background = "#1e1e2e"
+foreground = "#6e6a86"
+
+[urgency_normal]
+timeout = 6
+background = "#191724"
+foreground = "#e0def4"
+
+[urgency_critical]
+timeout = 0
+background = "#191724"
+foreground = "#eb6f92"

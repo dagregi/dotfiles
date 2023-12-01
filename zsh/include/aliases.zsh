@@ -11,9 +11,12 @@ alias gls='git --no-pager log --oneline --graph -20'
 alias gstat='git status -s'
 alias gwhat='git whatchanged --oneline --graph --stat'
 # GIT: Locals
+alias ga='git add .'
 alias gap='git add --patch'
 alias gcam='git commit -am'
 alias gcm='git commit -m'
+alias gs='git stash'
+alias gsp='git stash pop'
 # GIT: Branch
 alias gbrm='git branch -d'
 alias gch='git checkout'

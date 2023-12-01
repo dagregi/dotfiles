@@ -2,7 +2,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export RUSTC_WRAPPER=sccache
 
 export BAT_THEME="Catppuccin-mocha"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 export FZF_DEFAULT_OPTS="
     --color=fg:#908caa,bg:#191724,hl:#ebbcba
@@ -15,7 +15,7 @@ VIM="nvim"
 
 export GIT_EDITOR=$VIM
 
-export PATH="$HOME/.config/scripts:$PATH"
+export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 bindkey -s ^f "tmux-sessionizer\n"

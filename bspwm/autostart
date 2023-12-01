@@ -2,8 +2,8 @@
 
 killall -q picom dunst
 
-xrdb $HOME/.Xresources
-picom -b
+xrdb -merge $HOME/.Xresources
+picom -b &
 dunst &
-feh -z --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg &
+feh -z --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg
 $XDG_CONFIG_HOME/polybar/launch.sh

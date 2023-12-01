@@ -6,4 +6,3 @@ rofi \
 	-drun-display-format "{name}" \
 	-no-drun-show-actions \
 	-terminal st \
-	-kb-cancel Alt-F1 \

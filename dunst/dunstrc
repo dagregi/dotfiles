@@ -1,42 +1,75 @@
 [global]
 monitor = 0
 follow = mouse
-indicate_hidden = yes
-shrink = yes
+
+width = 300
+height = 300
+
+offset = 10x50
+origin = top-right
+
+# Progress bar
+progress_bar = true
+progress_bar_height = 12
+progress_bar_frame_width = 2
+progress_bar_min_width = 150
+progress_bar_max_width = 300
+
+# Appearance
 transparency = 0
 separator_height = 4
-padding = 12
-horizontal_padding = 12
-frame_width = 3
-frame_color = "#89B4FA"
-separator_color= frame
-sort = no
+indicate_hidden = yes
+
+padding = 8
+text_icon_padding = 0
+horizontal_padding = 8
+
+gap_size = 4
+frame_width = 2
+corner_radius = 8
+frame_color = "#31748f"
+separator_color = frame
+
+sort = yes
+shrink = yes
+line_height = 0
 idle_threshold = 120
 font = JetBrainsMono Nerd Font 13
-line_height = 6
+
 markup = full
-format = "<b>%s</b>\n%b"
 alignment = left
 show_age_threshold = 60
-word_wrap = yes
+format = "<b>%s</b>\n%b"
+
+ellipsize = middle
 ignore_newline = no
-stack_duplicates = false
-hide_duplicate_count = yes
 show_indicators = yes
+stack_duplicates = true
+hide_duplicate_count = false
+
+# Icons
+min_icon_size = 32
+max_icon_size = 144
 icon_position = left
-max_icon_size= 80
-sticky_history = no
+
+# History
 history_length = 6
+sticky_history = yes
+
+word_wrap = yes
 browser = firefox
 always_run_script = true
+
+# Title / Class
 title = Dunst
 class = Dunst
-corner_radius = 2 
 
-mouse_left_click = close_current
-mouse_middle_click = do_action
+# Mouse Actions
 mouse_right_click = close_all
+mouse_middle_click = do_action
+mouse_left_click = close_current
 
+# Keybinds
 close = ctrl+space
 close_all = ctrl+shift+space
 history = ctrl+Escape
@@ -44,16 +77,17 @@ context = ctrl+shift+period
 
 [urgency_low]
 timeout = 3
-background = "#1E1E2E"
-foreground = "#CDD6F4"
+background = "#191724"
+foreground = "#e0def4"
+frame_color = "#191724"
 
 [urgency_normal]
 timeout = 6
-background = "#1E1E2E"
-foreground = "#CDD6F4"
+background = "#191724"
+foreground = "#e0def4"
 
 [urgency_critical]
-timeout = 0
-background = "#1E1E2E"
-foreground = "#CDD6F4"
-frame_color = "#FAB387"
+timeout = 9
+background = "#191724"
+foreground = "#e0def4"
+frame_color = "#eb6f92"

@@ -10,7 +10,6 @@
 	red: #eb6f92;
 	yel: #f6c177;
 
-    width: 600;
 	font: "JetBrainsMono Nerd Font 14";
 
 	foreground: @fgd;

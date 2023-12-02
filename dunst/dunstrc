@@ -1,93 +1,99 @@
 [global]
-monitor = 0
-follow = mouse
+    ### Display ###
+    monitor = 0
+    follow = mouse
 
-width = 300
-height = 300
+    ### Geometry ###
+    width = 300
+    height = 300
 
-offset = 10x50
-origin = top-right
+    origin = top-right
+    offset = 20x50
+    scale = 0
+    notification_limit = 5
 
-# Progress bar
-progress_bar = true
-progress_bar_height = 12
-progress_bar_frame_width = 2
-progress_bar_min_width = 150
-progress_bar_max_width = 300
+    ### Progress bar ###
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
 
-# Appearance
-transparency = 0
-separator_height = 4
-indicate_hidden = yes
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    progress_bar_corner_radius = 2
 
-padding = 8
-text_icon_padding = 0
-horizontal_padding = 8
+    indicate_hidden = yes
 
-gap_size = 4
-frame_width = 2
-corner_radius = 8
-frame_color = "#31748f"
-separator_color = frame
+    separator_height = 6
+    separator_color = frame
 
-sort = yes
-shrink = yes
-line_height = 0
-idle_threshold = 120
-font = JetBrainsMono Nerd Font 13
+    padding = 12
+    horizontal_padding = 12
+    text_icon_padding = 0
 
-markup = full
-alignment = left
-show_age_threshold = 60
-format = "<b>%s</b>\n%b"
+    frame_width = 2
+    frame_color = "#31748f"
 
-ellipsize = middle
-ignore_newline = no
-show_indicators = yes
-stack_duplicates = true
-hide_duplicate_count = false
+    gap_size = 6
+    sort = yes
+    idle_threshold = 120
 
-# Icons
-min_icon_size = 32
-max_icon_size = 144
-icon_position = left
+    ### Text ###
+    font = JetBrainsMono Nerd Font 12
+    line_height = 0
 
-# History
-history_length = 6
-sticky_history = yes
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
 
-word_wrap = yes
-browser = firefox
-always_run_script = true
+    show_age_threshold = 60
+    ellipsize = end
+    ignore_newline = no
 
-# Title / Class
-title = Dunst
-class = Dunst
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
 
-# Mouse Actions
-mouse_right_click = close_all
-mouse_middle_click = do_action
-mouse_left_click = close_current
+    ### Icons ###
+    enable_recursive_icon_lookup = true
+    # icon_theme = Adwaita
+    icon_position = left
 
-# Keybinds
-close = ctrl+space
-close_all = ctrl+shift+space
-history = ctrl+Escape
-context = ctrl+shift+period
+    min_icon_size = 32
+    max_icon_size = 128
+
+    ### History ###
+    sticky_history = yes
+    history_length = 25
+
+    ### Misc/Advanced ###
+    browser = /usr/bin/firefox
+    always_run_script = true
+
+    title = Dunst
+    class = Dunst
+
+    corner_radius = 6
+    ignore_dbusclose = false
+
+    ### mouse
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
 
 [urgency_low]
-timeout = 3
-background = "#191724"
-foreground = "#e0def4"
-frame_color = "#191724"
+    background = "#191724"
+    foreground = "#e0def4"
+    frame_color = "#26233a"
+    timeout = 6
 
 [urgency_normal]
-timeout = 6
-background = "#191724"
-foreground = "#e0def4"
+    background = "#191724"
+    foreground = "#e0def4"
+    timeout = 10
 
 [urgency_critical]
-timeout = 9
-background = "#191724"
-foreground = "#e0def4"
-frame_color = "#eb6f92"
+    background = "#191724"
+    foreground = "#e0def4"
+    frame_color = "#eb6f92"
+    timeout = 0

@@ -1,4 +1,3 @@
-export XDG_CONFIG_HOME=$HOME/.config
 export RUSTC_WRAPPER=sccache
 
 export BAT_THEME="Catppuccin-mocha"

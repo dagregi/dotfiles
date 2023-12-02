@@ -1,5 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/sh
-#!/bin/bash
+#!/usr/bin/env sh
 
 file_path="/media/void/Music"
 filename=$(mpc current -f %file% | sed 's/\ /\\\ /g')
@@ -9,4 +8,6 @@ album_width=80
 ffmpeg -i "$file_path/""$filename" "~/.tmp/raw_album.png" -y 2> /dev/null &&\
   convert -resize 80x80 "~/.tmp/raw_album.png" "/tmp/album.png"
 
-notify-send -i "~/.tmp/album.png" " Now Playing"$'\n'" $(mpc current -f %artist%) - $(mpc current -f %title%)"$'\n'"󰀥 $(mpc current -f %album%)"
+dunstify -i ~/.tmp/album.png " Now Playing"\
+    "󰝚 $(mpc current -f %artist%) - $(mpc current -f %title%)"\
+    "󰀥 $(mpc curren -f %album%)"

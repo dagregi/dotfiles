@@ -16,17 +16,18 @@ mpd_connection_timeout = 5
 visualizer_data_source = "~/.tmp/mpd.fifo"
 visualizer_output_name = "ncmpcpp visualizer"
 visualizer_in_stereo = "yes"
-visualizer_type = "spectrum"
+visualizer_type = spectrum
 visualizer_fps = 69
 visualizer_look = ●▮
-visualizer_color = cyan
+visualizer_color = black
+visualizer_spectrum_dft_size = 4
 #
 
 ##### song format #####
 #
 song_list_format = {%t}|{$8%f$9}{%a - }$R{$3%l$9}
 alternative_header_first_line_format = $b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b
-#alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}
+alternative_header_second_line_format = {{$4$b%a$/b$9}{ - $7%b$9}}
 #
 now_playing_prefix = "$b "
 now_playing_suffix = $/b
@@ -42,26 +43,30 @@ volume_change_step = 5
 #
 progressbar_look = ━●
 progressbar_color = black:b
-progressbar_elapsed_color = blue:b
+progressbar_elapsed_color = white:b
 #
 user_interface = alternative
 empty_tag_marker = <unknown>
 empty_tag_color = cyan
 #
 external_editor = vim
-execute_on_song_change = "$XDG_CONFIG_HOME/scripts/songchanged"
+#execute_on_song_change = "$XDG_CONFIG_HOME/scripts/songchanged"
 autocenter_mode = yes
 centered_cursor = yes
+space_add_mode = add_remove
 #
-statusbar_time_color = default:b
-player_state_color = default:b
-alternative_ui_separator_color = black:b
+statusbar_time_color = magenta:b
+volume_color = magenta:b
+state_flags_color = yellow:b
+player_state_color = yellow:b
+discard_colors_if_item_is_selected = no
+alternative_ui_separator_color = red:b
 #
-color1  = white
+color1  = yellow
 color2  = red
 colors_enabled  = yes
 #
-main_window_color = white
+main_window_color = yellow
 message_delay_time  = 1
-song_window_title_format  = " Now Playing {%a - }{%t}|{%f}"
+song_window_title_format  = " Now Playing {%a - }{%t}"
 titles_visibility = no

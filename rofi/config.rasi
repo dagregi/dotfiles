@@ -1,4 +1,9 @@
 configuration{
+    modes: "window,drun,run";
+	location: 0;
+	show-icons: true;
+	terminal: "st";
+	case-sensitive: true;
 }
 
 @import "theme.rasi"

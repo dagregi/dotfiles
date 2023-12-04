@@ -1,6 +1,6 @@
 export RUSTC_WRAPPER=sccache
 
-export BAT_THEME="Catppuccin-mocha"
+export BAT_THEME="ansi"
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 
 export FZF_DEFAULT_OPTS="

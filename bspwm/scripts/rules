@@ -2,5 +2,5 @@
 
 # Rules
 # set bspwm rules here
-bspc rule -a st-256color desktop='^1.local' follow=on
-bspc rule -a firefox desktop='^2' follow=on
+bspc rule -a st-256color desktop='^1.local' follow=on focus=on
+bspc rule -a firefox desktop='^2' follow=on focus=on

@@ -4,6 +4,7 @@ alias pg_start='pg_ctl -D $PREFIX/var/lib/postgresql start'
 alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 
 alias del='rm -rf'
+alias cat='bat --style=plain --paging=never'
 
 # GIT: Stats
 alias gcl='git clone --recursive'

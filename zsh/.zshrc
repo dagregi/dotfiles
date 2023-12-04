@@ -11,6 +11,7 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.oh-my-zsh/custom/catppuccin_mocha-zsh-syntax-highlighting.zsh
 source $XDG_CONFIG_HOME/zsh/include/aliases.zsh
+source $XDG_CONFIG_HOME/zsh/include/functions.zsh
 
 export LANG=en_US.UTF8
 export LC_ALL=en_US.UTF-8

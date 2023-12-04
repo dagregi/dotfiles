@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+opts() {
+    bspc config "$1" "$2"
+}
+
+# Configs
+# set bspwm configs here
+opts border_width         2
+opts window_gap           10
+opts split_ratio          0.50
+
+opts borderless_monocle    true
+opts gapless_monocle       true
+opts focus_follows_pointer true
+
+opts presel_feedback_color "#191724"
+opts focused_border_color  "#9ccfd8"
+opts normal_border_color   "#6e6a86"

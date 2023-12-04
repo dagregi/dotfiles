@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
 killall -q picom dunst
+pkill sxhkd
 
 xrdb -merge $HOME/.Xresources
-picom -b &
-dunst &
+picom -b
+
 feh -z --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg
-$XDG_CONFIG_HOME/polybar/launch.sh
+
+dunst &
+sxhkd &
+
+sh $XDG_CONFIG_HOME/polybar/launch.sh

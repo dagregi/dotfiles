@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Rules
+# set bspwm rules here
+bspc rule -a st-256color desktop='^1.local' follow=on
+bspc rule -a firefox desktop='^2' follow=on

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+rofi -dmenu \
+    -p 'Confirmation' \
+    -mesg 'Are you Sure?' \
+    -theme $XDG_CONFIG_HOME/rofi/themes/confirmation.rasi

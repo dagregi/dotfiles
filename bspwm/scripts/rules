@@ -4,8 +4,3 @@
 # set bspwm rules here
 bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a firefox desktop='^2' follow=on focus=on
-
-bspc rule -a ncmpcpp state=floating follow=on focus=on;
-bspc rule -a cava state=floating follow=on focus=on;
-
-bspc rule -a mpv desktop='^5' state=fullscreen follow=on focus=on

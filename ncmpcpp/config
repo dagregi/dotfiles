@@ -72,4 +72,4 @@ header_window_color = blue
 main_window_color = green
 window_border_color = blue
 message_delay_time  = 1
-song_window_title_format  = " Now Playing {%a - }{%t}"
+song_window_title_format  = " Now Playing {%a - }{%t}"

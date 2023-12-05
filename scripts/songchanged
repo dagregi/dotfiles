@@ -3,12 +3,13 @@
 filename=$(mpc current -f %file%)
 artist=$(mpc current -f %artist%)
 title=$(mpc current -f %title%)
+album=$(mpc current -f %album%)
 
 # Get the album art
-mpc readpicture "$filename" > /tmp/raw_album.png 2> /dev/null &&\
+mpc readpicture "$filename" > ~/.tmp/raw_album.png 2> /dev/null &&\
     convert -resize 80x80 /tmp/raw_album.png /tmp/album.png
 
-dunstify -i /tmp/album.png """  Now Playing
-
+dunstify -I ~/.tmp/raw_album.png "  Now Playing" """
 󰝚  $title
-󰀥  $artist"""
+󰠃  $artist
+󰀥  $album"""

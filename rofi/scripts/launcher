@@ -2,9 +2,5 @@
 
 rofi \
 	-show drun \
-	-scroll-method 0 \
-	-drun-match-fields all \
 	-drun-display-format "{name}" \
-	-no-drun-show-actions \
-	-terminal st \
-    -theme ~/.config/rofi/themes/launcher.rasi
+    -theme $XDG_CONFIG_HOME/rofi/themes/launcher.rasi

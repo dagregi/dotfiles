@@ -4,7 +4,7 @@ My dotfiles that's it, nothing much here
 
 ## Todos
 
-- [ ] Fix polybar's audio module
+- [x] Fix polybar's audio module
 - [ ] Fix bspwm full screen
 - [x] Change ncmpcpp's ugly colors and UI
 - [ ] Change rofi's default UI

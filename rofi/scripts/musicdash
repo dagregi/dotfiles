@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+status=$(mpc status)
+is_stopped=$(mpc status | awk '{ print $2 }')
+
+if [ -z "$status" ]; then
+	prompt="Offline"
+	message="MPD is Offline"
+elif [ "$is_stopped" = "n/a" ]; then
+	prompt="Stopped"
+	message="Playback stopped"
+else
+    ARTIST=$(mpc current -f %artist%)
+    ALBUM="󰀥  $(mpc current -f %album%)"
+    TITLE="󰝚  $(mpc current -f %title%)"
+
+    is_repeat=$(mpc status | rg 'repeat' | awk '{ print $4 }')
+    is_random=$(mpc status | rg 'random' | awk '{ print $6 }')
+    is_playing=$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]')
+
+	prompt="$ARTIST"
+    message="""$TITLE
+$ALBUM"""
+fi
+
+toggle_play_pause() {
+    mpc -q toggle
+    dunstify "$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]' | sed 's/p/P/' )"
+}
+stop_palyback() {
+    mpc -q stop
+    dunstify "Playback stopped"
+}
+toggle_random() {
+    mpc -q random
+    dunstify "Random: $(mpc status | rg 'random' | awk '{ print $6 }')"
+}
+toggle_repeat() {
+    mpc -q repeat
+    dunstify "Repeat: $(mpc status | rg 'repeat' | awk '{ print $4 }')"
+}
+next_track() {
+    mpc -q next
+    st -e sh ~/.config/scripts/songchanged
+}
+prev_track() {
+    mpc -q prev
+    st -e sh ~/.config/scripts/songchanged
+}
+
+if [ "$is_playing" = "playing" ]; then
+    toggle_opt="pau"
+else
+    toggle_opt="pl"
+fi
+prev_opt="pre"
+next_opt="nex"
+stop_opt="X"
+random_opt="r"
+repeat_opt=""
+
+if [ "$is_repeat" = "on" ] && [ "$is_random" = "on" ]; then
+    active="4,5"
+elif [ "$is_repeat" = "on" ]; then
+    active="4"
+elif [ "$is_random" = "on" ]; then
+    active="5"
+else
+    active=""
+fi
+
+opt_menu() {
+    rofi -dmenu \
+        -p "$prompt" \
+        -mesg "$message" \
+        -a "${active}" \
+        -theme $XDG_CONFIG_HOME/rofi/themes/musicdash.rasi
+}
+
+run_rofi(){
+    echo "$prev_opt\n$toggle_opt\n$next_opt\n$stop_opt\n$repeat_opt\n$random_opt" | opt_menu
+}
+state=$(run_rofi)
+
+case "$state" in
+    "$toggle_opt") toggle_play_pause
+    ;;
+    "$stop_opt") stop_palyback
+    ;;
+    "$next_opt") {
+        if [ "$is_stopped" != "n/a" ]; then
+            next_track
+        fi
+    }
+    ;;
+    "$prev_opt") {
+        if [ "$is_stopped" != "n/a" ]; then
+            prev_track
+        fi
+    }
+    ;;
+    "$repeat_opt") toggle_repeat
+    ;;
+    "$random_opt") toggle_random
+    ;;
+    *) echo "Don't know what to do"
+    ;;
+esac

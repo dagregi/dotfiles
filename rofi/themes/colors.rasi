@@ -10,7 +10,7 @@
 	red: #eb6f92;
 	yel: #f6c177;
 
-	font: "Iosvka Nerd Font 14";
+	font: "Iosevka Nerd Font 14";
 
 	foreground: @fgd;
 	background: @bg;

@@ -1,15 +1,14 @@
 #!/usr/bin/env sh
 
+COVER_DIR="$HOME/.tmp"
+
 filename=$(mpc current -f %file%)
 artist=$(mpc current -f %artist%)
 title=$(mpc current -f %title%)
 album=$(mpc current -f %album%)
 
-# Get the album art
-mpc readpicture "$filename" > ~/.tmp/raw_album.png 2> /dev/null &&\
-    convert -resize 80x80 /tmp/raw_album.png /tmp/album.png
+mpc readpicture "$filename" > "$COVER_DIR/raw_cover.png" 2> /dev/null &&\
+    convert -resize 80x80 "$COVER_DIR/raw_cover.png" "$COVER_DIR/cover.png"
 
-dunstify -I ~/.tmp/raw_album.png "  Now Playing" """
-󰝚  $title
-󰠃  $artist
+dunstify -i "$COVER_DIR/cover.png" "󰝚  $title" """󰠃  $artist
 󰀥  $album"""

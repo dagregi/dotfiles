@@ -1,0 +1,65 @@
+configuration {
+    show-icons:                 false;
+    location:                    4;
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                "real";
+    fullscreen:                  false;
+    width:                       96px;
+    x-offset:                    -10px;
+
+    enabled:                     true;
+    border-radius:               2px;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    padding:                     10px;
+    background-color:            transparent;
+    children:                    [ "listview" ];
+}
+
+listview {
+    enabled:                     true;
+    columns:                     1;
+    lines:                       4;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    border-radius:               2px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    padding:                     20px;
+    border-radius:               2px;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+element-text {
+    font:                        "JetBrainsMono Nerd Font 20";
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+element selected.normal {
+    background-color:            @selected-background;
+    text-color:                  @background;
+}

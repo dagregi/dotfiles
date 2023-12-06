@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+shutdown_opt=""
+logoff_opt="󰗽"
+restart_opt="󰜉"
+lock_opt=""
+
+opt_menu () {
+    rofi -dmenu \
+        -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
+}
+
+run_rofi() {
+    echo "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | opt_menu
+}
+confirm() {
+    echo "Yes\nNo" | sh $XDG_CONFIG_HOME/rofi/scripts/confirmation
+}
+
+state=$(run_rofi)
+confirmation=$(confirm)
+
+if [ "$confirmation" = "Yes" ]; then
+    case "$state" in
+        "$shutdown_opt") systemctl poweroff
+        ;;
+        "$restart_opt") systemctl reboot
+        ;;
+        "$lock_opt") betterlockscreen -l
+        ;;
+        "$logoff_opt") bspc quit
+        ;;
+        *) echo "Stil don't know what to do!"
+        ;;
+    esac
+else
+    exit 0
+fi

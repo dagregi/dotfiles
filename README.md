@@ -6,7 +6,12 @@ My dotfiles that's it, nothing much here
 
 - [x] Fix polybar's audio module
 - [ ] Fix bspwm full screen
+- [ ] I need more keybindings
 - [x] Change ncmpcpp's ugly colors and UI
-- [ ] Change rofi's default UI
-	- [ ] Add volume control
-	- [ ] Add power menu
+- [ ] Change rofi's default UI *(probably won't need most of these but)*
+    - [x] Add music panel
+    - [ ] Add powermenu control
+    - [ ] Add a way ho manage bookmarks
+    - [ ] Add a password input
+- [ ] Customize st
+- [ ] Clean up config directory

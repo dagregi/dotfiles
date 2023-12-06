@@ -26,8 +26,8 @@
     separator_height = 6
     separator_color = frame
 
-    padding = 8
-    horizontal_padding = 8
+    padding = 12
+    horizontal_padding = 12
     text_icon_padding = 0
 
     frame_width = 2
@@ -43,7 +43,7 @@
 
     markup = full
     format = "<b>%s</b>\n%b"
-    alignment = center
+    alignment = left
     vertical_alignment = center
 
     show_age_threshold = 60
@@ -60,7 +60,7 @@
     icon_position = left
 
     min_icon_size = 32
-    max_icon_size = 80
+    max_icon_size = 128
 
     ### History ###
     sticky_history = yes

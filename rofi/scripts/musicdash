@@ -41,11 +41,11 @@ toggle_repeat() {
 }
 next_track() {
     mpc -q next
-    st -e sh ~/.config/scripts/songchanged
+    songchanged
 }
 prev_track() {
     mpc -q prev
-    st -e sh ~/.config/scripts/songchanged
+    songchanged
 }
 
 if [ "$is_playing" = "playing" ]; then

@@ -30,7 +30,6 @@ inputbar {
     padding:                     100px;
     border-radius:               8px;
     background-color:            transparent;
-    background-image:            url("~/.tmp/raw_cover.png", width);
     text-color:                  @foreground;
     children:                    [ "textbox-prompt-colon", "prompt" ];
 }
@@ -101,12 +100,18 @@ element alternate.normal {
     background-color:            @background-alt;
     text-color:                  @foreground;
 }
+element normal.urgent,
+element alternate.urgent {
+    background-color:            @urgent-background;
+    text-color:                  @foreground;
+}
 element normal.active,
 element alternate.active {
     background-color:            @grn;
     text-color:                  @foreground;
 }
 element selected.active,
+element selected.urgent,
 element selected.normal {
     background-color:            @selected-background;
     text-color:                  @background;

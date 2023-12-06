@@ -14,10 +14,21 @@ alias gwhat='git whatchanged --oneline --graph --stat'
 # GIT: Locals
 alias ga='git add .'
 alias gap='git add --patch'
-alias gcam='git commit -am'
-alias gcm='git commit -m'
 alias gs='git stash'
 alias gsp='git stash pop'
+alias gsl='git stash list'
+alias gscls='git stash clear'
+# GIT: Commit
+alias gcam='git commit -am'
+alias gcm='git commit -m'
+alias gce='git commit --amend --no-edit'
+alias gcs='git commit --squash'
+alias gcf='git commit --fixup'
+# GIT: Rebase
+alias gri='git rebase --interactive --autostash'
+alias grf='git rebase --interactive --autosquash'
+alias grx='git rebase --abort'
+alias grr='git rebase --continue'
 # GIT: Branch
 alias gbrm='git branch -d'
 alias gch='git checkout'

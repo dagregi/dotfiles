@@ -6,10 +6,8 @@ configuration {
 
 window {
     transparency:                "real";
-    location:                    center;
-    anchor:                      center;
     fullscreen:                  false;
-    width:                       200px;
+    width:                       196px;
     border-radius:               2px;
     background-color:            @background;
 }
@@ -47,9 +45,8 @@ textbox {
 }
 
 element {
-    padding:                     10px 10px;
+    padding:                     10px;
     border-radius:               2px;
-    border-color:                @border-color;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
@@ -58,6 +55,7 @@ element-text {
     text-color:                  inherit;
     cursor:                      inherit;
     vertical-align:              0.5;
+    horizontal-align:            0.5;
 }
 
 element normal.normal,

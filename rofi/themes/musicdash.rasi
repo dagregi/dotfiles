@@ -1,6 +1,6 @@
 configuration {
     show-icons:                 false;
-    location:                    3;
+    location:                    4;
 }
 
 @import "colors.rasi"
@@ -10,7 +10,6 @@ window {
     fullscreen:                  false;
     width:                       500px;
     x-offset:                    -10px;
-    y-offset:                    50px;
     border-radius:               8px;
     cursor:                      "default";
     background-color:            @background;

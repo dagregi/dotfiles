@@ -10,7 +10,7 @@ My dotfiles that's it, nothing much here
 - [x] Change ncmpcpp's ugly colors and UI
 - [ ] Change rofi's default UI *(probably won't need most of these but)*
     - [x] Add music panel
-    - [ ] Add powermenu control
+    - [x] Add powermenu control
     - [ ] Add a way ho manage bookmarks
     - [ ] Add a password input
 - [ ] Customize st

@@ -44,7 +44,13 @@ case "$1" in
     ;;
     "toggle") toggle_mute
     ;;
-    *) echo "Woah! relax mate"
+    *) echo """Woah! relax mate, this is how you use it:
+        
+    volumectrl <COMMAND>
+
+    up                  increase the volume by 5
+    down                decrease the volume by 5
+    get <volume/mute>   get state"""
     ;;
 esac
 

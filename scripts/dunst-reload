@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Simple script to restart dunst
+killall -q dunst
+
+dunst &

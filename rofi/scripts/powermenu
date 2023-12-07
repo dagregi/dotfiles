@@ -5,36 +5,52 @@ logoff_opt="󰗽"
 restart_opt="󰜉"
 lock_opt=""
 
-opt_menu () {
-    rofi -dmenu \
-        -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
+opt_menu() {
+	rofi -dmenu \
+		-theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
+}
+
+lock_screen() {
+	if [ -n "$(mpc status)"]; then
+		mpc -q pause
+	fi
+	betterlockscreen -l
+}
+logoff() {
+	mpd --kill
+	bspc quit
 }
 
 run_rofi() {
-    echo "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | opt_menu
+	echo "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | opt_menu
 }
 confirm() {
-    echo "Yes\nNo" | sh $XDG_CONFIG_HOME/rofi/scripts/confirmation
+	echo "Yes\nNo" | sh $XDG_CONFIG_HOME/rofi/scripts/confirmation
 }
 
 state=$(run_rofi)
 if [ -n "$state" ]; then
-    confirmation=$(confirm)
+	confirmation=$(confirm)
 fi
 
 if [ "$confirmation" = "Yes" ]; then
-    case "$state" in
-        "$shutdown_opt") systemctl poweroff
-        ;;
-        "$restart_opt") systemctl reboot
-        ;;
-        "$lock_opt") betterlockscreen -l
-        ;;
-        "$logoff_opt") bspc quit
-        ;;
-        *) echo "Stil don't know what to do!"
-        ;;
-    esac
+	case "$state" in
+	"$shutdown_opt")
+		systemctl poweroff
+		;;
+	"$restart_opt")
+		systemctl reboot
+		;;
+	"$lock_opt")
+		lock_screen
+		;;
+	"$logoff_opt")
+		logoff
+		;;
+	*)
+		echo "Stil don't know what to do!"
+		;;
+	esac
 else
-    exit 0
+	exit 0
 fi

@@ -18,7 +18,9 @@ confirm() {
 }
 
 state=$(run_rofi)
-confirmation=$(confirm)
+if [ -n "$state" ]; then
+    confirmation=$(confirm)
+fi
 
 if [ "$confirmation" = "Yes" ]; then
     case "$state" in

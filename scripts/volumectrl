@@ -8,9 +8,13 @@ get_volume() {
     echo "$volume"
 }
 increase_volume() {
-    pactl set-sink-volume "$device" +5%
+    if [ "$is_muted" = "yes" ]; then
+        pactl set-sink-mute "$device" false
+        pactl set-sink-volume "$device" +5%
+    else
+        pactl set-sink-volume "$device" +5%
+    fi
 }
-
 decrease_volume() {
     pactl set-sink-volume "$device" -5%
 }
@@ -20,14 +24,7 @@ toggle_mute() {
 }
 
 case "$1" in
-    "up") {
-        if [ "$is_muted" = "yes" ]; then
-            pactl set-sink-mute "$device" false
-            increase_volume
-        else
-            increase_volume
-        fi
-    }
+    "up") increase_volume
     ;;
     "down") decrease_volume
     ;;

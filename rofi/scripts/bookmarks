@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rofi -dmenu \
+    -theme $XDG_CONFIG_HOME/rofi/themes/bookmarks.rasi

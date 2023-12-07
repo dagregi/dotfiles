@@ -1,3 +1,6 @@
 [submodule "nvim"]
     path = nvim
     url = git@github.com:dagregi/nvim.git
+[submodule "st"]
+    path = st
+    url = git@github.com:dagregi/st.git

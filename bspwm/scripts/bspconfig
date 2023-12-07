@@ -15,7 +15,6 @@ opts bottom_padding 0
 
 opts borderless_monocle    true
 opts gapless_monocle       true
-opts focus_follows_pointer true
 
 opts presel_feedback_color "#191724"
 opts focused_border_color  "#9ccfd8"

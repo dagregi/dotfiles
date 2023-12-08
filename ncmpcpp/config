@@ -18,7 +18,7 @@ visualizer_in_stereo = "yes"
 visualizer_type = spectrum
 visualizer_fps = 69
 visualizer_look = ●▌
-visualizer_color = green, blue, cyan, magenta, red
+visualizer_color = green, blue, magenta, cyan, yellow, red
 visualizer_spectrum_dft_size = 4
 visualizer_spectrum_smooth_look = no
 #

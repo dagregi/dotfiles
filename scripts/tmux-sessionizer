@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
+folders="$HOME/projects \
+	$HOME/projects/web \
+	$HOME/projects/rust \
+	$HOME/projects/advent-of-code \
+	$HOME/cybersecurity \
+	$HOME/cybersecurity/tools"
+
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(fd . ~/projects ~/projects/advent-of-code ~/cybersecurity -td --exact-depth=2 | fzf -e)
+	selected=$(fd . $folders -td --exact-depth=1 | fzf -e)
 fi
 
 if [[ -z $selected ]]; then

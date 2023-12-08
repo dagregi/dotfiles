@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-languages=$(echo "rust typescript golang lua" | tr ' ' '\n')
-core_utils=$(echo "awk fd sd rg xargs" | tr ' ' '\n')
+languages=$(echo "rust typescript golang lua c python" | tr ' ' '\n')
+core_utils=$(echo "awk sed xargs" | tr ' ' '\n')
 
 selected=$(printf "$languages\n$core_utils" | fzf)
 read -p "Enter Query: " query

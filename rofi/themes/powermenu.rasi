@@ -59,7 +59,13 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
+element selected.urgent,
 element selected.normal {
     background-color:            @selected-background;
     text-color:                  @background;
+}
+element normal.urgent,
+element alternate.urgent {
+    background-color:            @urgent-background;
+    text-color:                  @foreground;
 }

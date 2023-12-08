@@ -6,7 +6,7 @@ restart_opt="󰜉"
 lock_opt=""
 
 opt_menu() {
-	rofi -dmenu \
+	rofi -dmenu -u -1 \
 		-theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
 }
 

@@ -10,5 +10,5 @@ album=$(mpc current -f %album%)
 mpc readpicture "$filename" >"$COVER_DIR/raw_cover.png" 2>/dev/null
 convert -resize 80x80 "$COVER_DIR/raw_cover.png" "$COVER_DIR/cover.png"
 
-dunstify -i "$COVER_DIR/cover.png" "󰝚  $title" """󰠃  $artist
+dunstify -t 2500 -i "$COVER_DIR/cover.png" "󰝚  $title" """󰠃  $artist
 󰀥  $album"""

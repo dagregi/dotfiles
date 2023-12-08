@@ -14,13 +14,21 @@ increase_volume() {
 	else
 		pactl set-sink-volume "$device" +5%
 	fi
+	dunstify -t 900 "Vol: $(pactl get-sink-volume "$device" | awk '{ print $5}')"
 }
 decrease_volume() {
 	pactl set-sink-volume "$device" -5%
+	dunstify -t 900 "Vol: $(pactl get-sink-volume "$device" | awk '{ print $5}')"
 }
 
 toggle_mute() {
-	pactl set-sink-mute "$device" "toggle"
+	if [ "$is_muted" = "yes" ]; then
+		pactl set-sink-mute "$device" false
+		dunstify -t 900 "Vol: $(pactl get-sink-volume "$device" | awk '{ print $5}')"
+	else
+		pactl set-sink-mute "$device" true
+		dunstify -t 900 "Muted"
+	fi
 }
 
 case "$1" in
@@ -51,11 +59,13 @@ case "$1" in
 *)
 	echo """Woah! relax mate, this is how you use it:
         
-    volumectrl <COMMAND>
+	volumectrl <COMMAND>
 
-    up                  increase the volume by 5
-    down                decrease the volume by 5
-    get <volume/mute>   get state"""
+	up                 increase the volume by 5
+	down               decrease the volume by 5
+	toggle             toggle mute state
+	get <volume/mute>  get state
+"""
 	;;
 esac
 

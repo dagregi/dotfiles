@@ -1,6 +1,12 @@
 configuration {
     show-icons:                 false;
     location:                    4;
+	kb-select-1:				"9";
+	kb-select-2:				"space,p";
+	kb-select-3:				"0";
+	kb-select-4:				"s";
+	kb-select-5:				"r";
+	kb-select-6:				"z";
 }
 
 @import "colors.rasi"

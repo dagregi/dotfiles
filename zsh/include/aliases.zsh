@@ -1,5 +1,5 @@
 # Aliases
-alias vim=$VIM
+alias vim=$EDITOR
 alias pg_start='pg_ctl -D $PREFIX/var/lib/postgresql start'
 alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 
@@ -43,4 +43,4 @@ alias gra='git remote add'
 alias grrm='git remote remove'
 
 # CONFIG
-alias reloadst="xrdb merge $XDG_CONFIG_HOME/.Xresources && kill -USR1 $(pidof st)"
+alias reloadst="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"

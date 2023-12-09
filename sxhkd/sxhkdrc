@@ -8,7 +8,7 @@ alt + t
 
 # program launcher/runner
 super + {d, r}
-    sh $HOME/.config/rofi/scripts/{launcher,runner}
+    $HOME/.config/rofi/scripts/{launcher,runner}
 
 # browser
 super + alt b
@@ -18,7 +18,7 @@ super + alt {n, f, p}
     $TERMINAL -e {nvim, ranger, htop}
 # powermenu
 super + alt + {m, shift + b, Delete}
-    sh $XDG_CONFIG_HOME/rofi/scripts/{musicdash,bookmarks,powermenu}
+    $XDG_CONFIG_HOME/rofi/scripts/{musicdash,bookmarks,powermenu}
 
 # make sxhkd reload its configuration files:
 super + Escape

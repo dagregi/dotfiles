@@ -10,9 +10,8 @@ export FZF_DEFAULT_OPTS="
     --color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
     --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa""
 "
-VIM="nvim"
 
-export GIT_EDITOR=$VIM
+export GIT_EDITOR=$EDITOR
 
 export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"

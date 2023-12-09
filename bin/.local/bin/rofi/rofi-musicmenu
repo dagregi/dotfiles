@@ -19,11 +19,11 @@ elif [ "$is_stopped" = "n/a" ]; then
 	prompt="Stopped"
 	message="Playback stopped"
 else
-	if [ -e "$COVER_PATH/raw_cover.png" ]; then
-		cover="$COVER_PATH/raw_cover.png"
+	if [ -e "$COVER_PATH/$ALBUM-raw.png" ]; then
+		cover="$COVER_PATH/$ALBUM-raw.png"
 	else
-		mpc readpicture "$(mpc current -f %file%)" >"$COVER_PATH/raw_cover.png" 2>/dev/null
-		cover="$COVER_PATH/raw_cover.png"
+		mpc readpicture "$(mpc current -f %file%)" >"$COVER_PATH/$ALBUM-raw.png" 2>/dev/null
+		cover="$COVER_PATH/$ALBUM-raw.png"
 	fi
 
 	prompt="$ARTIST"

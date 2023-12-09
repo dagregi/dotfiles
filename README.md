@@ -14,4 +14,4 @@ My dotfiles that's it, nothing much here
     - [x] Add a way to manage bookmarks
     - [ ] Add a password input
 - [ ] Customize st
-- [ ] Clean up config directory
+- [x] Clean up config directory

@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 # Autostart
-sh $XDG_CONFIG_HOME/bspwm/scripts/autostart
+$XDG_CONFIG_HOME/bspwm/scripts/autostart
 
 bspc monitor -d 1 2 3 4 5 6
 
 
-sh $XDG_CONFIG_HOME/bspwm/scripts/bspconfig
-sh $XDG_CONFIG_HOME/bspwm/scripts/rules
+$XDG_CONFIG_HOME/bspwm/scripts/bspconfig
+$XDG_CONFIG_HOME/bspwm/scripts/rules

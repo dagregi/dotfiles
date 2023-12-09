@@ -1,6 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-COVER_DIR="$HOME/.tmp"
+COVER_DIR="/tmp"
 
 filename=$(mpc current -f %file%)
 artist=$(mpc current -f %artist%)

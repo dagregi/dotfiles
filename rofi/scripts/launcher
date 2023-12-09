@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-rofi \
-	-show drun \
-	-theme $XDG_CONFIG_HOME/rofi/themes/launcher.rasi

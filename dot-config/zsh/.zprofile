@@ -13,5 +13,9 @@ export FZF_DEFAULT_OPTS="
 
 export GIT_EDITOR=$EDITOR
 
-export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+
+for dir in $HOME/.local/bin/*/; do
+	export PATH="$dir:$PATH"
+done

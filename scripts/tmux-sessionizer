@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-folders="$HOME/projects \
+folders="$HOME \
+	$HOME/projects \
 	$HOME/projects/web \
 	$HOME/projects/rust \
 	$HOME/projects/advent-of-code \

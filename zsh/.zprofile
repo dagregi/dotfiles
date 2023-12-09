@@ -15,5 +15,3 @@ export GIT_EDITOR=$EDITOR
 
 export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-
-bindkey -s ^f "tmux-sessionizer\n"

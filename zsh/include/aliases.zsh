@@ -44,3 +44,5 @@ alias grrm='git remote remove'
 
 # CONFIG
 alias reloadst="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"
+
+bindkey -s ^f "tmux-sessionizer\n"

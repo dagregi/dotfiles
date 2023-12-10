@@ -1,5 +1,4 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-palette = "catppuccin_mocha"
 
 format = """
 $lua\
@@ -23,12 +22,12 @@ command_timeout = 600
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "../"
-style = "blue"
+style = "#96b4fa"
 
 [character]
-success_symbol = "[❯](pink)"
+success_symbol = "[❯](cyan)"
 error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+vimcmd_symbol = "[❮](blue)"
 
 [git_branch]
 format = ' on [$symbol$branch]($style) '
@@ -48,7 +47,7 @@ style = "yellow"
 [lua]
 format = '\[[$symbol($version)]($style)\]'
 symbol = " "
-style = "sapphire"
+style = "blue"
 
 [nodejs]
 format = '\[[$symbol($version)]($style)\]'
@@ -64,13 +63,3 @@ style = "bold red"
 format = "[$virtualenv]($style) "
 symbol = " "
 style = "bright-yellow"
-
-[palettes.catppuccin_mocha]
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"

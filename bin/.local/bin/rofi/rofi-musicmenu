@@ -8,9 +8,9 @@ ALBUM="󰀥  $(mpc current -f %album%)"
 TITLE="󰝚  $(mpc current -f %title%)"
 
 is_stopped=$(mpc status | awk '{ print $2 }')
-is_repeat=$(mpc status | rg 'repeat' | awk '{ print $4 }')
-is_random=$(mpc status | rg 'random' | awk '{ print $6 }')
-is_playing=$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]')
+is_repeat=$(mpc status | awk '/repeat/ { print $4 }')
+is_random=$(mpc status | awk '/random/ { print $6 }')
+is_playing=$(mpc status | awk '/\[/ { print $1 }' | tr -d '\[\]')
 
 [ -z "$status" ] && {
 	prompt="Offline"
@@ -28,17 +28,17 @@ $ALBUM"""
 }
 
 toggle_play_pause() {
-	[ -n "$status" ] && mpc -q toggle && dunstify -t 900 "$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]' | sed 's/p/P/')" || exit 0
+	[ -n "$status" ] && mpc -q toggle && dunstify -t 900 "$(mpc status | awk '/\[/ { print $1 }' | tr -d '\[\]' | sed 's/p/P/')" || exit 0
 }
 stop_palyback() {
 	mpc -q stop
 	dunstify -t 900 "Playback stopped"
 }
 toggle_random() {
-	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | rg 'random' | awk '{ print $6 }')" || exit 0
+	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | awk '/repeat/ { print $6 }')" || exit 0
 }
 toggle_repeat() {
-	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | rg 'repeat' | awk '{ print $4 }')" || exit 0
+	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | awk '/repeat/ { print $4 }')" || exit 0
 }
 next_track() {
 	[ "$is_stopped" != "n/a" ] && [ -n "$status" ] && mpc -q next && songchanged || exit 0

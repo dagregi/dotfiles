@@ -7,8 +7,8 @@ title=$(mpc current -f %title%)
 album=$(mpc current -f %album%)
 
 notify-change() {
-	dunstify -t 2500 -i "$COVER_DIR/$album.png" "󰝚  $title" """󰠃  $artist
-	󰀥  $album"""
+	dunstify -t 2500 -i "$COVER_DIR/$album.png" "󰝚  $title" "󰠃  $artist
+	󰀥  $album"
 }
 [ -e "$COVER_DIR/$album.png" ] && notify-change ||
 	[ -e "$COVER_DIR/$album-raw.png" ] && convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png" &&

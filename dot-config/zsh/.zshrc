@@ -1,7 +1,7 @@
 eval "$(starship init zsh)"
 
 # Exports
-export HISTSIZE=1000000
+export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
 export HISTFILE=$XDG_DATA_HOME/zsh_history
 

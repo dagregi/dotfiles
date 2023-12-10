@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-device=$(pactl list sinks | rg 'Name' | awk '{ print $2}')
+device=$(pactl list sinks | awk ' /Name/ { print $2}')
 is_muted=$(pactl get-sink-mute "$device" | awk '{ print $2}')
 volume=$(pactl get-sink-volume "$device" | awk '{ print $5}')
 

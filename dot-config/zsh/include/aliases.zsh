@@ -3,6 +3,9 @@ alias vim=$EDITOR
 alias pg_start='pg_ctl -D $PREFIX/var/lib/postgresql start'
 alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 
+alias ls='ls --color=auto --group-directories-first'
+alias la='ls -lA'
+alias ll='ls -l'
 alias del='rm -rf'
 alias cat='bat --style=plain --paging=never'
 
@@ -44,5 +47,3 @@ alias grrm='git remote remove'
 
 # CONFIG
 alias reloadst="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"
-
-bindkey -s ^f "tmux-sessionizer\n"

@@ -14,8 +14,27 @@ export FZF_DEFAULT_OPTS="
 export GIT_EDITOR=$EDITOR
 
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-
+# export each directory in .local/bin
 for dir in $HOME/.local/bin/*/; do
 	export PATH="$dir:$PATH"
 done
+
+export PATH="$HOME/.cargo/bin:$PATH"
+# pnpm
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+autoload -U compinit
+zstyle ":completion:*" menu select
+zmodload zsh/complist
+compinit
+
+autoload edit-command-line; zle -N edit-command-line
+
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey ^e edit-command-line
+bindkey -v

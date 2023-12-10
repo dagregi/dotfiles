@@ -8,12 +8,8 @@ get_volume() {
 	echo "$volume"
 }
 increase_volume() {
-	if [ "$is_muted" = "yes" ]; then
-		pactl set-sink-mute "$device" false
-		pactl set-sink-volume "$device" +5%
-	else
-		pactl set-sink-volume "$device" +5%
-	fi
+	[ "$is_muted" = "yes" ] && pactl set-sink-mute "$device" false &&
+		pactl set-sink-volume "$device" +5% || pactl set-sink-volume "$device" +5%
 	dunstify -t 900 "Vol: $(pactl get-sink-volume "$device" | awk '{ print $5}')"
 }
 decrease_volume() {
@@ -22,13 +18,9 @@ decrease_volume() {
 }
 
 toggle_mute() {
-	if [ "$is_muted" = "yes" ]; then
-		pactl set-sink-mute "$device" false
-		dunstify -t 900 "Vol: $(pactl get-sink-volume "$device" | awk '{ print $5}')"
-	else
-		pactl set-sink-mute "$device" true
-		dunstify -t 900 "Muted"
-	fi
+	[ "$is_muted" = "yes" ] && pactl set-sink-mute "$device" false &&
+		dunstify -t 900 "Vol: $(pactl get-sink-volume "$device" | awk '{ print $5}')" ||
+		pactl set-sink-mute "$device" true && dunstify -t 900 "Muted"
 }
 
 case "$1" in

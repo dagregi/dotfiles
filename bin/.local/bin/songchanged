@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 COVER_DIR="$HOME/.tmp"
-
 filename=$(mpc current -f %file%)
 artist=$(mpc current -f %artist%)
 title=$(mpc current -f %title%)
@@ -11,15 +10,8 @@ notify-change() {
 	dunstify -t 2500 -i "$COVER_DIR/$album.png" "󰝚  $title" """󰠃  $artist
 	󰀥  $album"""
 }
-
-if [ -e "$COVER_DIR/$album.png" ]; then
-	notify-change
-elif [ -e "$COVER_DIR/$album-raw.png" ]; then
-	convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png"
-	notify-change
-else
-	rm -f "$COVER_DIR"/*.png
-	mpc readpicture "$filename" >"$COVER_DIR/$album-raw.png" 2>/dev/null
-	convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png"
-	notify-change
-fi
+[ -e "$COVER_DIR/$album.png" ] && notify-change ||
+	[ -e "$COVER_DIR/$album-raw.png" ] && convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png" &&
+	notify-change || rm -f "$COVER_DIR"/*.png &&
+	mpc readpicture "$filename" >"$COVER_DIR/$album-raw.png" 2>/dev/null &&
+	convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png" && notify-change

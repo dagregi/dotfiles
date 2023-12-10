@@ -5,8 +5,5 @@ core_utils=$(echo "awk sed xargs" | tr ' ' '\n')
 selected=$(printf "$languages\n$core_utils" | fzf)
 read -p "Enter Query: " query
 
-if printf $languages | grep -qs $selected; then
-	tmux neww bash -c "curl cht.sh/$selected/$(echo $query | tr ' ' '+') | less"
-else
+printf $languages | grep -qs $selected && tmux neww bash -c "curl cht.sh/$selected/$(echo $query | tr ' ' '+') | less" ||
 	tmux neww bash -c "curl cht.sh/$selected~$query | less"
-fi

@@ -12,94 +12,53 @@ is_repeat=$(mpc status | rg 'repeat' | awk '{ print $4 }')
 is_random=$(mpc status | rg 'random' | awk '{ print $6 }')
 is_playing=$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]')
 
-if [ -z "$status" ]; then
+[ -z "$status" ] && {
 	prompt="Offline"
 	message="MPD is Offline"
-elif [ "$is_stopped" = "n/a" ]; then
+} || [ "$is_stopped" = "n/a" ] && {
 	prompt="Stopped"
 	message="Playback stopped"
-else
-	if [ -e "$COVER_PATH/$ALBUM-raw.png" ]; then
-		cover="$COVER_PATH/$ALBUM-raw.png"
-	else
-		mpc readpicture "$(mpc current -f %file%)" >"$COVER_PATH/$ALBUM-raw.png" 2>/dev/null
-		cover="$COVER_PATH/$ALBUM-raw.png"
-	fi
-
+}
+[ -e "$COVER_PATH/$ALBUM-raw.png" ] && cover="$COVER_PATH/$ALBUM-raw.png" || {
+	mpc readpicture "$(mpc current -f %file%)" >"$COVER_PATH/$ALBUM-raw.png" 2>/dev/null && cover="$COVER_PATH/$ALBUM-raw.png"
+} || {
 	prompt="$ARTIST"
 	message="""$TITLE
 $ALBUM"""
-fi
+}
 
 toggle_play_pause() {
-	if [ -n "$status" ]; then
-		mpc -q toggle
-		dunstify -t 900 "$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]' | sed 's/p/P/')"
-	else
-		exit 0
-	fi
+	[ -n "$status" ] && mpc -q toggle && dunstify -t 900 "$(mpc status | rg '\[' | awk '{ print $1 }' | tr -d '\[\]]' | sed 's/p/P/')" || exit 0
 }
 stop_palyback() {
 	mpc -q stop
 	dunstify -t 900 "Playback stopped"
 }
 toggle_random() {
-	if [ -n "$status" ]; then
-		mpc -q random
-		dunstify -t 900 "Random: $(mpc status | rg 'random' | awk '{ print $6 }')"
-	else
-		exit 0
-	fi
+	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | rg 'random' | awk '{ print $6 }')" || exit 0
 }
 toggle_repeat() {
-	if [ -n "$status" ]; then
-		mpc -q repeat
-		dunstify -t 900 "Repeat: $(mpc status | rg 'repeat' | awk '{ print $4 }')"
-	else
-		exit 0
-	fi
+	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | rg 'repeat' | awk '{ print $4 }')" || exit 0
 }
 next_track() {
-	if [ "$is_stopped" != "n/a" ] && [ -n "$status" ]; then
-		mpc -q next
-		songchanged
-	else
-		exit 0
-	fi
+	[ "$is_stopped" != "n/a" ] && [ -n "$status" ] && mpc -q next && songchanged || exit 0
 }
 prev_track() {
-	if [ "$is_stopped" != "n/a" ] && [ -n "$status" ]; then
-		mpc -q prev
-		songchanged
-	else
-		exit 0
-	fi
+	[ "$is_stopped" != "n/a" ] && [ -n "$status" ] && mpc -q prev && songchanged || exit 0
 }
 
-if [ "$is_playing" = "playing" ]; then
-	toggle_opt="󰏤"
-else
-	toggle_opt="󰐊"
-fi
+[ "$is_playing" = "playing" ] && toggle_opt="󰏤" || toggle_opt="󰐊"
 prev_opt="󰒮"
 next_opt="󰒭"
 stop_opt="󰓛"
 random_opt="󰒝"
 repeat_opt="󰑖"
 
-if [ "$is_repeat" = "on" ] && [ "$is_random" = "on" ]; then
-	active="4,5"
-elif [ "$is_repeat" = "on" ]; then
-	active="4"
-elif [ "$is_random" = "on" ]; then
-	active="5"
-else
-	active=""
-fi
+[ "$is_repeat" = "on" ] && [ "$is_random" = "on" ] && active="4,5" ||
+	[ "$is_repeat" = "on" ] && active="4" || [ "$is_random" = "on" ] && active="5" || active=""
+
 urgent=""
-if [ "$is_stopped" = "n/a" ]; then
-	urgent="3"
-fi
+[ "$is_stopped" = "n/a" ] && urgent="3"
 
 opt_menu() {
 	rofi -dmenu \
@@ -117,25 +76,18 @@ run_rofi() {
 state=$(run_rofi)
 
 case "$state" in
-"$toggle_opt")
-	toggle_play_pause
+"$toggle_opt") toggle_play_pause
 	;;
-"$stop_opt")
-	stop_palyback
+"$stop_opt") stop_palyback
 	;;
-"$next_opt")
-	next_track
+"$next_opt") next_track
 	;;
-"$prev_opt")
-	prev_track
+"$prev_opt") prev_track
 	;;
-"$repeat_opt")
-	toggle_repeat
+"$repeat_opt") toggle_repeat
 	;;
-"$random_opt")
-	toggle_random
+"$random_opt") toggle_random
 	;;
-*)
-	echo "Don't know what to do"
+*) echo "Don't know what to do"
 	;;
 esac

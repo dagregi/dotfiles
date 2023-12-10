@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-rofi \
-	-show run \
+rofi -show run \
 	-scroll-method 0 \
 	-terminal st \
 	-theme $XDG_CONFIG_HOME/rofi/themes/runner.rasi

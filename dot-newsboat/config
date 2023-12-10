@@ -1,0 +1,30 @@
+browser "$BROWSER %u"
+
+color listnormal white default
+color listfocus color6 color0 bold standout
+color listnormal_unread color2 default bold
+color listfocus_unread default cyan bold
+color info color2 default
+color title color1 default
+color article color2 default
+# highlights
+highlight article "^(Feed|Link):.*$" color11 default bold
+highlight article "^(Title|Date|Author):.*$" color11 default bold
+highlight article "https?://[^ ]+" color2 default underline
+highlight article "\\[[0-9]+\\]" color2 default bold
+highlight article "\\[image\\ [0-9]+\\]" color2 default bold
+highlight feedlist "^─.*$" color6 color6 bold
+
+feedlist-title-format "Feeds (%u unread, %t total)"
+keep-articles-days 7
+max-browser-tabs 5
+max-items 45
+
+# notify-format "%d new articles (%n unread articles, %f unread feeds)"
+# notify-program "~/bin/my-notifier"
+
+scrolloff 8
+search-highlight-colors default cyan bold
+searchresult-title-format "Search result"
+show-keymap-hint no
+wrap-scroll yes

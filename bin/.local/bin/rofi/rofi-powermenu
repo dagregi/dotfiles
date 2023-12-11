@@ -5,10 +5,6 @@ logoff_opt="󰗽"
 restart_opt="󰜉"
 lock_opt=""
 
-opt_menu() {
-	rofi -dmenu -u -1 -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
-}
-
 lock_screen() {
 	[ -n "$(mpc status)"] && mpc -q pause
 	betterlockscreen -l
@@ -19,14 +15,10 @@ logoff() {
 }
 
 run_rofi() {
-	echo "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | opt_menu
+	echo "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | rofi -dmenu -u -1 -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
 }
-confirm() {
-	echo "Yes\nNo" | sh $XDG_CONFIG_HOME/rofi/scripts/confirmation
-}
-
 state=$(run_rofi)
-[ -n "$state" ] && confirmation=$(confirm)
+[ -n "$state" ] && confirmation=$(echo "Yes\nNo" | rofi-confirm)
 
 [ "$confirmation" = "Yes" ] && case "$state" in
 "$shutdown_opt") loginctl poweroff

@@ -2,30 +2,20 @@
 
 COVER_PATH="/tmp"
 status=$(mpc status)
-
-ARTIST=$(mpc current -f %artist%)
-ALBUM="󰀥  $(mpc current -f %album%)"
-TITLE="󰝚  $(mpc current -f %title%)"
+artist=$(mpc current -f %artist%)
+title=$(mpc current -f %title%)
+album=$(mpc current -f %album%)
 
 is_stopped=$(mpc status | awk '{ print $2 }')
-is_repeat=$(mpc status | awk '/repeat/ { print $4 }')
-is_random=$(mpc status | awk '/random/ { print $6 }')
+is_repeat=$(mpc status | awk '/repeat/ { print $3 }')
+is_random=$(mpc status | awk '/random/ { print $5 }')
 is_playing=$(mpc status | awk '/\[/ { print $1 }' | tr -d '\[\]')
 
-[ -z "$status" ] && {
-	prompt="Offline"
-	message="MPD is Offline"
-} || [ "$is_stopped" = "n/a" ] && {
-	prompt="Stopped"
-	message="Playback stopped"
-}
-[ -e "$COVER_PATH/$ALBUM-raw.png" ] && cover="$COVER_PATH/$ALBUM-raw.png" || {
-	mpc readpicture "$(mpc current -f %file%)" >"$COVER_PATH/$ALBUM-raw.png" 2>/dev/null && cover="$COVER_PATH/$ALBUM-raw.png"
-} || {
-	prompt="$ARTIST"
-	message="""$TITLE
-$ALBUM"""
-}
+[ -z "$status" ] && prompt="Offline" && message="MPD is Offline"
+[ "$is_stopped" = "n/a" ] && prompt="Stopped" && message="Playback stopped"
+[ -n "$status" ] && [ "$is_stopped" != "n/a" ] && prompt="$artist" && message="󰝚  $title
+󰀥  $album" && [ -e "$COVER_PATH/$album-raw.png" ] && cover="$COVER_PATH/"$album"-raw.png" ||
+	mpc readpicture "$(mpc current -f %file%)" >"$COVER_PATH/$album-raw.png" 2>/dev/null && cover="$COVER_PATH/"$album"-raw.png"
 
 toggle_play_pause() {
 	[ -n "$status" ] && mpc -q toggle && dunstify -t 900 "$(mpc status | awk '/\[/ { print $1 }' | tr -d '\[\]' | sed 's/p/P/')" || exit 0
@@ -35,10 +25,10 @@ stop_palyback() {
 	dunstify -t 900 "Playback stopped"
 }
 toggle_random() {
-	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | awk '/repeat/ { print $6 }')" || exit 0
+	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | awk '/random/ { print $5 }')" || exit 0
 }
 toggle_repeat() {
-	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | awk '/repeat/ { print $4 }')" || exit 0
+	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | awk '/repeat/ { print $3 }')" || exit 0
 }
 next_track() {
 	[ "$is_stopped" != "n/a" ] && [ -n "$status" ] && mpc -q next && songchanged || exit 0
@@ -54,26 +44,23 @@ stop_opt="󰓛"
 random_opt="󰒝"
 repeat_opt="󰑖"
 
-[ "$is_repeat" = "on" ] && [ "$is_random" = "on" ] && active="4,5" ||
-	[ "$is_repeat" = "on" ] && active="4" || [ "$is_random" = "on" ] && active="5" || active=""
-
 urgent=""
+[ "$is_repeat" = "off" ] && [ "$is_random" = "off" ] && active=""
+[ "$is_repeat" = "on" ] && [ "$is_random" = "off" ] && active="4"
+[ "$is_repeat" = "off" ] && [ "$is_random" = "on" ] && active="5"
+[ "$is_repeat" = "on" ] && [ "$is_random" = "on" ] && active="4,5"
 [ "$is_stopped" = "n/a" ] && urgent="3"
 
-opt_menu() {
-	rofi -dmenu \
-		-selected-row 1 \
-		-theme-str "inputbar {background-image: url(\""$cover"\", width);}" \
-		-p "$prompt" \
-		-mesg "$message" \
-		-a "${active}" -u "$urgent" \
-		-theme $XDG_CONFIG_HOME/rofi/themes/musicdash.rasi
-}
-
-run_rofi() {
-	echo "$prev_opt\n$toggle_opt\n$next_opt\n$stop_opt\n$repeat_opt\n$random_opt" | opt_menu
-}
-state=$(run_rofi)
+state=$(
+	echo "$prev_opt\n$toggle_opt\n$next_opt\n$stop_opt\n$repeat_opt\n$random_opt" |
+		rofi -dmenu \
+			-selected-row 1 \
+			-theme-str "inputbar {background-image: url(\"$cover\", width);}" \
+			-p "$prompt" \
+			-mesg "$message" \
+			-a "${active}" -u "$urgent" \
+			-theme $XDG_CONFIG_HOME/rofi/themes/musicdash.rasi
+)
 
 case "$state" in
 "$toggle_opt") toggle_play_pause

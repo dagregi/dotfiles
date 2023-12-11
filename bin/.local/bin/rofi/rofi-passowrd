@@ -2,5 +2,4 @@
 
 rofi -dmenu \
 	-password \
-	-mesg "Password" \
 	-theme $XDG_CONFIG_HOME/rofi/themes/password.rasi

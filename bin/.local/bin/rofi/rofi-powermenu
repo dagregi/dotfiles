@@ -14,10 +14,7 @@ logoff() {
 	bspc quit
 }
 
-run_rofi() {
-	echo "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | rofi -dmenu -u -1 -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi
-}
-state=$(run_rofi)
+state=$(echo -e "$lock_opt\n$logoff_opt\n$restart_opt\n$shutdown_opt" | rofi -dmenu -u -1 -theme $XDG_CONFIG_HOME/rofi/themes/powermenu.rasi)
 [ -n "$state" ] && confirmation=$(echo "Yes\nNo" | rofi-confirm)
 
 [ "$confirmation" = "Yes" ] && case "$state" in

@@ -24,32 +24,24 @@ toggle_mute() {
 }
 
 case "$1" in
-"up")
-	increase_volume
+"up") increase_volume
 	;;
-"down")
-	decrease_volume
+"down") decrease_volume
 	;;
-"get")
-	{
+"get") {
 		case "$2" in
-		"volume")
-			get_volume
+		"volume") get_volume
 			;;
-		"mute")
-			echo "$is_muted"
+		"mute") echo "$is_muted"
 			;;
-		*)
-			echo "Get what now?!"
+		*) echo "Get what now?!"
 			;;
 		esac
 	}
 	;;
-"toggle")
-	toggle_mute
+"toggle") toggle_mute
 	;;
-*)
-	echo """Woah! relax mate, this is how you use it:
+*) echo "Woah! relax mate, this is how you use it:
         
 	volumectrl <COMMAND>
 
@@ -57,7 +49,7 @@ case "$1" in
 	down               decrease the volume by 5
 	toggle             toggle mute state
 	get <volume/mute>  get state
-"""
+"
 	;;
 esac
 

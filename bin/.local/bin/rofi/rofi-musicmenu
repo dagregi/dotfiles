@@ -7,8 +7,8 @@ title=$(mpc current -f %title%)
 album=$(mpc current -f %album%)
 
 is_stopped=$(mpc status | awk '{ print $2 }')
-is_repeat=$(mpc status | awk '/repeat/ { print $3 }')
-is_random=$(mpc status | awk '/random/ { print $5 }')
+is_repeat=$(mpc status | awk '/repeat/ { print $4 }')
+is_random=$(mpc status | awk '/random/ { print $6 }')
 is_playing=$(mpc status | awk '/\[/ { print $1 }' | tr -d '\[\]')
 
 [ -z "$status" ] && prompt="Offline" && message="MPD is Offline"
@@ -25,10 +25,10 @@ stop_palyback() {
 	dunstify -t 900 "Playback stopped"
 }
 toggle_random() {
-	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | awk '/random/ { print $5 }')" || exit 0
+	[ -n "$status" ] && mpc -q random && dunstify -t 900 "Random: $(mpc status | awk '/random/ { print $6 }')" || exit 0
 }
 toggle_repeat() {
-	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | awk '/repeat/ { print $3 }')" || exit 0
+	[ -n "$status" ] && mpc -q repeat && dunstify -t 900 "Repeat: $(mpc status | awk '/repeat/ { print $4 }')" || exit 0
 }
 next_track() {
 	[ "$is_stopped" != "n/a" ] && [ -n "$status" ] && mpc -q next && songchanged || exit 0
@@ -52,7 +52,7 @@ urgent=""
 [ "$is_stopped" = "n/a" ] && urgent="3"
 
 state=$(
-	echo "$prev_opt\n$toggle_opt\n$next_opt\n$stop_opt\n$repeat_opt\n$random_opt" |
+	echo -e "$prev_opt\n$toggle_opt\n$next_opt\n$stop_opt\n$repeat_opt\n$random_opt" |
 		rofi -dmenu \
 			-selected-row 1 \
 			-theme-str "inputbar {background-image: url(\"$cover\", width);}" \

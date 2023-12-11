@@ -2,12 +2,12 @@
 
 killall -9 -q picom dunst bspc sxhkd
 
-xrdb -merge $HOME/.Xresources
+xrdb $HOME/.Xresources
 picom -b
 
-feh -z --no-fehbg --bg-fill $XDG_CONFIG_HOME/bg
+feh -z --no-fehbg --bg-scale ~/Pictures/Walls
 
 dunst &
 sxhkd &
 
-sh $XDG_CONFIG_HOME/polybar/scripts/launch.sh
+$XDG_CONFIG_HOME/polybar/scripts/launch.sh

@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-COVER_DIR="$HOME/.tmp"
+COVER_DIR="/tmp"
 filename=$(mpc current -f %file%)
 artist=$(mpc current -f %artist%)
 title=$(mpc current -f %title%)
 album=$(mpc current -f %album%)
 
-notify-change() {
-	dunstify -t 2500 -i "$COVER_DIR/$album.png" "󰝚  $title" "󰠃  $artist
-	󰀥  $album"
+song_changed() {
+	dunstify -t 2500 -i "$COVER_DIR/$album.png" "󰝚  $title" "󰠃  $artist\n󰀥  $album"
+	exit 0
 }
-[ -e "$COVER_DIR/$album.png" ] && notify-change ||
+[ -e "$COVER_DIR/$album.png" ] && song_changed ||
 	[ -e "$COVER_DIR/$album-raw.png" ] && convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png" &&
-	notify-change || rm -f "$COVER_DIR"/*.png &&
+	song_changed || rm -f "$COVER_DIR"/*.png &&
 	mpc readpicture "$filename" >"$COVER_DIR/$album-raw.png" 2>/dev/null &&
-	convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png" && notify-change
+	convert -resize 80x80 "$COVER_DIR/$album-raw.png" "$COVER_DIR/$album.png" && song_changed

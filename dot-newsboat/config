@@ -14,6 +14,7 @@ highlight article "https?://[^ ]+" color2 default underline
 highlight article "\\[[0-9]+\\]" color2 default bold
 highlight article "\\[image\\ [0-9]+\\]" color2 default bold
 highlight feedlist "^─.*$" color6 color6 bold
+highlight feedlist "\\(.*==\\[.*$" color8 default bold
 
 feedlist-title-format "Feeds (%u unread, %t total)"
 keep-articles-days 7

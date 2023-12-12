@@ -5,7 +5,7 @@ killall -9 -q picom dunst bspc sxhkd
 xrdb $HOME/.Xresources
 picom -b
 
-feh -z --no-fehbg --bg-scale ~/Pictures/Walls
+feh -z --no-fehbg --bg-fill ~/Pictures/Walls
 
 dunst &
 sxhkd &

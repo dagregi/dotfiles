@@ -1,5 +1,5 @@
 configuration{
-	show-icons: true;
+	show-icons: false;
 	terminal: "st";
 	case-sensitive: true;
 }

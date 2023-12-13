@@ -3,10 +3,17 @@ alias vim=$EDITOR
 alias pg_start='pg_ctl -D $PREFIX/var/lib/postgresql start'
 alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 
-alias ls='ls --color=auto --group-directories-first'
-alias la='ls -lA'
-alias ll='ls -l'
-alias del='rm -rf'
+# DIRS
+alias -g ...='../..' \
+	....='../../..'
+alias ls='ls --color=tty --group-directories-first' \
+	la='ls -lhA' \
+	ll='ls -lh' \
+alias del='rm -rvI' \
+	cp='cp -riv' \
+	mv='mv -iv'
+alias md='mkdir -p'
+
 alias cat='bat --style=plain --paging=never'
 
 # GIT: Stats

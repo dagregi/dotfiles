@@ -31,13 +31,4 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-autoload -U compinit
-zstyle ":completion:*" menu select
-zmodload zsh/complist
-compinit
-
-autoload edit-command-line; zle -N edit-command-line
-
 bindkey -s ^f "tmux-sessionizer\n"
-bindkey ^e edit-command-line
-bindkey -v

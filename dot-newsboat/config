@@ -1,9 +1,28 @@
 browser "$BROWSER %u"
 
+bind-key j down
+bind-key k up
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key G end
+bind-key g home
+bind-key d pagedown
+bind-key u pageup
+bind-key l open
+bind-key h quit
+bind-key a toggle-article-read
+bind-key n next-unread
+bind-key N prev-unread
+bind-key D pb-download
+bind-key U show-urls
+bind-key x pb-delete
+
 color listnormal white default
 color listfocus color6 color0 bold standout
 color listnormal_unread color2 default bold
-color listfocus_unread default cyan bold
+color listfocus_unread color6 color0 bold standout
 color info color2 default
 color title color1 default
 color article color2 default
@@ -17,12 +36,14 @@ highlight feedlist "^─.*$" color6 color6 bold
 highlight feedlist "\\(.*==\\[.*$" color8 default bold
 
 feedlist-title-format "Feeds (%u unread, %t total)"
+articlelist-title-format "Articles in feed '%T' (%u unread)"
+itemview-title-format "Article '%T'"
 keep-articles-days 7
 max-browser-tabs 5
 max-items 45
 
-# notify-format "%d new articles (%n unread articles, %f unread feeds)"
-# notify-program "~/bin/my-notifier"
+notify-format "%d new articles (%n unread articles, %f unread feeds)"
+notify-program "/bin/dunstify"
 
 scrolloff 8
 search-highlight-colors default cyan bold

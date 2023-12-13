@@ -30,4 +30,12 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-bindkey -s ^f "tmux-sessionizer\n"
+export LESS_TERMCAP_mb="$(tput bold; tput setaf 1)"
+export LESS_TERMCAP_md="$(tput bold; tput setaf 2)"
+export LESS_TERMCAP_me="$(tput setaf 7)"
+export LESS_TERMCAP_so="$(tput bold; tput setaf 1)"
+export LESS_TERMCAP_se="$(tput setaf 7)"
+export LESS_TERMCAP_us="$(tput bold; tput setaf 5)"
+export LESS_TERMCAP_ue="$(tput setaf 7)"
+
+bindkey -s ^f "^utmux-sessionizer\n"

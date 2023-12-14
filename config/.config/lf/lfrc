@@ -6,8 +6,8 @@ set cursorpreviewfmt "\033[7;2m"
 set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
-# set cleaner '~/.config/lf/cleaner'
-# set previewer '~/.config/lf/scope'
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
 set autoquit true
 
 map <enter> shell
@@ -27,6 +27,26 @@ map E extract
 map <c-r> reload
 map <c-t> push :tar<space>
 map <c-x> push :zip<space>
+
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+        text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
+	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+	image/svg+xml) display -- $f ;;
+	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
+		setsid -f sxiv -aio 2>/dev/null | while read -r file; do
+			[ -z "$file" ] && continue
+			lf -remote "send select \"$file\""
+			lf -remote "send toggle"
+		done &
+		;;
+	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
+	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+    esac
+}}
 
 cmd mkdir $mkdir -p "$@"
 cmd delete ${{

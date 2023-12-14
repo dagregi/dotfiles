@@ -15,6 +15,7 @@ alias del='rm -rvI' \
 alias md='mkdir -p'
 
 alias cat='bat --style=plain --paging=never'
+alias lf='lfub'
 
 # GIT: Stats
 alias gcl='git clone --recursive'

@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
-killall -9 -q picom dunst bspc sxhkd
-
 xrdb $HOME/.Xresources
-picom -b
+$XDG_CONFIG_HOME/polybar/scripts/launch.sh
+autostart="mpd dunst sxhkd picom"
+for program in $autostart; do
+	pgrep -x $program >/dev/null || $program &
+done &
 
 feh -z --no-fehbg --bg-fill ~/Pictures/Walls
-
-dunst &
-sxhkd &
-
-$XDG_CONFIG_HOME/polybar/scripts/launch.sh

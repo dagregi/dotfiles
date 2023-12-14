@@ -1,0 +1,73 @@
+set shell sh
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 8
+set cursorpreviewfmt "\033[7;2m"
+set icons
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+# set cleaner '~/.config/lf/cleaner'
+# set previewer '~/.config/lf/scope'
+set autoquit true
+
+map <enter> shell
+map ` !true
+map . set hidden!
+map x $$f
+map X !$f
+map o &mimeopen "$f"
+map O $mimeopen --ask "$f"
+
+map a push :mkdir<space>
+map A push :rename<enter>
+map I :rename; cmd-home
+map D delete
+map g top
+map E extract
+map <c-r> reload
+map <c-t> push :tar<space>
+map <c-x> push :zip<space>
+
+cmd mkdir $mkdir -p "$@"
+cmd delete ${{
+	clear; tput setaf 1; tput bold
+    set -f
+    printf "$fx\n"
+    printf "delete?[y/n]"
+    read ans
+    [ "$ans" = "y" ] && rm -rf -- $fx
+}}
+
+cmd extract ${{
+	clear; tput setaf 2; tput bold
+    set -f
+    printf "$fx\n"
+	printf "extract?[y/n]"
+	read ans
+	[ $ans = "y" ] && {
+		case $f in
+			*.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjf $f;;
+		*.tar.gz|*.tgz) tar xzf $f;;
+		*.tar.xz|*.txz) tar xJf $f;;
+		*.zip) unzip $f;;
+		*.rar) unrar x $f;;
+		*.7z) 7z x $f;;
+		esac
+	}
+}}
+cmd tar ${{
+	clear; tput setaf 3; tput bold
+    set -f
+    printf "$fx\n"
+	printf "compress(with tar)?[y/n]"
+	read ans
+	[ $ans = "y" ] && mkdir $1 && cp -r $fx $1 && tar czf $1.tar.gz $1 && rm -rf $1
+}}
+cmd zip ${{
+	clear; tput setaf 3; tput bold
+    set -f
+    printf "$fx\n"
+	printf "compress(with zip)?[y/n]"
+	read ans
+	[ $ans = "y" ] && mkdir $1 && cp -r $fx $1 && zip -r $1.zip $1 && rm -rf $1
+}}

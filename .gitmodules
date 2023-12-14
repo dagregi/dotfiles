@@ -1,6 +1,6 @@
-[submodule "dot-local/bin"]
-	path = dot-local/bin
-	url = git@github.com:dagregi/scripts.git
 [submodule "dot-config/nvim"]
 	path = dot-config/nvim
 	url = git@github.com:dagregi/nvim.git
+[submodule "bin/.local/bin"]
+	path = bin/.local/bin
+	url = git@github.com:dagregi/scripts.git

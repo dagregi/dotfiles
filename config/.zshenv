@@ -4,7 +4,6 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export ZDOTDIR=$HOME/.config/zsh
-export ZCOMPDUMPDIR=$XDG_CACHE_HOME/zsh
 
 export EDITOR="nvim"
 export VISUAL="nvim"

@@ -6,9 +6,9 @@ alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 # DIRS
 alias -g ...='../..' \
 	....='../../..'
-alias ls='ls --color=tty --group-directories-first' \
-	la='ls -lhA' \
-	ll='ls -lh' \
+alias ls='eza --color=auto --icons=always --group-directories-first' \
+	la='ls -la' \
+	ll='ls -l' \
 alias del='rm -rvI' \
 	cp='cp -riv' \
 	mv='mv -iv'
@@ -23,7 +23,8 @@ alias gls='git --no-pager log --oneline --graph -20'
 alias gstat='git status -s'
 alias gwhat='git whatchanged --oneline --graph --stat'
 # GIT: Locals
-alias ga='git add .'
+alias ga='git add'
+alias gaa='git add .'
 alias gap='git add --patch'
 alias gs='git stash'
 alias gsp='git stash pop'
@@ -41,6 +42,7 @@ alias grf='git rebase --interactive --autosquash'
 alias grx='git rebase --abort'
 alias grr='git rebase --continue'
 # GIT: Branch
+alias gb='git branch'
 alias gbrm='git branch -d'
 alias gch='git checkout'
 alias gcb='git checkout -b'

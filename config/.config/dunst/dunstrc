@@ -47,6 +47,9 @@ sticky_history = yes
 history_length = 25
 browser = $BROWSER
 always_run_script = true
+title = Dunst
+class = Dunst
+
 corner_radius = 6
 ignore_dbusclose = false
 

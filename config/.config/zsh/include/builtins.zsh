@@ -3,7 +3,6 @@ bindkey -v
 export KEYTIMEOUT=1
 
 autoload -U colors && colors
-
 setopt PROMPT_SUBST
 setopt auto_cd
 stty stop undef

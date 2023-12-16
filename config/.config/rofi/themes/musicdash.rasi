@@ -8,9 +8,7 @@ configuration {
 	kb-select-5:				"r";
 	kb-select-6:				"z";
 }
-
 @import "colors.rasi"
-
 window {
     transparency:                "real";
     fullscreen:                  false;
@@ -20,7 +18,6 @@ window {
     cursor:                      "default";
     background-color:            @background;
 }
-
 mainbox {
     enabled:                     true;
     spacing:                     20px;
@@ -28,7 +25,6 @@ mainbox {
     background-color:            transparent;
     children:                    [ "inputbar", "listview", "message" ];
 }
-
 inputbar {
     enabled:                     true;
     spacing:                     5px;
@@ -38,7 +34,6 @@ inputbar {
     text-color:                  @foreground;
     children:                    [ "textbox-prompt-colon", "prompt" ];
 }
-
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
@@ -55,7 +50,6 @@ prompt {
     background-color:            @pur;
     text-color:                  @background-alt;
 }
-
 message {
     enabled:                     true;
     padding:                     10px;
@@ -69,7 +63,6 @@ textbox {
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-
 listview {
     enabled:                     true;
     columns:                     6;
@@ -82,7 +75,6 @@ listview {
     background-color:            transparent;
     cursor:                      "default";
 }
-
 element {
     enabled:                     true;
     padding:                     15px;
@@ -99,7 +91,6 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-
 element normal.normal,
 element alternate.normal {
     background-color:            @background-alt;

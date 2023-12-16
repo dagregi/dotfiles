@@ -3,5 +3,4 @@
 device=$(pactl list sinks | awk ' /Name/ { print $2}')
 is_muted=$(pactl get-sink-mute "$device" | awk '{ print $2}')
 volume=$(pactl get-sink-volume "$device" | awk '{ print $5}')
-
 [ "$is_muted" = "yes" ] && echo "󰖁 muted" || [ "$(echo "$volume" | tr -d "%")" -gt 75 ] && echo " $volume" || [ "$(echo "$volume" | tr -d "%")" -gt 35 ] && echo " $volume" || echo " $volume"

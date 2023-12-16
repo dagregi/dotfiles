@@ -2,7 +2,6 @@
 framerate = 69
 bars = 0
 bar_width = 3
-
 [color]
 background = '#191724'
 gradient = 1
@@ -13,7 +12,6 @@ gradient_color_3 = '#c4a7e7'
 gradient_color_4 = '#ebbcba'
 gradient_color_5 = '#f6c177'
 gradient_color_6 = '#eb6f92'
-
 [smoothing]
 waves = 0
 noise_reduction = 85

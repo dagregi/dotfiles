@@ -15,9 +15,7 @@ map ` !true
 map . set hidden!
 map x $$f
 map X !$f
-map o &mimeopen "$f"
-map O $mimeopen --ask "$f"
-
+map o open "$f"
 map a push :mkdir<space>
 map A push :rename<enter>
 map I :rename; cmd-home
@@ -27,14 +25,13 @@ map E extract
 map <c-r> reload
 map <c-t> push :tar<space>
 map <c-x> push :zip<space>
-
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
         text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
 	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
-		setsid -f sxiv -aio 2>/dev/null | while read -r file; do
+		setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
 			[ -z "$file" ] && continue
 			lf -remote "send select \"$file\""
 			lf -remote "send toggle"
@@ -47,7 +44,6 @@ cmd open ${{
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
-
 cmd mkdir $mkdir -p "$@"
 cmd delete ${{
 	clear; tput setaf 1; tput bold
@@ -57,7 +53,6 @@ cmd delete ${{
     read ans
     [ "$ans" = "y" ] && rm -rf -- $fx
 }}
-
 cmd extract ${{
 	clear; tput setaf 2; tput bold
     set -f

@@ -1,14 +1,11 @@
 configuration {
     show-icons:                 false;
 }
-
 @import "colors.rasi"
-
 window {
     location:                    center;
     anchor:                      center;
     width:                       512px;
-
     enabled:                     true;
     border:                      2px;
     border-radius:               2px;
@@ -16,7 +13,6 @@ window {
     cursor:                      "default";
     background-color:            @background;
 }
-
 mainbox {
     enabled:                     true;
     spacing:                     10px;
@@ -37,14 +33,12 @@ listview {
     background-color:            transparent;
     cursor:                      "default";
 }
-
 scrollbar {
 	handle-width:				 4px;
     border-radius:               2px;
 	handle-color:				 @foreground;
 	background-color:			 @background-alt;
 }
-
 inputbar {
     enabled:                     true;
     spacing:                     10px;
@@ -55,7 +49,6 @@ inputbar {
     text-color:                  @foreground;
     children:                    [ "textbox-prompt-colon", "prompt", "entry" ];
 }
-
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
@@ -76,7 +69,6 @@ entry {
     placeholder:                 "Search bookmarks...";
     placeholder-color:           @cmt;
 }
-
 element {
     enabled:                     true;
     spacing:                     8px;
@@ -86,7 +78,6 @@ element {
     text-color:                  @foreground;
     cursor:                      pointer;
 }
-
 element selected.normal {
     background-color:            @selected-background;
     text-color:                  @background;
@@ -95,7 +86,6 @@ element selected.active {
     background-color:            @selected-active-background;
     text-color:                  @background;
 }
-
 element-text {
     background-color:            transparent;
     text-color:                  inherit;

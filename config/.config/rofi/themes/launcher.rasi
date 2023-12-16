@@ -2,16 +2,13 @@ configuration {
     show-icons:                 true;
     display-drun:               " ";
 }
-
 @import "colors.rasi"
-
 window {
     location:                    center;
     anchor:                      center;
     width:                       400px;
     x-offset:                    0px;
     y-offset:                    0px;
-
     enabled:                     true;
     border:                      2px solid;
     border-radius:               2px;
@@ -19,7 +16,6 @@ window {
     cursor:                      "default";
     background-color:            @background;
 }
-
 mainbox {
     enabled:                     true;
     spacing:                     10px;
@@ -40,7 +36,6 @@ listview {
     background-color:            transparent;
     cursor:                      "default";
 }
-
 inputbar {
     enabled:                     true;
     spacing:                     10px;
@@ -62,7 +57,6 @@ entry {
     placeholder:                 "Launch...";
     placeholder-color:           @cmt;
 }
-
 element {
     enabled:                     true;
     spacing:                     8px;
@@ -72,7 +66,6 @@ element {
     text-color:                  @foreground;
     cursor:                      pointer;
 }
-
 element selected.normal {
     background-color:            @selected-background;
     text-color:                  @background;
@@ -85,7 +78,6 @@ element selected.active {
     background-color:            @selected-active-background;
     text-color:                  @background;
 }
-
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;

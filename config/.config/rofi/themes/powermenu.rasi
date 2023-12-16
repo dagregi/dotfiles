@@ -2,28 +2,23 @@ configuration {
     show-icons:                 false;
     location:                    4;
 }
-
 @import "colors.rasi"
-
 window {
     transparency:                "real";
     fullscreen:                  false;
     width:                       96px;
     x-offset:                    -10px;
-
     enabled:                     true;
     border-radius:               2px;
     cursor:                      "default";
     background-color:            @background;
 }
-
 mainbox {
     enabled:                     true;
     padding:                     10px;
     background-color:            transparent;
     children:                    [ "listview" ];
 }
-
 listview {
     enabled:                     true;
     columns:                     1;
@@ -35,14 +30,12 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
     spacing:                     10px;
     border-radius:               2px;
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
 }
-
 element {
     enabled:                     true;
     padding:                     20px;

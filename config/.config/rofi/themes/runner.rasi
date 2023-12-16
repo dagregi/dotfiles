@@ -2,16 +2,13 @@ configuration {
     show-icons:                 false;
     display-run:                " ";
 }
-
 @import "colors.rasi"
-
 window {
     location:                    center;
     anchor:                      center;
     width:                       512px;
     x-offset:                    0px;
     y-offset:                    0px;
-
     enabled:                     true;
     border:                      2px solid;
     border-radius:               2px;
@@ -19,7 +16,6 @@ window {
     cursor:                      "default";
     background-color:            @background;
 }
-
 mainbox {
     enabled:                     true;
     spacing:                     10px;
@@ -34,12 +30,10 @@ listview {
     cycle:                       true;
     scrollbar:                   false;
     layout:                      vertical;
-    
     spacing:                     10px;
     background-color:            transparent;
     cursor:                      "default";
 }
-
 inputbar {
     enabled:                     true;
     spacing:                     10px;
@@ -61,7 +55,6 @@ entry {
     placeholder:                 "Run...";
     placeholder-color:           @cmt;
 }
-
 element {
     enabled:                     true;
     spacing:                     10px;
@@ -71,7 +64,6 @@ element {
     text-color:                  @foreground;
     cursor:                      pointer;
 }
-
 element selected.normal {
     background-color:            @selected-background;
     text-color:                  @background;
@@ -84,7 +76,6 @@ element selected.active {
     background-color:            @selected-active-background;
     text-color:                  @background;
 }
-
 element-text {
     background-color:            transparent;
     text-color:                  inherit;

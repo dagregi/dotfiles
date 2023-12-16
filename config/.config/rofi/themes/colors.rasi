@@ -9,15 +9,12 @@
 	pur: #c4a7e7;
 	red: #eb6f92;
 	yel: #f6c177;
-
 	font: "Iosevka Nerd Font 14";
-
 	foreground: @fgd;
 	background: @bg;
     background-alt: @cur;
 	active-background: @cya;
 	urgent-background: @red;
-
 	selected-background: @active-background;
 	selected-urgent-background: @urgent-background;
 	selected-active-background: @active-background;

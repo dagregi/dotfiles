@@ -1,9 +1,7 @@
 configuration {
     show-icons:                 false;
 }
-
 @import "colors.rasi"
-
 window {
     transparency:                "real";
     fullscreen:                  false;
@@ -11,7 +9,6 @@ window {
     border-radius:               2px;
     background-color:            @background;
 }
-
 mainbox {
     enabled:                     true;
     spacing:                     10px;
@@ -19,7 +16,6 @@ mainbox {
     background-color:            transparent;
     children:                    [ "message", "listview" ];
 }
-
 listview {
     enabled:                     true;
     columns:                     2;
@@ -38,12 +34,10 @@ message {
     background-color:            inherit;
     text-color:                  @foreground;
 }
-
 textbox {
     background-color:            inherit;
     text-color:                  inherit;
 }
-
 element {
     padding:                     10px;
     border-radius:               2px;
@@ -57,7 +51,6 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-
 element normal.normal,
 element alternate.normal {
     background-color:            @background;

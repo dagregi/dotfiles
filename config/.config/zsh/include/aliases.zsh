@@ -2,7 +2,6 @@
 alias vim=$EDITOR
 alias pg_start='pg_ctl -D $PREFIX/var/lib/postgresql start'
 alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
-
 # DIRS
 alias -g ...='../..' \
 	....='../../..'
@@ -13,10 +12,8 @@ alias del='rm -rvI' \
 	cp='cp -riv' \
 	mv='mv -iv'
 alias md='mkdir -p'
-
 alias cat='bat --style=plain --paging=never'
 alias lf='lfub'
-
 # GIT: Stats
 alias gcl='git clone --recursive'
 alias gls='git --no-pager log --oneline --graph -20'
@@ -54,6 +51,5 @@ alias gpu='git push -u origin $(git_current_branch)'
 alias yolo='git push --force'
 alias gra='git remote add'
 alias grrm='git remote remove'
-
 # CONFIG
 alias reloadst="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"

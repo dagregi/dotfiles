@@ -52,4 +52,8 @@ alias yolo='git push --force'
 alias gra='git remote add'
 alias grrm='git remote remove'
 # CONFIG
-alias reloadst="xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)"
+alias reloadst='xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)'
+# XBPS
+alias xi='xbps-install $(xbps-query -Rs . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)'
+alias xr='xbps-remove $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)'
+alias xq='xbps-query $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -e)'

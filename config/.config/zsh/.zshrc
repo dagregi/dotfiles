@@ -10,5 +10,5 @@ export LC_ALL=en_US.UTF-8
 for lib in $XDG_CONFIG_HOME/zsh/include/*; do
 	source $lib
 done
-source /usr/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

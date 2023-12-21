@@ -1,7 +1,9 @@
 zmodload zsh/complist
 autoload -U compinit; compinit
-setopt MENU_COMPLETE
 setopt COMPLETE_IN_WORD
+setopt AUTO_MENU
+setopt AUTO_LIST
+setopt EXTENDED_GLOB
 
 zstyle ":completion:*" menu select
 zstyle ':completion:*' completer _complete _ignored _approximate

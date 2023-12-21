@@ -15,14 +15,11 @@ export PATH="$HOME/.local/bin:$PATH"
 for dir in $HOME/.local/bin/*; do
 	export PATH="$dir:$PATH"
 done
+# cargo env
 export PATH="$HOME/.cargo/bin:$PATH"
-# pnpm
-export PNPM_HOME="$XDG_DATA_HOME/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# opam configuration
+test -r /home/dagregi/.opam/opam-init/init.sh && . /home/dagregi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_me="$(printf '%b' '[0m')"

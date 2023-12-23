@@ -3,8 +3,6 @@
 opts() {
     bspc config "$1" "$2"
 }
-# Configs
-# set bspwm configs here
 opts border_width         2
 opts window_gap           10
 opts split_ratio          0.50

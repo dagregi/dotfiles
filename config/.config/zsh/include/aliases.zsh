@@ -1,7 +1,5 @@
 # Aliases
 alias vim=$EDITOR
-alias pg_start='pg_ctl -D $PREFIX/var/lib/postgresql start'
-alias pg_stop='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 # DIRS
 alias -g ...='../..' \
 	....='../../..'

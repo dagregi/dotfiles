@@ -22,6 +22,7 @@ now_playing_prefix = "$b "
 now_playing_suffix = $/b
 selected_item_prefix = "$b$1* "
 selected_item_suffix = $/b$9
+lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics
 
 song_columns_list_format = (7f)[blue]{l} (40)[white]{t|f:Title} (20)[yellow]{b} (20)[cyan]{a}
 browser_display_mode = columns

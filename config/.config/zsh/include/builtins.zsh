@@ -15,7 +15,6 @@ for km in viopp visual; do
 		bindkey -M $km $c select-bracketed
 	done
 done
-# Emulation of vim-surround
 autoload -Uz surround
 zle -N delete-surround surround
 zle -N add-surround surround

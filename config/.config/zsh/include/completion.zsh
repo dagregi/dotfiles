@@ -10,7 +10,6 @@ zstyle ':completion:*' completer _complete _ignored _approximate
 zstyle ':completion:*' file-sort name
 [ -z "$LS_COLORS" ] || zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' group-name ''
-
 zstyle ':completion:*:*:*:*:descriptions' format '%B%F{cyan}--%d--%f%b'
 zstyle ':completion:*:*:*:*:corrections' format '%F{yellow}!- %d (errors: %e) '
 zstyle ':completion:*:*:*:*:warnings' format ' %F{red}--no matches found--%f'

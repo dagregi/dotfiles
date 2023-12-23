@@ -1,29 +1,17 @@
-#
-# wm independent hotkeys
-#
-# terminal emulator
 alt + t
 	$TERMINAL
-# program launcher/runner
 super + {d, r}
     {rofi-launcher, rofi-runner}
-# browser
 super + alt + b
     $BROWSER
 super + alt + {e, f, p}
     $TERMINAL -e {nvim, lf, htop}
-# rofi custom menus
 super + alt + {m, shift + b, Delete}
     {rofi-musicmenu, rofi-bookmarks, rofi-powermenu}
-# make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-# reload programs
 ctrl + alt + d
     restart-proc dunst
-#
-# bspwm hotkeys
-#
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
@@ -39,18 +27,12 @@ super + y
 # swap the current node and the biggest window
 super + g
 	bspc node -s biggest.window
-#
-# state/flags
-#
 # set the window state
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
-#
-# focus/swap
-#
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
@@ -71,9 +53,6 @@ super + {o,i}
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
-#
-# preselect
-#
 # preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
@@ -86,9 +65,6 @@ super + ctrl + space
 # cancel the preselection for the focused desktop
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
-#
-# move/resize
-#
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}

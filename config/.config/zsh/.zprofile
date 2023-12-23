@@ -11,14 +11,11 @@ export FZF_DEFAULT_OPTS="
 "
 export GIT_EDITOR=$EDITOR
 export PATH="$HOME/.local/bin:$PATH"
-# export each directory in .local/bin
 for dir in $HOME/.local/bin/*; do
 	export PATH="$dir:$PATH"
 done
-# cargo env
 export PATH="$HOME/.cargo/bin:$PATH"
-# opam configuration
-test -r /home/dagregi/.opam/opam-init/init.sh && . /home/dagregi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;32m')"

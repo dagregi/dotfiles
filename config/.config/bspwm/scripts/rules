@@ -1,7 +1,5 @@
 #!/usr/bin/env sh
 
-# Rules
-# set bspwm rules here
 bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a firefox-default desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on

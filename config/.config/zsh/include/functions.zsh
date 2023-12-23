@@ -11,7 +11,3 @@ mkcd() {
 	dir="$*"
 	mkdir -p "$dir" && cd "$dir"
 }
-fwork() {
-	result=$(find ~/projects/* -type d -prune -exec basename {} ';' | sort | uniq | fzf | cut -f 2)
-	[ -n "$result" ] && cd ~/projects/$result
-}

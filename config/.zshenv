@@ -10,6 +10,7 @@ export LC_ALL=en_US.UTF-8
 
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export ZDOTDIR=$HOME/.config/zsh
+export GOPATH=$HOME/go
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="st"

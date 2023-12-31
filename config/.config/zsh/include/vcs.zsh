@@ -1,6 +1,6 @@
 autoload -Uz vcs_info
-zstyle ':vcs_info:git:*' formats 'on %F{black} %b%f  [%c%u %m]'
-zstyle ':vcs_info:git:*' actionformats '(%F{black}%a%f)'
+zstyle ':vcs_info:git:*' formats 'on %F{110} %b%f  [%c%u %m]'
+zstyle ':vcs_info:git:*' actionformats '(%F{110}%a%f)'
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' unstagedstr '%F{red}󰍴%f'
 zstyle ':vcs_info:git:*' stagedstr '%F{green} %f'

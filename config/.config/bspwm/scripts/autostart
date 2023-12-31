@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-xrdb $HOME/.Xresources
+xrdb -merge $HOME/.Xresources
 $XDG_CONFIG_HOME/polybar/scripts/launch.sh
 autostart="mpd dunst sxhkd picom"
 for program in $autostart; do

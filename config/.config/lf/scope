@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 set -C -f
 IFS="$(printf '%b_' '\n')"; IFS="${IFS%_}"

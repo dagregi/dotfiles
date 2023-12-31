@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-[ -n "$FIFO_UEBERZUG" ] && printf '{"action": "remove", "identifier": "PREVIEW"}\n' >"$FIFO_UEBERZUG"
+if [ -n "$FIFO_UEBERZUG" ]; then
+	printf '{"action": "remove", "identifier": "PREVIEW"}\n' >"$FIFO_UEBERZUG"
+fi

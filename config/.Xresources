@@ -3,8 +3,8 @@
 *.background:   #191724
 *.cursorColor:  #6e6a86
 ! black
-*.color0:       #1f1d2e
-*.color8:       #26233a
+*.color0:       #26233a
+*.color8:       #6e6a86
 ! red
 *.color1:       #eb6f92
 *.color9:       #eb6f92
@@ -21,7 +21,7 @@
 *.color5:       #c4a7e7
 *.color13:      #c4a7e7
 ! cyan
-*.color6:       #9ccfd8
+*.color6:       #ebbcba
 *.color14:      #9ccfd8
 ! white
 *.color7:       #e0def4

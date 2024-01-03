@@ -41,4 +41,4 @@ setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 stty stop undef
 autoload edit-command-line; zle -N edit-command-line
-bindkey ^e edit-command-line
+bindkey '^e' edit-command-line

@@ -1,5 +1,9 @@
 # Aliases
 alias vim=$EDITOR
+alias cargo='mold -run cargo'
+alias pg_start='pg_ctl -D /var/lib/postgresql/data -l /tmp/postgres_logfile start'
+alias pg_stop='pg_ctl -D /var/lib/postgresql/data stop'
+alias pg_status='pg_ctl -D /var/lib/postgresql/data status'
 # DIRS
 alias -g ...='../..' \
 	....='../../..'
@@ -52,6 +56,7 @@ alias grrm='git remote remove'
 # CONFIG
 alias reloadst='xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)'
 # XBPS
-alias xi='xbps-install $(xbps-query -Rs . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)'
-alias xr='xbps-remove $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)'
-alias xq='xbps-query $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -e)'
+alias xi='xbps-install $(xbps-query -Rs . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
+	xr='xbps-remove --recursive $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
+	xq='xbps-query $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -e)' \
+	xu='xbps-install -Su'

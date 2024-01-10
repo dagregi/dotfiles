@@ -6,9 +6,9 @@ volume=$(pactl get-sink-volume "$device" | awk '{ print $5 }')
 if [ $(echo "$is_muted") = "yes" ]; then
 	echo "%{F#6e6a86}󰖁 muted%{F-}" 
 elif [ $(echo "$volume" | tr -d "%") -gt 75 ]; then
-	echo "%{F#ebbcba}%{F-}  $volume"
+	echo "%{F#ebbcba}%{F-} $volume"
 elif [ $(echo "$volume" | tr -d "%") -gt 35 ]; then
-	echo "%{F#ebbcba}%{F-}  $volume"
+	echo "%{F#ebbcba}%{F-} $volume"
 else
-	echo "%{F#ebbcba}%{F-}  $volume"
+	echo "%{F#ebbcba}%{F-} $volume"
 fi

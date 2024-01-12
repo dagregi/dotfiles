@@ -22,7 +22,7 @@ show_progress() {
 
 install_packages() {
 	local packages="$@"
-	xbps-install -y "$packages" >/dev/null 2>&1 &
+	xbps-install -y $packages >/dev/null 2>&1 &
 	show_progress "Installing packages" 34 $!
 }
 
@@ -37,12 +37,16 @@ symlink_configurations() {
 	local configurations="$@"
 	[ ! -d "$HOME/.config" ] && mkdir -p "$HOME/.config"
 	[ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local"
-	(cd dotfiles || exit 1 && stow -S "$configurations" && cd ~ || exit 1) >/dev/null 2>&1 &
+	cd dotfiles
+	stow -S $configurations >/dev/null 2>&1
 	show_progress "Symlinking configs" 34 $!
+	cd ~
 }
 install_st_terminal() {
-	(cd st || exit 1 && sudo make install && cd ~ || exit 1) >/dev/null 2>&1 &
+	cd st
+	sudo make install >/dev/null 2>&1 &
 	show_progress "Installing st terminal" 34 $!
+	cd ~
 }
 
 install_dependencies() {
@@ -60,7 +64,7 @@ install_rust() {
 	show_progress "Setting up Rust completions" 34 $!
 }
 install_opam() {
-	bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)" >/dev/null 2>&1 &
+	bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)" &
 	show_progress "Installing Opam" 34 $!
 	opam init &
 	show_progress "Initializing Opam" 34 $!
@@ -73,7 +77,7 @@ install_go() {
 }
 install_node() {
 	xbps-install -y nodejs nodejs-devel >/dev/null 2>&1 &
-	show_progress "Installing Node" 34 $!
+	show_progress "Installing NodeJs" 34 $!
 	npm install -g npm >/dev/null 2>&1 &
 	show_progress "Installing npm" 34 $!
 }
@@ -89,7 +93,7 @@ show_progress "Updating system" 33 $!
 install_packages base-system xorg-minimal xf86-input-evdev xf86-video-amdgpu git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions curl yt-dlp bat fd eza ripgrep fzf gnupg pass openssl-devel stow
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd mpc ncmpcpp mpv dunst newsboat htop
 
-clone_repositories "https://github.com/dagregi/dotfiles.git" "https://github.com/dagregi/st.git"
+clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"
 symlink_configurations "bin" "config"
 install_st_terminal
 

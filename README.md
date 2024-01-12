@@ -3,6 +3,6 @@
 My dotfiles that's it, nothing much here
 
 **Installing**
-```sh
-stow -S bin config
+```
+curl -fsSL https://raw.githubusercontent.com/dagregi/dotfiles/main/install.sh | sh
 ```

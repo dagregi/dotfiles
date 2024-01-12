@@ -22,8 +22,11 @@ show_progress() {
 
 install_packages() {
 	local packages="$@"
-	xbps-install -y $packages >/dev/null 2>&1 &
-	show_progress "Installing packages" 34 $!
+	echo -n "\033[1;34m[Installing packages] \033[0m"
+	for package in $packages; do
+		xbps-install -y $package >/dev/null 2>&1 &
+		show_progress "\tInstalling $package" 35 $!
+	done
 }
 
 clone_repositories() {
@@ -50,26 +53,18 @@ install_st_terminal() {
 }
 
 install_dependencies() {
-	xbps-install -y base-devel gcc bubblewrap rust-sccache >/dev/null 2>&1 &
+	xbps-install -y base-devel bubblewrap rust-sccache >/dev/null 2>&1 &
 	show_progress "Installing dependencies" 34 $!
 }
 install_rust() {
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y >/dev/null 2>&1 &
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh &
 	show_progress "Installing Rust" 34 $!
 	rustup component add rustfmt rust-analyzer clippy >/dev/null 2>&1 &
-	show_progress "Installing Rust tools" 34 $!
+	show_progress "\tAdding Rust tools" 35 $!
 	rustup target add wasm32-unknown-unknown >/dev/null 2>&1 &
-	show_progress "Installing Rust target" 34 $!
+	show_progress "\tAdding Rust targets" 35 $!
 	rustup completions zsh >/usr/share/zsh/functions/Completion/Linux/_rustup && rustup completions zsh cargo >/usr/share/zsh/functions/Completion/Linux/_cargo >/dev/null 2>&1 &
-	show_progress "Setting up Rust completions" 34 $!
-}
-install_opam() {
-	bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)" &
-	show_progress "Installing Opam" 34 $!
-	opam init &
-	show_progress "Initializing Opam" 34 $!
-	opam install dune merlin ocaml-lsp-server ocamlformat utop >/dev/null 2>&1 &
-	show_progress "Setting up Ocaml environment" 34 $!
+	show_progress "\tSetting up Rust completions" 35 $!
 }
 install_go() {
 	xbps-install -y go >/dev/null 2>&1 &
@@ -79,18 +74,20 @@ install_node() {
 	xbps-install -y nodejs nodejs-devel >/dev/null 2>&1 &
 	show_progress "Installing NodeJs" 34 $!
 	npm install -g npm >/dev/null 2>&1 &
-	show_progress "Installing npm" 34 $!
+	show_progress "\tInstalling npm" 35 $!
 }
 install_postgresql() {
-	xbps-install -y postgresql postgresql-client postgresql-libs >/dev/null 2>&1 &
+	xbps-install -y postgresql15 postgresql15-client postgresql-libs >/dev/null 2>&1 &
 	show_progress "Installing PostgreSQL" 34 $!
 	sudo -u postgres initdb -D /var/lib/postgres/data >/dev/null 2>&1 &
-	show_progress "Initializing PostgreSQL" 34 $!
+	show_progress "\tInitializing PostgreSQL" 35 $!
 }
 
+clear
 xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
-install_packages base-system xorg-minimal xf86-input-evdev xf86-video-amdgpu git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions curl yt-dlp bat fd eza ripgrep fzf gnupg pass openssl-devel stow
+install_packages base-system xorg-minimal xf86-input-evdev xf86-video-amdgpu openssl-devel libX11-devel libXft libXft-devel pkg-config pkgconf-devel make fontconfig freetype fontconfig-devel freetype-devel
+install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions yt-dlp bat fd eza ripgrep fzf gnupg pass stow
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd mpc ncmpcpp mpv dunst newsboat htop
 
 clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"
@@ -105,7 +102,6 @@ y | Y) {
 	install_go
 	install_postgresql
 	install_rust
-	install_opam
 } ;;
 *) echo "Skipping setup" ;;
 esac

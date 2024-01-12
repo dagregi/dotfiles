@@ -54,6 +54,7 @@ install_postgresql() {
 read -p "Do you want to setup developmental environment? [y/N] " choice
 case "$choice" in
 y | Y) {
+	mkdir -p projects/rust projects/go projects/ocaml projects/haskell
 	install_dependencies
 	install_node
 	install_go

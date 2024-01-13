@@ -6,9 +6,9 @@ show_progress() {
 	local pid=$3
 	local delay=0.1
 	local spin="-\|/"
-	local count=0
+	[ -z "$4" ] || mod="$4"
 
-	echo -n "\033[1;${color}m[$msg] \033[0m"
+	echo -n "$mod\033[1;${color}m[$msg] \033[0m"
 	while [ -d /proc/"$pid" ]; do
 		local temp=${spin#?}
 		printf " %c  " "$spin"
@@ -25,7 +25,7 @@ install_packages() {
 	echo -n "\033[1;34m[Installing packages] \033[0m"
 	for package in $packages; do
 		xbps-install -y $package >/dev/null 2>&1 &
-		show_progress "\tInstalling $package" 35 $!
+		show_progress "Installing $package" 35 $! "\t"
 	done
 }
 
@@ -37,12 +37,14 @@ clone_repositories() {
 	done
 }
 symlink_configurations() {
-	local configurations="$@"
 	[ ! -d "$HOME/.config" ] && mkdir -p "$HOME/.config"
 	[ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local"
 	cd dotfiles
-	stow -S $configurations >/dev/null 2>&1
-	show_progress "Symlinking configs" 34 $!
+	for dir in */; do
+		trdir=$(echo "$dir" | tr -d '/')
+		stow -R $trdir >/dev/null 2>&1 &
+		show_progress "Symlinking $trdir" 35 $! "\t"
+	done
 	cd ~
 }
 install_st_terminal() {
@@ -60,7 +62,7 @@ install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf ueberzug cava mpd mpc ncmpcpp mpv dunst newsboat htop sxiv ffmpeg ffmpegthumbnailer pulseaudio zathura zathura-pdf-mupdf zathura-djvu
 
 clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"
-symlink_configurations "bin" "config"
+symlink_configurations
 install_st_terminal
 sh ~/dotfiles/setup.sh
 

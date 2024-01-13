@@ -6,9 +6,9 @@ show_progress() {
 	local pid=$3
 	local delay=0.1
 	local spin="-\|/"
-	local count=0
+	[ -z "$4" ] || mod="$4"
 
-	echo -n "\033[1;${color}m[$msg] \033[0m"
+	echo -n "$mod\033[1;${color}m[$msg] \033[0m"
 	while [ -d /proc/"$pid" ]; do
 		local temp=${spin#?}
 		printf " %c  " "$spin"
@@ -28,11 +28,11 @@ install_rust() {
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh &
 	show_progress "Installing Rust" 34 $!
 	rustup component add rustfmt rust-analyzer clippy >/dev/null 2>&1 &
-	show_progress "\tAdding Rust tools" 35 $!
+	show_progress "Adding Rust tools" 35 $! "\t"
 	rustup target add wasm32-unknown-unknown >/dev/null 2>&1 &
-	show_progress "\tAdding Rust targets" 35 $!
+	show_progress "Adding Rust targets" 35 $! "\t"
 	rustup completions zsh >/usr/share/zsh/functions/Completion/Linux/_rustup && rustup completions zsh cargo >/usr/share/zsh/functions/Completion/Linux/_cargo >/dev/null 2>&1 &
-	show_progress "\tSetting up Rust completions" 35 $!
+	show_progress "Setting up Rust completions" 35 $! "\t"
 }
 install_go() {
 	xbps-install -y go >/dev/null 2>&1 &
@@ -42,13 +42,13 @@ install_node() {
 	xbps-install -y nodejs nodejs-devel >/dev/null 2>&1 &
 	show_progress "Installing NodeJs" 34 $!
 	npm install -g npm >/dev/null 2>&1 &
-	show_progress "\tInstalling npm" 35 $!
+	show_progress "Installing npm" 35 $! "\t"
 }
 install_postgresql() {
 	xbps-install -y postgresql15 postgresql15-client postgresql-libs >/dev/null 2>&1 &
 	show_progress "Installing PostgreSQL" 34 $!
 	sudo -u postgres initdb -D /var/lib/postgres/data >/dev/null 2>&1 &
-	show_progress "\tInitializing PostgreSQL" 35 $!
+	show_progress "Initializing PostgreSQL" 35 $! "\t"
 }
 
 read -p "Do you want to setup developmental environment? [y/N] " choice

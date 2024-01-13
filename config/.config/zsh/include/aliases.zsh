@@ -17,7 +17,8 @@ alias md='mkdir -p'
 alias cat='bat --style=plain --paging=never'
 alias lf='lfub'
 # GIT: Stats
-alias gcl='git clone --recursive'
+alias gcl='git clone'
+alias gclr='git clone --recursive'
 alias gls='git --no-pager log --oneline --graph -20'
 alias gstat='git status -s'
 alias gwhat='git whatchanged --oneline --graph --stat'
@@ -29,6 +30,7 @@ alias gs='git stash'
 alias gsp='git stash pop'
 alias gsl='git stash list'
 alias gscls='git stash clear'
+alias gsw='git switch'
 # GIT: Commit
 alias gcam='git commit -am'
 alias gcm='git commit -m'
@@ -43,9 +45,10 @@ alias grr='git rebase --continue'
 # GIT: Branch
 alias gb='git branch'
 alias gbrm='git branch -d'
-alias gch='git checkout'
+alias gco='git checkout'
 alias gcb='git checkout -b'
 # GIT: Remote
+alias gfa='git fetch --all --prune'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
 alias gp='git push'
@@ -56,7 +59,7 @@ alias grrm='git remote remove'
 # CONFIG
 alias reloadst='xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)'
 # XBPS
-alias xi='xbps-install $(xbps-query -Rs . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
-	xr='xbps-remove --recursive $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
+alias xin='xbps-install -S $(xbps-query -Rs . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
+	xrm='xbps-remove --recursive $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
 	xq='xbps-query $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -e)' \
-	xu='xbps-install -Su'
+	xup='xbps-install -Su'

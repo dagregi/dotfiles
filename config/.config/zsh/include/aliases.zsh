@@ -59,7 +59,7 @@ alias grrm='git remote remove'
 # CONFIG
 alias reloadst='xrdb merge $HOME/.Xresources && kill -USR1 $(pidof st)'
 # XBPS
-alias xin='xbps-install -S $(xbps-query -Rs . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
-	xrm='xbps-remove --recursive $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -m -e)' \
-	xq='xbps-query $(xbps-query -s . | awk "{print \$2}" | sed "s/-[0-9]\+.*//g" | fzf -e)' \
+alias xin='xbps-install -S $(xbps-query --regex -Rs ".*" | sed "s/-[0-9].*//; /^.\*./d" | awk "{print \$2}" | fzf -m -e)' \
+	xrm='xbps-remove -R $(xbps-query --regex -s ".*" | sed "s/-[0-9].*//" | awk "{print \$2}" | fzf -m -e)' \
+	xq='xbps-query $(xbps-query -l | sed "s/-[0-9].*//; s/^ii\s//" | fzf -e)' \
 	xup='xbps-install -Su'

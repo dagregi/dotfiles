@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ -p "$FIFO" ] && echo '{"action":"remove","identifier":"lfpreview"}' > "$FIFO"

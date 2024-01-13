@@ -7,6 +7,10 @@ set icons
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set autoquit true
+set sixel true
+set previewer "~/.config/lf/lfpreviewer"
+set cleaner "~/.config/lf/lfcleaner"
+set preview
 
 map <enter> shell
 map ` !true
@@ -28,9 +32,9 @@ cmd open ${{
         text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
 	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
 	image/svg+xml) display -- $f ;;
-	image/*) setsid -f nsxiv $f >/dev/null ;;
+	image/*) setsid -f nsxiv -ab $f 2>/dev/null ;;
 	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
-	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+	video/*) setsid -f mpv --ao=pulse $f -quiet >/dev/null 2>&1 ;;
 	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
 	application/pgp-encrypted) $EDITOR $fx ;;
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;

@@ -32,7 +32,7 @@ install_packages() {
 clone_repositories() {
 	local repos="$@"
 	for repo in $repos; do
-		git clone --recursive "$repo" >/dev/null 2>&1 &
+		git clone --depth 1 --recursive "$repo" >/dev/null 2>&1 &
 		show_progress "Cloning $(basename "$repo")" 35 $!
 	done
 }

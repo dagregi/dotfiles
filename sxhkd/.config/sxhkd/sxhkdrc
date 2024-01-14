@@ -4,8 +4,10 @@ super + {d, r}
     {rofi-launcher, rofi-runner}
 super + alt + b
     $BROWSER
-super + alt + {e, f, p, v, n}
-    openinterm {nvim, lf, htop, cava, ncmpcpp}
+super + alt + {e, f, p}
+    $TERMINAL -e {nvim, lf, htop}
+super + alt + {n, v}
+    openinterm {ncmpcpp, cava}
 super + alt + {m, shift + b, Delete}
     {rofi-musicmenu, rofi-bookmarks, rofi-powermenu}
 super + Escape

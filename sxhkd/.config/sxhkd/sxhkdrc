@@ -12,8 +12,10 @@ super + alt + {m, shift + b, Delete}
     {rofi-musicmenu, rofi-bookmarks, rofi-powermenu}
 super + Escape
 	pkill -USR1 -x sxhkd
-ctrl + alt + d
-    restart-proc dunst
+ctrl + shift + p
+	pkill picom
+ctrl + alt + {d, t, p}
+    restart-proc {dunst, st, picom}
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}

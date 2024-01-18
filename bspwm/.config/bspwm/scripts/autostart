@@ -6,5 +6,7 @@ autostart="mpd dunst sxhkd picom"
 for program in $autostart; do
 	pgrep -x $program >/dev/null || $program &
 done &
+bspwm-fullscreen &
+bspwm-swallow &
 feh -z --no-fehbg --bg-fill ~/Pictures/Walls
 betterlockscreen -u ~/Pictures/Walls &

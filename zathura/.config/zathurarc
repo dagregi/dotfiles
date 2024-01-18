@@ -1,9 +1,22 @@
 set statusbar-home-tilde true
+set statusbar-h-padding 0
+set statusbar-v-padding 0
 set window-title-home-tilde true
 set selection-clipboard clipboard
 set adjust-open width
+set sandbox none
+set page-padding 1
+map <C-u> scroll half-up
+map <C-d> scroll half-down
+map D toggle_page_mode
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+map p print
+map g goto top
 map <C-Tab> toggle_statusbar
-set guioptions ""
 
 set default-bg                  "#191724"
 set default-fg                  "#e0def4"

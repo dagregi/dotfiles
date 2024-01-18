@@ -7,3 +7,4 @@ for program in $autostart; do
 	pgrep -x $program >/dev/null || $program &
 done &
 feh -z --no-fehbg --bg-fill ~/Pictures/Walls
+betterlockscreen -u ~/Pictures/Walls &

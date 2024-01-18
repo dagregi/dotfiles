@@ -18,8 +18,8 @@ map . set hidden!
 map x $$f
 map X !$f
 map o open "$f"
-map a push :mkdir<space>
-map A push :rename<enter>
+map O push :mkdir<space>
+map R push :rename<enter>
 map I :rename; cmd-home
 map D delete
 map g top

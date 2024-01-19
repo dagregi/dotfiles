@@ -1,5 +1,4 @@
 autoload -U colors && colors
-# Vi
 bindkey -v
 export KEYTIMEOUT=1
 # Vi mode text-objects

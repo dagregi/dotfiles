@@ -1,8 +1,3 @@
-addToPath() {
-	if [ "$PATH" != "$1" ]; then
-		export PATH="$1:$PATH"
-	fi
-}
 lfcd() {
     tmp="$(mktemp -uq)"
     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT

@@ -3,3 +3,80 @@ configuration{
 	terminal: "st";
 	case-sensitive: true;
 }
+
+@import "colors.rasi"
+
+window {
+    enabled:                     true;
+    border-radius:               2px;
+	border:                      2px solid;
+    border-color:                @border-color;
+    cursor:                      "default";
+    background-color:            @background;
+}
+mainbox {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     20px;
+    background-color:            transparent;
+}
+listview {
+    enabled:                     true;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    spacing:                     10px;
+    background-color:            transparent;
+    cursor:                      "default";
+}inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    padding:                     10px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "prompt", "entry" ];
+}
+prompt {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    enabled:                     true;
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder-color:           @cmt;
+}
+element {
+    enabled:                     true;
+    padding:                     20px;
+    border-radius:               2px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+}
+element normal.normal,
+element alternate.normal {
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+element selected.urgent,
+element selected.active,
+element selected.normal {
+    background-color:            @selected-background;
+    text-color:                  @background;
+}
+element normal.urgent,
+element alternate.urgent {
+    background-color:            @urgent-background;
+    text-color:                  @foreground;
+}

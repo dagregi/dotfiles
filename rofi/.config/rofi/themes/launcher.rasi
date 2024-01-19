@@ -1,93 +1,34 @@
+@import "../config.rasi"
+
 configuration {
     show-icons:                 true;
     display-drun:               " ";
 }
-@import "colors.rasi"
 window {
     location:                    center;
     anchor:                      center;
-    width:                       400px;
     x-offset:                    0px;
     y-offset:                    0px;
-    enabled:                     true;
-    border:                      2px solid;
-    border-radius:               2px;
-    border-color:                @border-color;
-    cursor:                      "default";
-    background-color:            @background;
+    width:                       400px;
 }
 mainbox {
-    enabled:                     true;
-    spacing:                     10px;
-    padding:                     20px;
-    background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
 listview {
-    enabled:                     true;
     columns:                     1;
     lines:                       6;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
-    layout:                      vertical;
-    
     spacing:                     5px;
-    background-color:            transparent;
-    cursor:                      "default";
-}
-inputbar {
-    enabled:                     true;
-    spacing:                     10px;
-    padding:                     10px;
-    background-color:            transparent;
-    text-color:                  @foreground;
-    children:                    [ "prompt", "entry" ];
-}
-prompt {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
 }
 entry {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
-    cursor:                      text;
     placeholder:                 "Launch...";
-    placeholder-color:           @cmt;
 }
 element {
-    enabled:                     true;
     spacing:                     8px;
     padding:                     8px;
-    border-radius:               2px;
-    background-color:            transparent;
-    text-color:                  @foreground;
-    cursor:                      pointer;
-}
-element selected.normal {
-    background-color:            @selected-background;
-    text-color:                  @background;
-}
-element selected.urgent {
-    background-color:            @selected-urgent-background;
-    text-color:                  @background;
-}
-element selected.active {
-    background-color:            @selected-active-background;
-    text-color:                  @background;
 }
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
     size:                        24px;
     cursor:                      inherit;
-}
-element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    highlight:                   inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
 }

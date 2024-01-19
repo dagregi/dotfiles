@@ -1,8 +1,8 @@
+@import "colors.rasi"
+
 configuration {
-    show-icons:                 false;
     location:                    4;
 }
-@import "colors.rasi"
 window {
     transparency:                "real";
     fullscreen:                  false;
@@ -36,29 +36,12 @@ listview {
     text-color:                  @foreground;
     cursor:                      "default";
 }
-element {
-    enabled:                     true;
-    padding:                     20px;
-    border-radius:               2px;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
-    cursor:                      pointer;
-}
 element-text {
     font:                        "JetBrainsMono Nerd Font 20";
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
     horizontal-align:            0.5;
 }
-element selected.urgent,
-element selected.normal {
-    background-color:            @selected-background;
-    text-color:                  @background;
-}
-element normal.urgent,
-element alternate.urgent {
-    background-color:            @urgent-background;
+element normal.normal,
+element alternate.normal {
+    background-color:            @background-alt;
     text-color:                  @foreground;
 }

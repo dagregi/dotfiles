@@ -10,14 +10,14 @@
 	red: #eb6f92;
 	yel: #f6c177;
 	font: "Iosevka Nerd Font 14";
+	border-color: #26233a;
 	foreground: @fgd;
 	background: @bg;
     background-alt: @cur;
 	active-background: @cya;
 	urgent-background: @red;
+	separatorcolor: @active-background;
 	selected-background: @active-background;
 	selected-urgent-background: @urgent-background;
 	selected-active-background: @active-background;
-	separatorcolor: @active-background;
-	border-color: @ora;
 }

@@ -1,7 +1,5 @@
-configuration {
-    show-icons:                 false;
-}
-@import "colors.rasi"
+@import "../config.rasi"
+
 window {
     transparency:                "real";
     fullscreen:                  false;
@@ -40,23 +38,9 @@ textbox {
 }
 element {
     padding:                     10px;
-    border-radius:               2px;
-    text-color:                  @foreground;
-    cursor:                      pointer;
-}
-element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
 }
 element normal.normal,
 element alternate.normal {
-    background-color:            @background;
+    background-color:            @background-alt;
     text-color:                  @foreground;
-}
-element selected.normal {
-    background-color:            @selected-background;
-    text-color:                  @background;
 }

@@ -1,37 +1,18 @@
-configuration {
-    show-icons:                 false;
-}
-@import "colors.rasi"
+@import "../config.rasi"
+
 window {
     location:                    center;
     anchor:                      center;
     width:                       512px;
-    enabled:                     true;
-    border:                      2px;
-    border-radius:               2px;
-    border-color:                @border-color;
-    cursor:                      "default";
-    background-color:            @background;
 }
 mainbox {
-    enabled:                     true;
     spacing:                     10px;
-    padding:                     20px;
-    background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
 listview {
-    enabled:                     true;
     columns:                     1;
     lines:                       8;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   true;
-    layout:                      vertical;
-    
     spacing:                     5px;
-    background-color:            transparent;
-    cursor:                      "default";
 }
 scrollbar {
 	handle-width:				 4px;
@@ -62,34 +43,9 @@ prompt {
     text-color:                  inherit;
 }
 entry {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
-    cursor:                      text;
     placeholder:                 "Search bookmarks...";
-    placeholder-color:           @cmt;
 }
 element {
-    enabled:                     true;
     spacing:                     8px;
     padding:                     8px;
-    border-radius:               2px;
-    background-color:            transparent;
-    text-color:                  @foreground;
-    cursor:                      pointer;
-}
-element selected.normal {
-    background-color:            @selected-background;
-    text-color:                  @background;
-}
-element selected.active {
-    background-color:            @selected-active-background;
-    text-color:                  @background;
-}
-element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    highlight:                   inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
 }

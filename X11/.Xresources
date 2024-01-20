@@ -1,4 +1,6 @@
 ! special
+Xcursor.theme:	BreezeX-RosePine
+
 *.foreground:   #e0def4
 *.background:   #191724
 ! black

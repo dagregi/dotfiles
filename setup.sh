@@ -45,9 +45,9 @@ install_node() {
 	show_progress "Installing npm" 35 $! "\t"
 }
 install_postgresql() {
-	xbps-install -y postgresql15 postgresql15-client postgresql-libs >/dev/null 2>&1 &
+	xbps-install -y postgresql postgresql-client postgresql-libs >/dev/null 2>&1 &
 	show_progress "Installing PostgreSQL" 34 $!
-	sudo -u postgres initdb -D /var/lib/postgres/data >/dev/null 2>&1 &
+	sudo -u postgres initdb -D /var/lib/postgresql/data >/dev/null 2>&1 &
 	show_progress "Initializing PostgreSQL" 35 $! "\t"
 }
 

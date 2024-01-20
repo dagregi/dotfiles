@@ -7,7 +7,7 @@ while read -r file; do
 	"R") convert -rotate -90 "$file" "$file" ;;
 	"y") printf "%s" "$file" | tr -d '\n' | xclip -selection clipboard && notify-send -t 950 "$file copied to clipboard" & ;;
 	"Y") readlink -f "$file" | tr -d '\n' | xclip -selection clipboard && notify-send -t 950 "$(readlink -f "$file") copied to clipboard" & ;;
-	"d") [ "$(echo "Yes\nNo" | rofi-confirm)" = "Yes" ] && rm "$file" && notify-send -t 950 "$file deleted." ;;
+	"d") [ "$(echo "Yes\nNo" | rofi-confirm)" = "Yes" ] && rm "$file" && notify-send -i delete -t 950 "$file deleted." ;;
 	"g") setsid -f gimp "$file" ;;
 	"i") notify-send "File information" "$(mediainfo "$file" | sed "s/[ ]\+:/:/g;s/: /: <b>/;s/$/<\/b>/" | grep "<b>")" ;;
 	esac

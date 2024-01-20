@@ -1,14 +1,15 @@
 #!/usr/bin/env sh
 
+pr="$(awk "/\<color11\>/ {print \$2}" ~/.Xresources)"
 device=$(pactl list sinks | awk '/Name/ { print $2 }')
 is_muted=$(pactl get-sink-mute "$device" | awk '{ print $2 }')
 volume=$(pactl get-sink-volume "$device" | awk '{ print $5 }')
 if [ $(echo "$is_muted") = "yes" ]; then
 	echo "%{F#6e6a86}󰖁 muted%{F-}" 
 elif [ $(echo "$volume" | tr -d "%") -gt 75 ]; then
-	echo "%{F#ebbcba}%{F-} $volume"
+	echo "%{F$pr}%{F-} $volume"
 elif [ $(echo "$volume" | tr -d "%") -gt 35 ]; then
-	echo "%{F#ebbcba}%{F-} $volume"
+	echo "%{F$pr}%{F-} $volume"
 else
-	echo "%{F#ebbcba}%{F-} $volume"
+	echo "%{F$pr}%{F-} $volume"
 fi

@@ -57,7 +57,7 @@ install_st_terminal() {
 clear
 xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
-install_packages base-system xorg-minimal xprop xbacklight xclipboard xsetroot xf86-input-evdev xf86-video-amdgpu openssl-devel libX11-devel libXft libXft-devel pkg-config pkgconf-devel make fontconfig freetype fontconfig-devel freetype-devel
+install_packages base-system xorg-minimal xprop brightnessctl xclip xsetroot xf86-input-evdev xf86-video-amdgpu openssl-devel libX11-devel libXft libXft-devel pkg-config pkgconf-devel make fontconfig freetype fontconfig-devel freetype-devel
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions zsh-completions yt-dlp bat fd eza ripgrep fzf gnupg pass stow pulseaudio libsixel
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd mpc ncmpcpp mpv dunst newsboat htop nsxiv ffmpeg ffmpegthumbnailer zathura zathura-pdf-poppler zathura-djvu mediainfo-cli gnome-epub-thumbnailer atool odt2text
 

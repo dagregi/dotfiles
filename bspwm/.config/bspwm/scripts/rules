@@ -4,5 +4,5 @@ bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a firefox-default desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on
 bspc rule -a Ncmpcpp desktop='^3' state=pseudo_tiled follow=on focus=on
-bspc rule -a Cava desktop='^3' state=floating rectangle=500x290+1054+593
-bspc rule -a zathura desktop='^4' follow=on focus=on
+bspc rule -a Cava desktop='^3' state=floating rectangle=500x290+24+960
+bspc rule -a Zathura desktop='^4' follow=on focus=on

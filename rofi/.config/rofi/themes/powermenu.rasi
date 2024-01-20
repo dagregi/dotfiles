@@ -1,4 +1,4 @@
-@import "colors.rasi"
+@import "../config.rasi"
 
 configuration {
     location:                    4;

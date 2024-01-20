@@ -41,7 +41,7 @@ show_indicators = yes
 enable_recursive_icon_lookup = true
 icon_theme = "Papirus-Dark"
 icon_position = left
-min_icon_size = 32
+min_icon_size = 24
 max_icon_size = 128
 
 sticky_history = yes

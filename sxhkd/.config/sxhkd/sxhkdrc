@@ -1,4 +1,4 @@
-alt + t
+super + Return
 	$TERMINAL
 super + {d, r}
     {rofi-launcher, rofi-runner}
@@ -16,6 +16,13 @@ ctrl + shift + p
 	pkill picom
 ctrl + alt + {d, t, p}
     restart-proc {dunst, st, picom}
+# function keys
+XF86AudioMute
+	volumectrl toggle
+XF86Audio{Raise,Lower}Volume
+	volumectrl {up,down}
+XF86MonBrightness{Up,Down}
+	brightnessctl set {+10%,-10%}
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}

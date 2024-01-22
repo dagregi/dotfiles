@@ -1,25 +1,21 @@
-super + Return
-	$TERMINAL
-super + {d, r}
-    {rofi-launcher, rofi-runner}
-super + alt + b
-    $BROWSER
-super + alt + {e, f, p}
-    $TERMINAL -e {nvim, lf, htop}
-super + alt + {n, v}
-    openinterm {ncmpcpp, cava}
-super + alt + {m, shift + b, Delete}
-    {rofi-musicmenu, rofi-bookmarks, rofi-powermenu}
+super + t
+	openapp --terminal
+super + alt + {b, e, f, h, m, v}
+    openapp --{browser,editor,filemanager,htop,gimp,music,visualizer}
+# list of rofi programs
+ctrl + alt + {l, r, m, b, p}
+	openapp --{launcher,runner,playermenu,bookmarks,powermenu}
 # list of sxhkd keybinds
-super + slash
+alt + F1
 	rofi-sxhkd
+# reload sxhkd config
 super + Escape
 	pkill -USR1 -x sxhkd
 # kill picom
 alt + p
 	pkill picom
 # restart processes
-ctrl + alt + {d, t, p}
+alt + {d, t, p}
     restart-proc {dunst, st, picom}
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
@@ -65,10 +61,16 @@ super + {o,i}
 	bspc wm -h on
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d --follow} '^{1-9,10}'
+# rotate tree
+super + shift + {d,a}
+	bspc node @/ -C {forward,backward}
 # preselect the direction
 super + ctrl + {h,j,k,l}
 	bspc node -p {west,south,north,east}
+# move current window to a pre-selected space
+super + ctrl + Tab
+	bspc node -n last.!automatic
 # preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}

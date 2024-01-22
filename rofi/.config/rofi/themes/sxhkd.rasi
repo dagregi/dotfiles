@@ -1,0 +1,16 @@
+@import "../config.rasi"
+
+window {
+    width:                       850px;
+    height:						 720px;
+}
+mainbox {
+    enabled:                     true;
+    children:                    [ "inputbar", "listview" ];
+}
+listview {
+    lines:                       15;
+}
+entry {
+    placeholder:                 "Sxhkd keybinds...";
+}

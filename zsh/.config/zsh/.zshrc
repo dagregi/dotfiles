@@ -1,9 +1,4 @@
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' formats '%F{#908caa}* %b%f '
-precmd() { vcs_info }
-
-PROMPT='%B%F{11}%n%f%F{green}@%f%F{magenta}%M%f %F{14}%2~%f ${vcs_info_msg_0_}%b%(?:%F{11}❯%f:%F{red}❯%f) '
+PROMPT='%B%F{11}%n%f%F{2}@%f%F{5}%M%f %F{14}%2~%f ${vcs_info_msg_0_}%b%(?:%F{11}❯%f:%F{1}❯%f) '
 
 zmodload zsh/complist
 autoload -Uz compinit
@@ -30,6 +25,26 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey -s '^f' "^utmux-sessionizer\n"
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '%F{#908caa}* %b%f %m'
+zstyle ':vcs_info:git*+set-message:*' hooks git-st
++vi-git-st() {
+	local ahead behind
+	local -a gitstatus
+
+	git rev-parse ${hook_com[branch]}@{upstream} >/dev/null 2>&1 || return 0
+	local -a ahead_and_behind=($(git rev-list --left-right --count HEAD...${hook_com[branch]}@{upstream} 2>/dev/null))
+
+	ahead=${ahead_and_behind[1]}
+	behind=${ahead_and_behind[2]}
+	(( $ahead )) && gitstatus+=( "%F{1}${ahead}%f " )
+	(( $behind )) && gitstatus+=( "%F{1}${behind}%f " )
+
+	hook_com[misc]+=${(j:/:)gitstatus}
+}
+precmd() { vcs_info }
 
 export HISTSIZE=10000000
 export SAVEHIST=$HISTSIZE

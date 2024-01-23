@@ -1,6 +1,6 @@
 super + t
 	openapp --terminal
-super + alt + {b, e, f, h, m, v}
+super + alt + {b, e, f, h, g, m, v}
     openapp --{browser,editor,filemanager,htop,gimp,music,visualizer}
 # list of rofi programs
 ctrl + alt + {l, r, m, b, p}

@@ -2,11 +2,17 @@
 
 configuration {
     location:                    4;
-	kb-select-1:				"9";
-	kb-select-2:				"space,p";
-	kb-select-3:				"0";
+	/* prev */
+	kb-select-1:				"p";
+	/* play | pause */
+	kb-select-2:				"space";
+	/* next */
+	kb-select-3:				"n";
+	/* stop */
 	kb-select-4:				"s";
+	/* repeat */
 	kb-select-5:				"r";
+	/* shuffle */
 	kb-select-6:				"z";
 }
 window {

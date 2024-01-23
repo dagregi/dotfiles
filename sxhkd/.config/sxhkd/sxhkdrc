@@ -21,6 +21,18 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
 XF86MonBrightness{Up,Down}
 	brightnessctl set {+10%,-10%}
+# take screenshot now
+Print
+	screenshoter now
+# screenshot the active window
+alt + Print
+	screenshoter active
+# screenshot the selected area
+ctrl + alt + Print
+	screenshoter select
+# take screenshot in 10 seconds
+ctrl + shift + Print
+	screenshoter time 10
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}

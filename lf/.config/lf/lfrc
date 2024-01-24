@@ -18,35 +18,72 @@ map . set hidden!
 map x $$f
 map X !$f
 map o open "$f"
-map O push :mkdir<space>
-map R push :rename<enter>
+map a push :mkdir<space>
+
+map r
+map i rename
 map I :rename; cmd-home
+map A :rename; cmd-end
+map c :rename; cmd-delete-home
+map C :rename; cmd-end; cmd-delete-home
+map R bulk-rename
+
 map D delete
 map g top
 map E extract
 map <c-r> reload
 map <c-t> push :tar<space>
 map <c-x> push :zip<space>
+map J move-parent down
+map K move-parent up
+
+cmd mkdir $mkdir -p "$@"
+cmd move-parent &{{
+	dironly="setlocal '$(dirname "$PWD")' dironly"
+	lf -remote "send $id :updir; $dironly true; $1; $dironly false; open"
+}}
 cmd open ${{
     case $(file --mime-type "$(readlink -f $f)" -b) in
         text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
-	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
-	image/svg+xml) display -- $f ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
-		setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
-			[ -z "$file" ] && continue
-			lf -remote "send select \"$file\""
-			lf -remote "send toggle"
-		done &
-		;;
-	audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
-	video/*) setsid -f mpv --ao=pulse $f -quiet >/dev/null 2>&1 ;;
-	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-	application/pgp-encrypted) $EDITOR $fx ;;
+		image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+		image/svg+xml) display -- $f ;;
+		image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|avif\|tif\|ico\)\(_large\)*$" |
+			setsid -f nsxiv -aio 2>/dev/null | while read -r file; do
+				[ -z "$file" ] && continue
+				lf -remote "send select \"$file\""
+				lf -remote "send toggle"
+			done &
+			;;
+		audio/*|video/x-ms-asf) mpv --audio-display=no $f ;;
+		video/*) setsid -f mpv --ao=pulse $f -quiet >/dev/null 2>&1 ;;
+		application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+		application/pgp-encrypted) $EDITOR $fx ;;
         *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
     esac
 }}
-cmd mkdir $mkdir -p "$@"
+cmd bulk-rename ${{
+	old="$(mktemp)"
+	new="$(mktemp)"
+	if [ -n "$fs" ]; then
+		fs="$(basename -a $fs)"
+	else
+		fs="$(ls)"
+	fi
+	printf '%s\n' "$fs" >"$old"
+	printf '%s\n' "$fs" >"$new"
+	$EDITOR "$new"
+	[ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+	paste "$old" "$new" | while IFS= read -r names; do
+		src="$(printf '%s' "$names" | cut -f1)"
+		dst="$(printf '%s' "$names" | cut -f2)"
+		if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+			continue
+		fi
+		mv -- "$src" "$dst"
+	done
+	rm -- "$old" "$new"
+	lf -remote "send $id unselect"
+}}
 cmd delete ${{
 	clear; tput setaf 1; tput bold
     set -f

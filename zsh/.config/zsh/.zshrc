@@ -25,6 +25,7 @@ bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey -s '^f' "^utmux-sessionizer\n"
+bindkey -s '^o' "^ulfcd\n"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git

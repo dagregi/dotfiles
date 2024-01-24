@@ -1,10 +1,10 @@
 super + Return
 	openapp --terminal
-super + alt + {b, e, f, h, g, m, v}
+super + alt + {b,e,f,h,g,m,v}
     openapp --{browser,editor,filemanager,htop,gimp,music,visualizer}
 # list of rofi programs
-ctrl + alt + {l, r, m, b, p}
-	openapp --{launcher,runner,playermenu,bookmarks,powermenu}
+ctrl + alt + {l,r,m,b,s,p}
+	openapp --{launcher,runner,playermenu,bookmarks,shortcuts,powermenu}
 # list of sxhkd keybinds
 alt + F1
 	rofi-sxhkd
@@ -15,8 +15,8 @@ super + Escape
 alt + p
 	pkill picom
 # restart processes
-alt + {d, t, shift + p}
-    restart-proc {dunst, st, picom}
+alt + {d,t,shift + p}
+    restart-proc {dunst,st,picom}
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
 XF86MonBrightness{Up,Down}
@@ -64,7 +64,7 @@ super + {_,shift + }c
 super + bracket{left,right}
 	bspc desktop -f {prev,next}.local
 # focus the last node/desktop
-super + shift + {grave, Tab}
+super + shift + {grave,Tab}
 	bspc {node,desktop} -f last
 # focus the older or newer node in the focus history
 super + {o,i}

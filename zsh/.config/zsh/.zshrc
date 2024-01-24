@@ -1,4 +1,4 @@
-PROMPT='%B%F{11}%n%f%F{2}@%f%F{5}%M%f %F{14}%2~%f ${vcs_info_msg_0_}%b%(?:%F{11}❯%f:%F{1}❯%f) '
+PROMPT='%B%F{11}%n%f%F{10}@%f%F{13}%M%f %F{14}%2~%f ${vcs_info_msg_0_}%b%(?:%F{11}❯%f:%F{9}❯%f) '
 
 zmodload zsh/complist
 autoload -Uz compinit
@@ -39,8 +39,8 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st
 
 	ahead=${ahead_and_behind[1]}
 	behind=${ahead_and_behind[2]}
-	(( $ahead )) && gitstatus+=( "%F{1}${ahead}%f " )
-	(( $behind )) && gitstatus+=( "%F{1}${behind}%f " )
+	(( $ahead )) && gitstatus+=( "%F{9}${ahead}%f " )
+	(( $behind )) && gitstatus+=( "%F{9}${behind}%f " )
 
 	hook_com[misc]+=${(j:/:)gitstatus}
 }

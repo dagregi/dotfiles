@@ -1,4 +1,4 @@
-super + t
+super + Return
 	openapp --terminal
 super + alt + {b, e, f, h, g, m, v}
     openapp --{browser,editor,filemanager,htop,gimp,music,visualizer}
@@ -15,7 +15,7 @@ super + Escape
 alt + p
 	pkill picom
 # restart processes
-alt + {d, t, p}
+alt + {d, t, shift + p}
     restart-proc {dunst, st, picom}
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
@@ -73,7 +73,7 @@ super + {o,i}
 	bspc wm -h on
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d --follow} '^{1-9,10}'
+	bspc {desktop -f,node -d} '^{1-9,10}'
 # rotate tree
 super + shift + {d,a}
 	bspc node @/ -C {forward,backward}

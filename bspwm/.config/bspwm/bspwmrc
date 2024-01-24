@@ -4,9 +4,10 @@ bspc monitor -d 1 2 3 4 5
 
 bspc config border_width			2
 bspc config window_gap				10
-bspc config split_ratio				0.50
+bspc config split_ratio				0.51
 bspc config top_padding				0
 bspc config bottom_padding			0
+bspc config automatic_scheme		alternate
 bspc config borderless_monocle		true
 bspc config gapless_monocle			true
 bspc config presel_feedback_color	"#191724"
@@ -18,6 +19,6 @@ $XDG_CONFIG_HOME/bspwm/scripts/autostart
 bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a firefox-default desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on
-bspc rule -a Ncmpcpp desktop='^3' state=pseudo_tiled follow=on focus=on
-bspc rule -a Cava desktop='^3' state=floating rectangle=500x290+24+960
+bspc rule -a Ncmpcpp desktop='^3' state=floating follow=on focus=on rectangle=720x540+12+42
+bspc rule -a Cava desktop='^3' state=floating rectangle=620x290+960+42
 bspc rule -a Zathura desktop='^4' follow=on focus=on

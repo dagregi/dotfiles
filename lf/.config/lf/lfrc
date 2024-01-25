@@ -34,6 +34,7 @@ map E extract
 map <c-r> reload
 map <c-t> push :tar<space>
 map <c-x> push :zip<space>
+map <a-t> sessionizer
 map J move-parent down
 map K move-parent up
 
@@ -83,6 +84,9 @@ cmd bulk-rename ${{
 	done
 	rm -- "$old" "$new"
 	lf -remote "send $id unselect"
+}}
+cmd sessionizer ${{
+	tmux-sessionizer $fx
 }}
 cmd delete ${{
 	clear; tput setaf 1; tput bold

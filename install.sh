@@ -24,7 +24,7 @@ install_packages() {
 	local packages="$@"
 	echo -n "\033[1;34m[Installing packages] \033[0m"
 	for package in $packages; do
-		xbps-install -y $package >/dev/null 2>&1 &
+		sudo xbps-install -y $package >/dev/null 2>&1 &
 		show_progress "Installing $package" 35 $! "\t"
 	done
 }
@@ -63,8 +63,10 @@ install_fonts() {
 }
 
 clear
-xbps-install -Suy >/dev/null 2>&1 &
+sudo xbps-install -uy xbps >/dev/null 2>&1
+sudo xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
+
 install_packages base-system xorg-minimal xprop brightnessctl xclip xsetroot xf86-input-evdev xf86-video-amdgpu openssl-devel libX11-devel libXft-devel pkg-config make fontconfig-devel freetype-devel
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions yt-dlp bat fd eza ripgrep fzf gnupg pass stow pulseaudio libsixel
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd mpc ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer zathura zathura-pdf-mupdf zathura-djvu mediainfo-cli gnome-epub-thumbnailer atool odt2text

@@ -21,4 +21,3 @@ bspc rule -a firefox-default desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on
 bspc rule -a Ncmpcpp desktop='^3' state=floating follow=on focus=on rectangle=720x540+12+42
 bspc rule -a Cava desktop='^3' state=floating rectangle=620x290+960+42
-bspc rule -a Zathura desktop='^4' follow=on focus=on

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-pr="$(awk "/\<color11\>/ {print \$2}" ~/.Xresources)"
+pr="$(awk "/\<color11\>/ {print \$2}" ~/.config/X11/xresources)"
 device=$(pactl list sinks | awk '/Name/ { print $2 }')
 is_muted=$(pactl get-sink-mute "$device" | awk '{ print $2 }')
 volume=$(pactl get-sink-volume "$device" | awk '{ print $5 }')

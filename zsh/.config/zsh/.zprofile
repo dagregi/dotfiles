@@ -33,3 +33,7 @@ export LESS_TERMCAP_so="$(printf '%b' '[46;30m')"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;35m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+
+if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+	exec startx ~/.config/X11/.xinitrc
+fi

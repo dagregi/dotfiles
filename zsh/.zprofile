@@ -1,8 +1,22 @@
-addToPath() {
-	if [ "$PATH" != "$1" ]; then
-		export PATH="$1:$PATH"
-	fi
-}
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CACHE_HOME=$HOME/.cache
+
+export LANG=en_US.UTF8
+export LC_ALL=en_US.UTF-8
+export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
+export ZDOTDIR=$HOME/.config/zsh
+export GOPATH=$HOME/go
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL="st"
+export BROWSER="firefox"
+export VIDEO="mpv"
+export PAGER="less"
+export WM="bspwm"
 
 export RUSTC_WRAPPER=sccache
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
@@ -17,15 +31,6 @@ export FZF_DEFAULT_OPTS="
 "
 export GIT_EDITOR=$EDITOR
 
-addToPath "$HOME/.local/bin"
-for dir in $HOME/.local/bin/*/; do
-	addToPath $dir
-done
-addToPath $HOME/.cargo/bin
-addToPath $GOPATH/bin
-
-test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_me="$(printf '%b' '[0m')"
@@ -34,6 +39,19 @@ export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;35m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+addToPath() {
+	if [ "$PATH" != "$1" ]; then
+		export PATH="$1:$PATH"
+	fi
+}
+
+addToPath "$HOME/.local/bin"
+for dir in $HOME/.local/bin/*/; do
+	addToPath $dir
+done
+addToPath $HOME/.cargo/bin
+addToPath $GOPATH/bin
+
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 	exec startx ~/.config/X11/xinitrc
 fi

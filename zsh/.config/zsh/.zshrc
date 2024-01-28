@@ -64,6 +64,8 @@ mkcd() {
 	dir="$*" && mkdir -p "$dir" && cd "$dir"
 }
 
+test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
 source $ZDOTDIR/include/aliases.zsh
 source $ZDOTDIR/include/builtins.zsh
 

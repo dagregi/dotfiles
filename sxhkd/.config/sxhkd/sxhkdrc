@@ -3,8 +3,8 @@ super + Return
 super + alt + {b,e,f,h,g,m,v}
     openapp --{browser,editor,filemanager,htop,gimp,music,visualizer}
 # list of rofi programs
-ctrl + alt + {l,r,m,b,s,p}
-	openapp --{launcher,runner,playermenu,bookmarks,shortcuts,powermenu}
+ctrl + alt + {l,r,m,b,s,Delete,p}
+	openapp --{launcher,runner,playermenu,bookmarks,shortcuts,powermenu,passwords}
 # list of sxhkd keybinds
 alt + F1
 	rofi-sxhkd

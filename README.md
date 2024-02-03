@@ -19,8 +19,6 @@ cd dotfiles
 stow */
 # and if you don't like symlinking your configs
 cp -vir */.config ~/
-cp -vir X11/.* zsh/.zshenv ~/
 cp -vir local/.local/bin/* ~/.local/bin
 cp -vir local/.local/share/* ~/.local/share
 ```
-don't forget to backup your .xinitrc, .Xresources and .zshenv if you have them in your home directory

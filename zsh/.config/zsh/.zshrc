@@ -47,10 +47,6 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-st
 }
 precmd() { vcs_info }
 
-export HISTSIZE=10000000
-export SAVEHIST=$HISTSIZE
-export HISTFILE=$XDG_DATA_HOME/zsh_history
-
 lfcd() {
     tmp="$(mktemp -uq)"
     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT

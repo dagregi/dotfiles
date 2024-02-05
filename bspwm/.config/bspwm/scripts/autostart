@@ -1,11 +1,9 @@
 #!/usr/bin/env sh
 
 $XDG_CONFIG_HOME/polybar/scripts/launch.sh
-autostart="mpd dunst sxhkd picom"
+autostart="mpd dunst sxhkd picom bspwm-fullscreen bspwm-swallow"
 for program in $autostart; do
-	pgrep -x $program >/dev/null || $program &
+	pgrep -fx $program >/dev/null || $program &
 done &
-bspwm-fullscreen &
-bspwm-swallow &
 feh -z --no-fehbg --bg-fill ~/Pictures/Walls &
 betterlockscreen -u ~/Pictures/Walls &

@@ -1,4 +1,5 @@
 ! special
+st.font: JetBrainsMono Nerd Font:size=10
 Xcursor.theme:	BreezeX-RosePine
 
 *.foreground:   #e0def4

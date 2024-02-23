@@ -1,7 +1,3 @@
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_CACHE_HOME="$HOME/.cache"
-
 export LANG=en_US.UTF8
 export LC_ALL=en_US.UTF-8
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
@@ -44,20 +40,3 @@ export LESS_TERMCAP_so="$(printf '%b' '[46;30m')"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;35m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
-
-addToPath() {
-	if [ "$PATH" != "$1" ]; then
-		export PATH="$1:$PATH"
-	fi
-}
-
-addToPath "$HOME/.local/bin"
-for dir in $HOME/.local/bin/*/; do
-	addToPath $dir
-done
-addToPath $CARGO_HOME/bin
-addToPath $GOPATH/bin
-
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-	exec startx ~/.config/X11/xinitrc
-fi

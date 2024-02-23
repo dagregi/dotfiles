@@ -22,7 +22,7 @@ show_progress() {
 
 install_packages() {
 	local packages="$@"
-	echo -n "\033[1;34m[Installing packages] \033[0m"
+	echo -n "\033[1;34m[Installing packages]\n\033[0m"
 	for package in $packages; do
 		sudo xbps-install -y $package >/dev/null 2>&1 &
 		show_progress "Installing $package" 35 $! "\t"
@@ -63,19 +63,23 @@ install_fonts() {
 }
 
 clear
-sudo xbps-install -Suy xbps >/dev/null 2>&1
+sudo xbps-install -Suy xbps
+clear
 sudo xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
 
 install_packages base-system xorg-minimal xprop brightnessctl xclip xsetroot \
-	xf86-input-evdev mesa-dri mesa-vaapi mesa-vdpau xf86-video-amdgpu openssl-devel libX11-devel libXft-devel \
-	pkg-config make fontconfig-devel freetype-devel
+	xf86-input-evdev mesa-dri mesa-vaapi mesa-vdpau openssl-devel libX11-devel libXft-devel \
+	pkg-config make gcc fontconfig-devel freetype-devel
+clear
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions yt-dlp bat fd eza ripgrep fzf gnupg pass stow pulseaudio libsixel
+clear
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd \
 	mpc ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer \
 	zathura zathura-pdf-mupdf zathura-djvu mediainfo-cli gnome-epub-thumbnailer atool odt2text
 
-clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"
+clear
+clone_repositories "https://github.com/dagregi/dotfiles.git" "https://github.com/dagregi/st.git"
 symlink_configurations
 install_fonts
 install_st_terminal

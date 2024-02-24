@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+xsetroot -cursor_name left_ptr
+xrdb -merge $XDG_CONFIG_HOME/X11/xresources
+
 $XDG_CONFIG_HOME/polybar/scripts/launch.sh
 autostart="mpd dunst sxhkd picom bspwm-swallow"
 for program in $autostart; do

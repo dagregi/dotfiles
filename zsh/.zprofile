@@ -12,6 +12,7 @@ export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export SUDO_ASKPASS="$HOME/.local/bin/rofi/rofi-pinentry"
 
 export EDITOR="nvim"
 export VISUAL="nvim"

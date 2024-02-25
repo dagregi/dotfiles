@@ -1,6 +1,5 @@
 #!/bin/bash
 
-xsetroot -cursor_name left_ptr &
-xrdb -merge $XDG_CONFIG_HOME/X11/xresources &
+betterlockscreen -l dimblur &
 
 exec bspwm

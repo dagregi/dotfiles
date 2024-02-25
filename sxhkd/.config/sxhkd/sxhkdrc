@@ -20,7 +20,7 @@ alt + {d,t,shift + p}
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
 XF86MonBrightness{Up,Down}
-	brightnessctl set {+10%,-10%}
+	lightctrl {up,down}
 # take screenshot now
 Print
 	screenshoter now

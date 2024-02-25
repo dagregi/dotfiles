@@ -21,7 +21,7 @@ show_progress() {
 }
 
 install_dependencies() {
-	xbps-install -y base-devel bubblewrap rust-sccache >/dev/null 2>&1 &
+	sudo xbps-install -y gcc make base-devel bubblewrap rust-sccache >/dev/null 2>&1 &
 	show_progress "Installing dependencies" 34 $!
 }
 install_rust() {
@@ -31,21 +31,21 @@ install_rust() {
 	show_progress "Adding Rust tools" 35 $! "\t"
 	rustup target add wasm32-unknown-unknown >/dev/null 2>&1 &
 	show_progress "Adding Rust targets" 35 $! "\t"
-	rustup completions zsh >/usr/share/zsh/functions/Completion/Linux/_rustup && rustup completions zsh cargo >/usr/share/zsh/functions/Completion/Linux/_cargo >/dev/null 2>&1 &
+	sudo rustup completions zsh >/usr/share/zsh/functions/Completion/Linux/_rustup && sudo rustup completions zsh cargo >/usr/share/zsh/functions/Completion/Linux/_cargo >/dev/null 2>&1 &
 	show_progress "Setting up Rust completions" 35 $! "\t"
 }
 install_go() {
-	xbps-install -y go >/dev/null 2>&1 &
+	sudo xbps-install -y go >/dev/null 2>&1 &
 	show_progress "Installing Go" 34 $!
 }
 install_node() {
-	xbps-install -y nodejs nodejs-devel >/dev/null 2>&1 &
+	sudo xbps-install -y nodejs nodejs-devel >/dev/null 2>&1 &
 	show_progress "Installing NodeJs" 34 $!
 	npm install -g npm >/dev/null 2>&1 &
 	show_progress "Installing npm" 35 $! "\t"
 }
 install_postgresql() {
-	xbps-install -y postgresql postgresql-client postgresql-libs >/dev/null 2>&1 &
+	sudo xbps-install -y postgresql postgresql-client postgresql-libs >/dev/null 2>&1 &
 	show_progress "Installing PostgreSQL" 34 $!
 	sudo -u postgres initdb -D /var/lib/postgresql/data >/dev/null 2>&1 &
 	show_progress "Initializing PostgreSQL" 35 $! "\t"
@@ -54,7 +54,7 @@ install_postgresql() {
 read -p "Do you want to setup developmental environment? [y/N] " choice
 case "$choice" in
 y | Y) {
-	mkdir -p projects/{rust,go,ocaml,haskell,web}
+	mkdir -p projects/rust projects/go projects/ocaml projects/haskell projects/web
 	install_dependencies
 	install_node
 	install_go

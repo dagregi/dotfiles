@@ -1,9 +1,9 @@
 # Aliases
 alias vim=$EDITOR
 alias mc='mold -run cargo'
-alias pg_start='pg_ctl -D /var/lib/postgresql/data -l /tmp/postgres_logfile start'
-alias pg_stop='pg_ctl -D /var/lib/postgresql/data stop'
-alias pg_status='pg_ctl -D /var/lib/postgresql/data status'
+alias pg_start='sudo -u postgres pg_ctl -D /var/lib/postgresql/data -l /tmp/postgres_logfile start'
+alias pg_stop='sudo -u postgres pg_ctl -D /var/lib/postgresql/data stop'
+alias pg_status='sudo -u postgres pg_ctl -D /var/lib/postgresql/data status'
 # DIRS
 alias -g ...='../..' \
 	....='../../..'

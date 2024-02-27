@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+bspc rule -r *
 bspc monitor -d 1 2 3 4 5
 
 bspc config border_width			2
@@ -21,4 +22,6 @@ bspc rule -a Firefox desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on
 bspc rule -a Ncmpcpp desktop='^3' state=floating follow=on focus=on rectangle=720x540+12+42
 bspc rule -a Zathura desktop='^4' follow=on focus=on
+bspc rule -a transmission desktop='^5' state=floating follow=on focus=on rectangle=472x427+10+40
+bspc rule -a Lutris desktop='^5' follow=on focus=on
 bspc rule -a CustomFloat focus=on state=floating rectangle=620x290+960+42

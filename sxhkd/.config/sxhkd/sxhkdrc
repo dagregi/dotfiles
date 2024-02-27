@@ -1,7 +1,7 @@
-super + Return
-	openapp --terminal
-super + alt + {b,e,f,h,g,m,v}
-    openapp --{browser,editor,filemanager,htop,gimp,music,visualizer}
+super + {Return, alt + Return}
+	openapp --{terminal,floatterm}
+super + alt + {b,e,f,p,g,m}
+    openapp --{browser,editor,filemanager,htop,gimp,music}
 # list of rofi programs
 ctrl + alt + {l,r,m,b,s,Delete,p}
 	openapp --{launcher,runner,playermenu,bookmarks,shortcuts,powermenu,passwords}
@@ -21,6 +21,12 @@ XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
 XF86MonBrightness{Up,Down}
 	lightctrl {up,down}
+XF86AudioMicMute
+	mpc -q toggle
+XF86Display
+	mpc -q prev && songchanged
+XF86WLAN
+	mpc -q next && songchanged
 # take screenshot now
 Print
 	screenshoter now

@@ -9,7 +9,9 @@ if [ $(echo "$is_muted") = "yes" ]; then
 elif [ $(echo "$volume" | tr -d "%") -gt 75 ]; then
 	echo "%{F$pr}%{F-} $volume"
 elif [ $(echo "$volume" | tr -d "%") -gt 35 ]; then
-	echo "%{F$pr}%{F-} $volume"
-else
+	echo "%{F$pr}󰕾%{F-} $volume"
+elif [ $(echo "$volume" | tr -d "%") -eq 0 ]; then
 	echo "%{F$pr}%{F-} $volume"
+else
+	echo "%{F$pr}%{F-} $volume"
 fi

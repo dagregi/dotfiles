@@ -11,12 +11,6 @@ alt + F1
 # reload sxhkd config
 super + Escape
 	pkill -USR1 -x sxhkd
-# kill picom
-alt + p
-	pkill picom
-# restart processes
-alt + {d,t,shift + p}
-    restart-proc {dunst,st,picom}
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
 XF86MonBrightness{Up,Down}

@@ -59,5 +59,5 @@ addToPath $CARGO_HOME/bin
 addToPath $GOPATH/bin
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-	exec startx ~/.config/X11/xinitrc
+	exec startx ~/.config/X11/xinitrc -- -keeptty >/tmp/xorg.log 2>&1
 fi

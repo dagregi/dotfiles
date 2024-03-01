@@ -20,7 +20,7 @@ $XDG_CONFIG_HOME/bspwm/scripts/autostart
 bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a Firefox desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on
-bspc rule -a Ncmpcpp desktop='^3' state=floating follow=on focus=on rectangle=720x540+12+42
+bspc rule -a Ncmpcpp desktop='^3' state=floating follow=on focus=on rectangle=860x610+12+42
 bspc rule -a Zathura desktop='^4' follow=on focus=on
 bspc rule -a transmission desktop='^5' state=floating follow=on focus=on rectangle=620x374+1286+51
 bspc rule -a CustomFloat focus=on state=floating rectangle=620x390+960+42

@@ -11,8 +11,8 @@ visualizer_in_stereo = yes
 visualizer_type = spectrum
 visualizer_fps = 60
 visualizer_look = ▋▋
-visualizer_color = magenta
-visualizer_spectrum_smooth_look = no
+visualizer_color = cyan,blue,green,yellow,red,magenta
+visualizer_spectrum_smooth_look = yes
 
 song_list_format = {$7%a - {$8%t$9}|{$8%f$9}}$R{$5%l$9}
 alternative_header_first_line_format = $b$5$aqqu$/a$9 {$8%t$9}|{%f} $5$atqq$/a$9$/b

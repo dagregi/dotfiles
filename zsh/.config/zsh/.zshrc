@@ -26,8 +26,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 
 bindkey -s '^t' "^utmux-sessionizer\n"
 bindkey -s '^f' "^ulfcd\n"
-bindkey -s '^o' "^usudo brightnessctl --device='tpacpi::kbd_backlight' set 0\n"
-bindkey -s '^p' "^usudo brightnessctl --device='tpacpi::kbd_backlight' set 1\n"
+bindkey -s '^o' "^uecho 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness\n"
+bindkey -s '^p' "^uecho 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness\n"
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git

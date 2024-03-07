@@ -72,7 +72,8 @@ install_packages base-system xorg-minimal xprop brightnessctl xclip xsetroot xmo
 	xf86-input-evdev mesa-dri mesa-vaapi mesa-vdpau openssl-devel libX11-devel libXft-devel \
 	pkg-config make gcc fontconfig-devel freetype-devel
 clear
-install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions yt-dlp bat fd eza ripgrep fzf gnupg pass stow pulseaudio libsixel chafa
+install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions \
+	yt-dlp bat fd eza ripgrep fzf gnupg pass stow alsa-utils apulse libsixel chafa
 clear
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd \
 	mpc ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer \

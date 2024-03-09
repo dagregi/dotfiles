@@ -22,5 +22,6 @@ bspc rule -a Firefox desktop='^2' state=fullscreen follow=on focus=on
 bspc rule -a mpv desktop='^3' state=fullscreen follow=on focus=on
 bspc rule -a Ncmpcpp desktop='^3' state=floating follow=on focus=on rectangle=860x610+12+42
 bspc rule -a Zathura desktop='^4' follow=on focus=on
+bspc rule -a Virt-viewer desktop='^5' state=floating follow=on focus=on
 bspc rule -a transmission desktop='^5' state=floating follow=on focus=on rectangle=620x374+1286+51
 bspc rule -a CustomFloat focus=on sticky=on state=floating rectangle=620x390+960+42

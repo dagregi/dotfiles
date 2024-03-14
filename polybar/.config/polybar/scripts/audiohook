@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
 pr="$(awk "/\<color11\>/ {print \$2}" ~/.config/X11/xresources)"
-is_muted=$(amixer -c 0 get Speaker | awk '/Left:/ {print $7}' | tr -d "\n\[\]")
-volume=$(amixer -c 0 get Speaker | awk '/Left:/ {print $5}' | tr -d "\n\[\]%")
+is_muted=$(amixer -c 0 get Master | awk '/Mono/ {print $6}' | tr -d "\n\[\]")
+volume=$(amixer -c 0 get Master | awk '/Mono/ {print $4}' | tr -d "\n\[\]%")
 if [ $(echo "$is_muted") = "off" ]; then
 	echo "%{F#6e6a86}󰖁 muted%{F-}"
 elif [ $(echo "$volume") -gt 75 ]; then

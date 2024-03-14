@@ -2,7 +2,7 @@
 
 xrdb -merge $XDG_CONFIG_HOME/X11/xresources
 xsetroot -cursor_name left_ptr
-setxkbmap -option ctrl:nocaps
+setxkbmap us dvorak -option ctrl:nocaps
 brillo -I &
 
 $XDG_CONFIG_HOME/polybar/scripts/launch.sh

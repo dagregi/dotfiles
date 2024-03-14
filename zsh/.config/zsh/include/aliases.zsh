@@ -60,5 +60,5 @@ alias reloadst='xrdb merge $XDG_CONFIG_HOME/X11/xresources && kill -USR1 $(pidof
 # XBPS
 alias xin='sudo xbps-install -S $(xbps-query -Rs "" | sed "/^.\*./d" | awk "{print \$2}" | fzf -m -e)' \
 	xrm='sudo xbps-remove -R $(xbps-query -s "" | awk "{print \$2}" | fzf -m -e)' \
-	xq='sudo xbps-query $(xbps-query -l | sed "s/-[0-9].*//; s/^ii\s//" | fzf -e)' \
+	xq='xbps-query $(xbps-query -l | sed "s/-[0-9].*//; s/^ii\s//" | fzf -e)' \
 	xup='sudo xbps-install -Su'

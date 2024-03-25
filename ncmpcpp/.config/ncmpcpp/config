@@ -12,7 +12,7 @@ visualizer_type = spectrum
 visualizer_fps = 60
 visualizer_look = ▋▋
 visualizer_color = cyan,blue,green,yellow,red,magenta
-visualizer_spectrum_smooth_look = yes
+visualizer_spectrum_smooth_look = no
 
 song_list_format = {$7%a - {$8%t$9}|{$8%f$9}}$R{$5%l$9}
 alternative_header_first_line_format = $b$5$aqqu$/a$9 {$8%t$9}|{%f} $5$atqq$/a$9$/b
@@ -21,7 +21,7 @@ now_playing_prefix = "$b$7 "
 now_playing_suffix = "  $/b$8"
 selected_item_prefix = "$b$1* "
 selected_item_suffix = $/b$9
-lyrics_fetchers = musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics
+lyrics_fetchers = azlyrics, musixmatch, sing365, metrolyrics, justsomelyrics, jahlyrics, plyrics, tekstowo, zeneszoveg, internet
 
 song_columns_list_format = (40)[white]{t|f:Title} (20)[yellow]{b} (20)[cyan]{a} (7f)[blue]{l}
 browser_display_mode = columns

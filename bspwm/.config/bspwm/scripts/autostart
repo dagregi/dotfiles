@@ -3,6 +3,7 @@
 xrdb -merge $XDG_CONFIG_HOME/X11/xresources
 xsetroot -cursor_name left_ptr
 setxkbmap us dvorak -option ctrl:nocaps
+xcape -e '#66=Escape'
 brillo -I &
 
 $XDG_CONFIG_HOME/polybar/scripts/launch.sh

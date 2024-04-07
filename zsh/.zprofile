@@ -13,6 +13,7 @@ export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible/ansible.cfg"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export SUDO_ASKPASS="$HOME/.local/bin/rofi/rofi-pinentry"
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 export EDITOR="nvim"
 export VISUAL="nvim"

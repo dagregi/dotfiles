@@ -1,7 +1,7 @@
 configuration{
 	show-icons: false;
-	terminal: "st";
-	case-sensitive: true;
+	terminal: "/usr/local/bin/st";
+	case-sensitive: false;
 }
 
 @import "colors.rasi"

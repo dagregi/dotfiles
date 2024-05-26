@@ -1,5 +1,10 @@
 #!/bin/bash
 
+xrdb -load $XDG_CONFIG_HOME/X11/xresources
+xsetroot -cursor_name left_ptr
+setxkbmap us dvorak -option ctrl:nocaps
+xcape -e '#66=Escape'
+
 betterlockscreen -l dimblur &
 
 exec bspwm

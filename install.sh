@@ -68,16 +68,16 @@ clear
 sudo xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
 
-install_packages base-system xorg-minimal xprop brightnessctl xclip xsetroot xmodmap setxkbmap \
-	xf86-input-evdev mesa-dri mesa-vaapi mesa-vdpau openssl-devel libX11-devel libXft-devel \
-	pkg-config make gcc fontconfig-devel freetype-devel
+install_packages xorg-minimal xprop xclip xsetroot setxkbmap xf86-input-evdev \
+	mesa-dri mesa-vaapi mesa-vdpau openssl-devel libX11-devel libXft-devel \
+	pkg-config make gcc rust-sccache fontconfig-devel freetype-devel
 clear
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions \
-	yt-dlp bat fd eza ripgrep fzf gnupg pass stow alsa-utils apulse libsixel chafa
+	yt-dlp bat fd eza ripgrep fzf brillo gnupg pass stow alsa-utils apulse libsixel chafa
 clear
-install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf cava mpd \
-	mpc ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer \
-	zathura zathura-pdf-mupdf zathura-djvu mediainfo-cli gnome-epub-thumbnailer atool odt2text
+install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf mpd mpc \
+	ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer \
+	zathura zathura-pdf-mupdf zathura-djvu mediainfo-cli atool
 
 clear
 clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"

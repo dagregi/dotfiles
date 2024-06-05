@@ -61,6 +61,11 @@ lfcd() {
 mkcd() {
 	dir="$*" && mkdir -p "$dir" && cd "$dir"
 }
+mkproj() {
+	[ ! -d "$HOME/projects" ] && mkdir -p "$HOME/projects"
+	[ ! -e "$BM_PROJECT" ] && touch "$BM_PROJECT"
+	dir="$HOME/projects/$*" && mkdir -p "$dir" && echo "$dir" >> $BM_PROJECT
+}
 
 test -r $HOME/.opam/opam-init/init.sh && . $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 

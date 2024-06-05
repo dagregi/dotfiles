@@ -39,6 +39,7 @@ export FZF_DEFAULT_OPTS="
     --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa""
 "
 export GIT_EDITOR=$EDITOR
+export BM_PROJECT=$XDG_DATA_HOME/bm-projects
 
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;32m')"

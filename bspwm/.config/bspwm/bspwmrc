@@ -20,11 +20,12 @@ bspc config normal_border_color "#6e6a86"
 
 brillo -I &
 
-autostart="polybar mpd dunst sxhkd picom bspwm-swallow bspwm-fullscreen"
+autostart="mpd dunst sxhkd picom bspwm-swallow bspwm-fullscreen"
 for program in $autostart; do
-	pkill $program
+	pkill -f $program
 	$program &
 done &
+sh $XDG_CONFIG_HOME/polybar/scripts/launch.sh &
 
 feh -z --no-fehbg --bg-fill ~/Pictures/Walls &
 

@@ -32,17 +32,17 @@ install_packages() {
 clone_repositories() {
 	local repos="$@"
 	for repo in $repos; do
-		git clone --depth 1 --recursive "$repo" >/dev/null 2>&1 &
+		git clone --recursive "$repo" >/dev/null 2>&1 &
 		show_progress "Cloning $(basename "$repo")" 35 $!
 	done
 }
 symlink_configurations() {
 	[ ! -d "$HOME/.config" ] && mkdir -p "$HOME/.config"
-	[ ! -d "$HOME/.local" ] && mkdir -p "$HOME/.local"
+	mkdir -p "$HOME/.local/share" "$HOME/.local/bin"
 	cd dotfiles
 	for dir in */; do
 		trdir=$(echo "$dir" | tr -d '/')
-		stow -R $trdir >/dev/null 2>&1 &
+		stow -S $trdir -t ~/ >/dev/null 2>&1 &
 		show_progress "Symlinking $trdir" 35 $! "\t"
 	done
 	cd ~
@@ -62,6 +62,8 @@ install_fonts() {
 	cd ~
 }
 
+mkdir -p "$HOME/projects" && cd "$HOME/projects"
+
 clear
 sudo xbps-install -Suy xbps
 clear
@@ -73,7 +75,7 @@ install_packages xorg-minimal xprop xclip xsetroot setxkbmap xf86-input-evdev \
 	pkg-config make gcc rust-sccache fontconfig-devel freetype-devel
 clear
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions \
-	yt-dlp bat fd eza ripgrep fzf brillo gnupg pass stow alsa-utils apulse libsixel chafa
+	yt-dlp bat eza ripgrep fzf brillo gnupg pass stow alsa-utils apulse libsixel chafa
 clear
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf mpd mpc \
 	ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer \

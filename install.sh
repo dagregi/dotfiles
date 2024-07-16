@@ -45,46 +45,44 @@ symlink_configurations() {
 		stow -S $trdir -t ~/ >/dev/null 2>&1 &
 		show_progress "Symlinking $trdir" 35 $! "\t"
 	done
-	cd ~
+	cd -
 }
 install_st_terminal() {
 	cd st
 	sudo make install >/dev/null 2>&1 &
 	show_progress "Installing st terminal" 34 $!
-	cd ~
+	cd -
 }
 install_fonts() {
 	[ ! -d "$HOME/.local/fonts" ] && mkdir -p "$HOME/.local/fonts/TTF"
 	cd "$HOME/.local/fonts/TTF"
-	curl -sSf -LO https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/JetBrainsMono/Ligatures/Medium/JetBrainsMonoNerdFont-Medium.ttf &
-	curl -sSf -LO https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Iosevka/Semi-Bold/IosevkaNerdFont-SemiBold.ttf &
+	curl -sSf -LO https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Medium/JetBrainsMonoNerdFont-Medium.ttf &
+	curl -sSf -LO https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Iosevka/IosevkaNerdFont-SemiBold.ttf
+	sudo ln -s $HOME/.local/fonts/TTF/* /usr/share/fonts/TTF/
 	show_progress "Installing fonts" 36 $!
 	cd ~
 }
 
-mkdir -p "$HOME/projects" && cd "$HOME/projects"
-
-clear
 sudo xbps-install -Suy xbps
 clear
 sudo xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
 
-install_packages xorg-minimal xprop xclip xsetroot setxkbmap xf86-input-evdev \
-	mesa-dri mesa-vaapi mesa-vdpau openssl-devel libX11-devel libXft-devel \
+install_packages xorg-minimal xprop xclip xsetroot setxkbmap xcape xf86-input-evdev \
+	mesa-dri mesa-vaapi openssl-devel libX11-devel libXft-devel \
 	pkg-config make gcc rust-sccache fontconfig-devel freetype-devel
 clear
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions \
-	yt-dlp bat eza ripgrep fzf brillo gnupg pass stow alsa-utils apulse libsixel chafa
-clear
+	yt-dlp bat eza ripgrep fzf brillo gnupg pass stow dbus sndiod alsa-utils apulse libsixel chafa
 install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf mpd mpc \
 	ncmpcpp mpv dunst newsboat htop nsxiv shotgun slop ffmpeg ffmpegthumbnailer \
 	zathura zathura-pdf-mupdf zathura-djvu mediainfo-cli atool
 
-clear
+mkdir -p "$HOME/projects" && cd "$HOME/projects"
+
 clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"
 symlink_configurations
-install_fonts
 install_st_terminal
+install_fonts
 
 echo "\n\033[1;32mCustom install script completed!\033[0m"

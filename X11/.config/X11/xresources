@@ -7,7 +7,6 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcdfilter
 
 st.font: JetBrainsMono Nerd Font:size=12
-Xcursor.theme:	BreezeX-RosePine
 
 *.foreground:   #e0def4
 *.background:   #191724

@@ -6,7 +6,7 @@ volume=$(amixer -c 0 get Master | awk '/Mono/ {print $4}' | tr -d "\n\[\]%")
 if [ $(echo "$is_muted") = "off" ]; then
 	echo "%{F#6e6a86}󰖁 muted%{F-}"
 elif [ $(echo "$volume") -gt 75 ]; then
-	echo "%{F$pr} %{F-}$volume%"
+	echo "%{F$pr}  %{F-}$volume%"
 elif [ $(echo "$volume") -gt 35 ]; then
 	echo "%{F$pr}󰕾 %{F-}$volume%"
 elif [ $(echo "$volume") -eq 0 ]; then

@@ -2,10 +2,6 @@ $HOME/Pictures
 $HOME/Entertainment
 $HOME/Documents
 $HOME/Documents/Books
-$HOME/projects
-$HOME/projects/rust
-$HOME/projects/ocaml
-$HOME/projects/go
-$HOME/dotfiles/
-$HOME/dotfiles/local/.local/bin
-$HOME/dotfiles/nvim/.config/nvim
+$HOME/projects/dotfiles/
+$HOME/projects/dotfiles/local/.local/bin
+$HOME/projects/dotfiles/nvim/.config/nvim

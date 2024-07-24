@@ -1,0 +1,8 @@
+clear Control
+clear Lock
+
+keycode 66 = Control_L
+keycode 8 = Caps_Lock
+
+add Lock = Caps_Lock
+add Control = Control_L Control_L Control_R

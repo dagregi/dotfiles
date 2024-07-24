@@ -6,7 +6,7 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcdfilter
 
-st.font: JetBrainsMono Nerd Font:size=12
+st.font: JetBrainsMono Nerd Font:size=13
 
 *.foreground:   #e0def4
 *.background:   #191724

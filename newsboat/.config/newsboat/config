@@ -44,7 +44,7 @@ max-browser-tabs 5
 max-items 120
 
 notify-format "%d new articles (%n unread articles, %f unread feeds)"
-notify-program "/bin/dunstify"
+notify-program "/bin/notify-send"
 
 scrolloff 8
 search-highlight-colors default cyan bold

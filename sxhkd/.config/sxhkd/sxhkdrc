@@ -1,7 +1,7 @@
 super + {Return, alt + Return}
 	openapp --{terminal,floatterm}
-super + alt + {b,e,f,p,g,m}
-    openapp --{browser,editor,filemanager,htop,gimp,music}
+super + alt + {b,e,f,m}
+    openapp --{browser,editor,filemanager,music}
 # list of rofi programs
 ctrl + alt + {l,r,m,b,s,Delete,p}
 	openapp --{launcher,runner,playermenu,bookmarks,shortcuts,powermenu,passwords}

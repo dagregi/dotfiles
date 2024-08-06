@@ -6,7 +6,7 @@ quiet=true
 
 loginbox=00000066
 loginshadow=00000000
-locktext=""
+locktext="$(cat /sys/class/power_supply/BAT0/capacity)%"
 font="Iosevka Nerd Font"
 ringcolor=e0def4ff
 insidecolor=00000000

@@ -1,12 +1,12 @@
 #!/bin/bash
 
-xrdb -load $XDG_CONFIG_HOME/X11/xresources
-xsetroot -cursor_name left_ptr
+xrdb -load $XDG_CONFIG_HOME/X11/xresources &
+xsetroot -cursor_name left_ptr &
 
 setxkbmap us dvorak
-xmodmap $XDG_CONFIG_HOME/X11/xmodmap
-xcape -e '#66=Escape;Hyper_L=space;Alt_L=BackSpace'
+xmodmap $XDG_CONFIG_HOME/X11/xmodmap &
+xcape -e '#66=Escape;Hyper_L=space;Alt_L=BackSpace' &
 
-betterlockscreen -l dimblur
+slock &
 
 exec bspwm

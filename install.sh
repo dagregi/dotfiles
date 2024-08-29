@@ -47,10 +47,17 @@ symlink_configurations() {
 	done
 	cd -
 }
-install_st_terminal() {
+install_st() {
 	cd st
 	sudo make install >/dev/null 2>&1 &
-	show_progress "Installing st terminal" 34 $!
+	show_progress "Installing st" 34 $!
+	cd -
+}
+install_slock() {
+	ln -s "$(pwd)/slock" "$HOME/.local/share"
+	cd slock
+	sudo make install >/dev/null 2>&1 &
+	show_progress "Installing slock" 34 $!
 	cd -
 }
 install_fonts() {
@@ -68,20 +75,21 @@ clear
 sudo xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
 
-install_packages xorg-minimal xprop xclip xdo xsetroot setxkbmap xcape xmodmap \
+install_packages xorg-minimal xprop xclip xdo xsetroot xset xrandr xrdb setxkbmap xcape xmodmap \
 	mesa-dri mesa-vaapi libX11-devel libXft-devel pkg-config make gcc rust-sccache
 clear
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions \
 	yt-dlp bat eza ripgrep fzf brillo gnupg pass stow dbus alsa-utils libsixel chafa
-install_packages bspwm sxhkd rofi picom polybar feh betterlockscreen lf mpd mpc \
+install_packages bspwm sxhkd rofi picom polybar feh lf mpd mpc \
 	ncmpcpp mpv dunst newsboat nsxiv shotgun slop ffmpeg ffmpegthumbnailer \
 	zathura zathura-pdf-mupdf mediainfo-cli atool
 
 mkdir -p "$HOME/projects" && cd "$HOME/projects"
 
-clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git"
+clone_repositories "git@github.com:dagregi/dotfiles.git" "git@github.com:dagregi/st.git" "git@github.com:dagregi/slock.git"
 symlink_configurations
-install_st_terminal
+install_st
+install_slock
 install_fonts
 
 echo "\n\033[1;32mCustom install script completed!\033[0m"

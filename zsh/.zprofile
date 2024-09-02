@@ -6,6 +6,7 @@ export LANG=en_US.UTF8
 export LC_ALL=en_US.UTF-8
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 export ZDOTDIR="$HOME/.config/zsh"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"

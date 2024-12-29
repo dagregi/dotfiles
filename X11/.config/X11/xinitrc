@@ -9,4 +9,4 @@ xcape -e '#66=Escape;Hyper_L=space;Alt_L=BackSpace' &
 
 slock &
 
-exec bspwm
+exec dbus-launch --exit-with-session bspwm

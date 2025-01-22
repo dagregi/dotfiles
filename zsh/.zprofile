@@ -16,6 +16,7 @@ export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export SUDO_ASKPASS="$HOME/.local/bin/rofi/rofi-pinentry"
 export _JAVA_AWT_WM_NONREPARENTING=1
+export NVM_DIR="$HOME/.config/nvm"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -61,6 +62,9 @@ addToPath "$HOME/.local/bin/rofi"
 addToPath "$HOME/.local/bin/bspwm"
 addToPath $CARGO_HOME/bin
 addToPath $GOPATH/bin
+
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 	exec startx ~/.config/X11/xinitrc -- -keeptty >/tmp/xorg.log 2>&1

@@ -20,14 +20,14 @@ bspc config normal_border_color "#6e6a86"
 brillo -I &
 pkill redshift; redshift -l 55.758:37.619 -t 5800:3700 -g 0.8 -m randr -r &
 
-autostart="mpd battery sxhkd picom bspwm-swallow bspwm-fullscreen"
+autostart="mpd battery sxhkd bspwm-swallow bspwm-fullscreen"
 for program in $autostart; do
 	pkill -f $program
 	$program &
 done &
 sh $XDG_CONFIG_HOME/polybar/scripts/launch.sh &
 
-feh -z --no-fehbg --bg-fill ~/Pictures/Walls &
+feh -z --no-fehbg --bg-fill ~/Pictures/Walls/fractal.png &
 
 bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a Firefox desktop='^2' state=fullscreen follow=on focus=on

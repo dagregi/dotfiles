@@ -11,6 +11,13 @@ alt + F1
 # reload sxhkd config
 super + Escape
 	pkill -USR1 -x sxhkd
+# turn on wifi
+super + w
+	sudo -A wpa_supplicant -B -i wlp0s20f3 -c /etc/wpa_supplicant/wpa_supplicant-wlp0s20f3.conf
+# turn off wifi
+super + shift + w
+	sudo -A pkill wpa_supplicant
+
 XF86Audio{RaiseVolume,LowerVolume,Mute}
 	volumectrl {up,down,toggle}
 XF86MonBrightness{Up,Down}

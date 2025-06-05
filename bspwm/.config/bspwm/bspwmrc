@@ -3,7 +3,7 @@
 bspc rule -r *
 bspc monitor -d 1 2 3 4 5 6
 
-bspc config border_width 2
+bspc config border_width 1
 bspc config window_gap 4
 bspc config split_ratio 0.51
 bspc config top_padding 0
@@ -19,7 +19,7 @@ bspc config normal_border_color "#6e6a86"
 
 brillo -I &
 pkill redshift
-redshift -l 55.758:37.619 -t 4800:3700 -g 0.8 -m randr -r &
+redshift -l 55.758:37.619 -t 5100:3700 -g 0.8 -m randr -r &
 
 autostart="picom mpd battery sxhkd bspwm-swallow bspwm-fullscreen"
 for program in $autostart; do
@@ -37,9 +37,9 @@ bspc rule -a Ncmpcpp desktop='^3' state=fullscreen follow=on focus=on rectangle=
 bspc rule -a Zathura desktop='^4' state=fullscreen follow=on focus=on
 bspc rule -a transmission desktop='^5' state=floating follow=on focus=on rectangle=620x374+1286+51
 bspc rule -a CustomFloat focus=on sticky=on state=floating rectangle=620x390+960+42
-bspc rule -a Lutris desktop='^6' follow=on focus=on
+bspc rule -a Lutris desktop='^5' state=floating follow=on focus=on
 
-floating="discord steam Upwork Virt-viewer TelegramDesktop Slack Thunderbird burp-StartBurp"
+floating="obsidian discord steam Upwork Virt-viewer TelegramDesktop Slack Thunderbird burp-StartBurp"
 for app in $floating; do
-	bspc rule -a $app desktop='^5' state=floating follow=on focus=on
+	bspc rule -a $app desktop='^6' state=floating follow=on focus=on
 done

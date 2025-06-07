@@ -1,8 +1,8 @@
 [global]
 monitor = 0
 follow = mouse
-width = (128, 450)
-height = 132
+width = (128, 400)
+height = 96
 
 origin = top-right
 offset = 15x45
@@ -16,6 +16,7 @@ progress_bar_min_width = 150
 progress_bar_max_width = 300
 progress_bar_corner_radius = 2
 
+# Show how many messages are currently hidden (because of geometry).
 indicate_hidden = yes
 separator_height = 6
 separator_color = frame
@@ -23,13 +24,24 @@ separator_color = frame
 padding = 12
 horizontal_padding = 12
 text_icon_padding = 0
-frame_width = 2
+ellipsize = end
+frame_width = 1
 frame_color = "#9ccfd8"
 gap_size = 6
 sort = yes
 idle_threshold = 120
-font = JetBrainsMono Nerd Font 12
+font = JetBrainsMono Nerd Font 10
 markup = full
+# The format of the message.  Possible variables are:
+#   %a  appname
+#   %s  summary
+#   %b  body
+#   %i  iconname (including its path)
+#   %I  iconname (without its path)
+#   %p  progress value if set ([  0%] to [100%]) or nothing
+#   %n  progress value if set without any extra characters
+#   %%  Literal %
+# Markup is allowed
 format = "<b>%s</b>\n%b"
 alignment = left
 vertical_alignment = center
@@ -40,8 +52,7 @@ show_indicators = yes
 
 enable_recursive_icon_lookup = true
 icon_position = left
-min_icon_size = 24
-max_icon_size = 128
+max_icon_size = 72
 
 sticky_history = yes
 history_length = 25
@@ -50,7 +61,7 @@ always_run_script = true
 title = Dunst
 class = Dunst
 
-corner_radius = 6
+corner_radius = 0
 ignore_dbusclose = false
 
 [urgency_low]

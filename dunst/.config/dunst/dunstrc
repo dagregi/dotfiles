@@ -64,7 +64,8 @@ timeout = 6
 [urgency_normal]
 background = "#191724"
 foreground = "#e0def4"
-format = "<b><span foreground='#9ccff5'>%s</span></b>\n%b"
+frame_color = "#ebbcba"
+format = "<b><span foreground='#ebbcba'>%s</span></b>\n%b"
 timeout = 10
 
 [urgency_critical]

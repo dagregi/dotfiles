@@ -32,16 +32,7 @@ sort = yes
 idle_threshold = 120
 font = JetBrainsMono Nerd Font 10
 markup = full
-# The format of the message.  Possible variables are:
-#   %a  appname
-#   %s  summary
-#   %b  body
-#   %i  iconname (including its path)
-#   %I  iconname (without its path)
-#   %p  progress value if set ([  0%] to [100%]) or nothing
-#   %n  progress value if set without any extra characters
-#   %%  Literal %
-# Markup is allowed
+
 format = "<b>%s</b>\n%b"
 alignment = left
 vertical_alignment = center
@@ -73,10 +64,12 @@ timeout = 6
 [urgency_normal]
 background = "#191724"
 foreground = "#e0def4"
+format = "<b><span foreground='#9ccff5'>%s</span></b>\n%b"
 timeout = 10
 
 [urgency_critical]
 background = "#191724"
 foreground = "#e0def4"
 frame_color = "#eb6f92"
+format = "<b><span foreground='#eb6f92'>%s</span></b>\n%b"
 timeout = 0

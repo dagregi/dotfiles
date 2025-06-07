@@ -14,12 +14,12 @@ bspc config borderless_monocle true
 bspc config gapless_monocle true
 
 bspc config presel_feedback_color "#191724"
-bspc config focused_border_color "#9ccfd8"
+bspc config focused_border_color "#ebbcba"
 bspc config normal_border_color "#6e6a86"
 
 brillo -I &
 pkill redshift
-redshift -l 55.758:37.619 -t 5100:3700 -g 0.8 -m randr -r &
+redshift -l 0:0 -t 5700:3500 -g 0.8 -m randr -r &
 
 autostart="picom mpd battery sxhkd bspwm-swallow bspwm-fullscreen"
 for program in $autostart; do

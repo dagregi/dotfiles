@@ -42,6 +42,15 @@ symlink_configurations() {
 	cd dotfiles
 	for dir in */; do
 		trdir=$(echo "$dir" | tr -d '/')
+		if [ "$trdir" = "firefox" ]; then
+			FIREFOX_PROFILE_DIR=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-default" | head -n 1)
+			if [ -z "$FIREFOX_PROFILE_DIR" ]; then
+				echo "Firefox profile not found!"
+			else
+				ln -s "$(pwd)/$trdir/user.js" "$FIREFOX_PROFILE_DIR/user.js"
+				ln -s "$(pwd)/$trdir/chrome" "$FIREFOX_PROFILE_DIR/chrome"
+			fi
+		fi
 		stow -S $trdir -t ~/ >/dev/null 2>&1 &
 		show_progress "Symlinking $trdir" 35 $! "\t"
 	done

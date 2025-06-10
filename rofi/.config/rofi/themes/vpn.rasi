@@ -1,0 +1,48 @@
+@import "../config.rasi"
+
+configuration {
+    location:                    3;
+}
+window {
+    width:                       256px;
+    x-offset:                    -196px;
+    y-offset:                    32px;
+}
+mainbox {
+    spacing:                     5px;
+    children:                    [ "inputbar", "listview" ];
+}
+listview {
+    columns:                     1;
+    lines:                       5;
+    spacing:                     2px;
+}
+inputbar {
+    enabled:                     true;
+    spacing:                     1px;
+    padding:                     10px;
+    border:                      0px 0px 1px;
+    border-color:                @active-background;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "prompt", "entry" ];
+}
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         " ﱾ";
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+prompt {
+    enabled:                     false;
+    background-color:            inherit;
+    text-color:                  inherit;
+}
+entry {
+    placeholder:                 "Location...";
+}
+element {
+    spacing:                     8px;
+    padding:                     8px;
+}

@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+red="$(awk '/\<color1\>/ {print $2}' ~/.config/X11/xresources)"
+disabled="$(awk '/\<color8\>/ {print $2}' ~/.config/X11/xresources)"
+primary="$(awk '/\<color3\>/ {print $2}' ~/.config/X11/xresources)"
+
+default_iface="nemesis0-nl"
+interfaces=("nemesis0-jp" "nemesis0-nl" "nemesis0-us" "nemesis0-ro" "nemesis0-pl")
+locations=("Japan" "Netherlands" "United States" "Romania" "Poland")
+
+CONNECT_CMD="sudo -A wg-quick up"
+DISCONNECT_CMD="sudo -A wg-quick down"
+
+ICON_CONNECTED=""
+ICON_DISCONNECTED=""
+
+is_connected() {
+	ip addr show | grep -q "nemesis0"
+}
+
+status() {
+	iface=$(ip addr | awk '/nemesis0/ {print $2}' | cut -d: -f1 | head -n1)
+	if is_connected; then
+		echo "%{F$primary}$ICON_CONNECTED %{F-}$iface"
+	else
+		echo "%{F$red}$ICON_DISCONNECTED %{F-}%{F$disabled}No VPN%{F-}"
+	fi
+}
+
+connect() {
+	current_iface=$(ip addr | awk '/nemesis0/ {print $2}' | cut -d: -f1 | head -n1)
+	iface="$1"
+	if is_connected; then
+		$DISCONNECT_CMD "$current_iface"
+	fi
+	$CONNECT_CMD "$iface"
+}
+
+toggle() {
+	if is_connected; then
+		current_iface=$(ip addr | awk '/nemesis0/ {print $2}' | cut -d: -f1 | head -n1)
+		$DISCONNECT_CMD "$current_iface"
+	else
+		connect "$default_iface"
+	fi
+}
+
+menu() {
+	selected=$(printf "%s\n" "${locations[@]}" | rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/themes/vpn.rasi)
+	case "$selected" in
+	"Japan") connect "nemesis0-jp" ;;
+	"Netherlands") connect "nemesis0-nl" ;;
+	"United States") connect "nemesis0-us" ;;
+	"Romania") connect "nemesis0-ro" ;;
+	"Poland") connect "nemesis0-pl" ;;
+	*) echo "No location selected" ;;
+	esac
+}
+
+case "$1" in
+toggle | --toggle-vpn) toggle ;;
+status | --status) status ;;
+menu | --menu) menu ;;
+*)
+	echo "Usage: vpn [toggle|status|menu]"
+	echo "  toggle      Toggle VPN connection"
+	echo "  status      Show VPN status"
+	echo "  menu        Choose VPN from menu"
+	;;
+esac

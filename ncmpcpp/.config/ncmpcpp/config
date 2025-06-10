@@ -19,6 +19,7 @@ now_playing_prefix = "$b$8 "
 now_playing_suffix = "  $/b$8"
 selected_item_prefix = "$b$1* "
 selected_item_suffix = $/b$9
+lyrics_fetchers = tags, tekstowo, plyrics, justsomelyrics, jahlyrics, zeneszoveg, internet
 
 song_columns_list_format = (40)[white]{t|f:Title} (20)[yellow]{b} (20)[cyan]{a} (7f)[blue]{l}
 browser_display_mode = columns

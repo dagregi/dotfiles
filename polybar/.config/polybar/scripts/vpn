@@ -46,7 +46,7 @@ toggle() {
 }
 
 menu() {
-	selected=$(printf "%s\n" "${locations[@]}" | rofi -dmenu -theme $XDG_CONFIG_HOME/rofi/themes/vpn.rasi)
+	selected=$(printf "%s\n" "${locations[@]}" | rofi -dmenu -case-smart -theme $XDG_CONFIG_HOME/rofi/themes/vpn.rasi)
 	case "$selected" in
 	"Japan") connect "nemesis0-jp" ;;
 	"Netherlands") connect "nemesis0-nl" ;;

@@ -14,13 +14,13 @@ mainbox {
     children:                    [ "inputbar", "listview" ];
 }
 listview {
-    columns:                     2;
-    lines:                       6;
+    columns:                     3;
+    lines:                       5;
 }
 entry {
     placeholder:                 "Run...";
 }
 element {
-    spacing:                     10px;
-    padding:                     12px;
+    spacing:                     1px;
+    padding:                     4px;
 }

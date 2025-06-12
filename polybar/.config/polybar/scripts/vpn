@@ -4,7 +4,6 @@ red="$(awk '/\<color1\>/ {print $2}' ~/.config/X11/xresources)"
 disabled="$(awk '/\<color8\>/ {print $2}' ~/.config/X11/xresources)"
 primary="$(awk '/\<color3\>/ {print $2}' ~/.config/X11/xresources)"
 
-default_iface="nemesis0-nl"
 interfaces=("nemesis0-jp" "nemesis0-nl" "nemesis0-us" "nemesis0-ro" "nemesis0-pl")
 locations=("Japan" "Netherlands" "United States" "Romania" "Poland")
 
@@ -41,7 +40,7 @@ toggle() {
 		current_iface=$(ip addr | awk '/nemesis0/ {print $2}' | cut -d: -f1 | head -n1)
 		$DISCONNECT_CMD "$current_iface"
 	else
-		connect "$default_iface"
+		menu
 	fi
 }
 

@@ -1,5 +1,5 @@
-super + {Return, alt + Return}
-	openapp --{terminal,floatterm}
+super + {_, alt + , shift + }Return
+	openapp --{terminal,floatterm,anyterm}
 super + alt + {b,e,f,m}
     openapp --{browser,editor,filemanager,music}
 # list of rofi programs

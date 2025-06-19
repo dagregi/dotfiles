@@ -1247,3 +1247,8 @@ user_pref("_user.js.parrot", "9999 syntax error: the parrot's shuffled off 'is m
 
 /* END: internal custom pref to test for syntax errors ***/
 user_pref("_user.js.parrot", "SUCCESS: No no he's not dead, he's, he's restin'!");
+
+// TextFox
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("svg.context-properties.content.enabled", true);
+user_pref("layout.css.has-selector.enabled", true);

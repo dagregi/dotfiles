@@ -62,3 +62,5 @@ alias xin='sudo xbps-install -S $(xbps-query -Rs "" | sed "/^.\*./d" | awk "{pri
 	xrm='sudo xbps-remove -oR $(xbps-query -s "" | awk "{print \$2}" | fzf -m -e)' \
 	xq='xbps-query $(xbps-query -l | sed "s/-[0-9].*//; s/^ii\s//" | fzf -e)' \
 	xup='sudo xbps-install -Su'
+# NIX
+alias update-cargo-nix='crate2nix generate && patch Cargo.nix < filter.patch && rm -f Cargo.nix.orig'

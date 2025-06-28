@@ -33,7 +33,6 @@ bspc config normal_border_color "#6e6a86"
 
 brillo -I &
 pkill redshift
-redshift -l 0:0 -t 5700:3500 -g 0.8 -m randr -r &
 
 autostart="picom mpd battery sxhkd bspwm-swallow bspwm-fullscreen"
 for program in $autostart; do

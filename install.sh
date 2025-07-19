@@ -42,6 +42,15 @@ symlink_configurations() {
 	cd dotfiles
 	for dir in */; do
 		trdir=$(echo "$dir" | tr -d '/')
+		if [ "$trdir" = "firefox" ]; then
+			FIREFOX_PROFILE_DIR=$(find ~/.mozilla/firefox -maxdepth 1 -type d -name "*.default-default" | head -n 1)
+			if [ -z "$FIREFOX_PROFILE_DIR" ]; then
+				echo "Firefox profile not found!"
+			else
+				ln -s "$(pwd)/$trdir/user.js" "$FIREFOX_PROFILE_DIR/user.js"
+				ln -s "$(pwd)/$trdir/chrome" "$FIREFOX_PROFILE_DIR/chrome"
+			fi
+		fi
 		stow -S $trdir -t ~/ >/dev/null 2>&1 &
 		show_progress "Symlinking $trdir" 35 $! "\t"
 	done
@@ -61,11 +70,10 @@ install_slock() {
 	cd -
 }
 install_fonts() {
-	[ ! -d "$HOME/.local/fonts" ] && mkdir -p "$HOME/.local/fonts/TTF"
-	cd "$HOME/.local/fonts/TTF"
+	[ ! -d "$HOME/.local/share/fonts" ] && mkdir -p "$HOME/.local/share/fonts"
+	cd "$HOME/.local/share/fonts"
 	curl -sSf -LO https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/Ligatures/Medium/JetBrainsMonoNerdFont-Medium.ttf &
-	curl -sSf -LO https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Iosevka/IosevkaNerdFont-SemiBold.ttf
-	sudo ln -s $HOME/.local/fonts/TTF/* /usr/share/fonts/TTF/
+	curl -sSf -LO https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/Iosevka/IosevkaNerdFont-Regular.ttf
 	show_progress "Installing fonts" 36 $!
 	cd ~
 }
@@ -76,7 +84,7 @@ sudo xbps-install -Suy >/dev/null 2>&1 &
 show_progress "Updating system" 33 $!
 
 install_packages xorg-minimal xprop xclip xdo xsetroot xset xrandr xrdb setxkbmap xcape xmodmap \
-	mesa-dri mesa-vaapi libX11-devel libXft-devel pkg-config make gcc rust-sccache
+	mesa-dri mesa-vaapi libX11-devel libXft-devel pkg-config make gcc
 clear
 install_packages git tmux neovim zsh zsh-syntax-highlighting zsh-autosuggestions \
 	yt-dlp bat eza ripgrep fzf brillo gnupg pass stow dbus alsa-utils libsixel chafa

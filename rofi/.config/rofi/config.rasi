@@ -8,9 +8,9 @@ configuration{
 
 window {
     enabled:                     true;
-    border-radius:               2px;
-	border:                      2px solid;
-    border-color:                @border-color;
+    border-radius:               1px;
+	border:                      1px solid;
+    border-color:                @ora;
     cursor:                      "default";
     background-color:            @background;
 }

@@ -6,13 +6,13 @@ window {
     width:                       512px;
 }
 mainbox {
-    spacing:                     10px;
+    spacing:                     5px;
     children:                    [ "inputbar", "listview" ];
 }
 listview {
     columns:                     1;
     lines:                       8;
-    spacing:                     5px;
+    spacing:                     2px;
 }
 scrollbar {
 	handle-width:				 4px;
@@ -22,8 +22,8 @@ scrollbar {
 }
 inputbar {
     enabled:                     true;
-    spacing:                     10px;
-    padding:                     10px;
+    spacing:                     2px;
+    padding:                     8px;
     border:                      0px 0px 1px;
     border-color:                @active-background;
     background-color:            @background-alt;
@@ -46,6 +46,6 @@ entry {
     placeholder:                 "Search bookmarks...";
 }
 element {
-    spacing:                     8px;
-    padding:                     8px;
+    spacing:                     1px;
+    padding:                     5px;
 }

@@ -6,31 +6,39 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcdfilter
 
-st.font: JetBrainsMono Nerd Font:size=13
+st.font: JetBrainsMono Nerd Font:size=12
 
 *.foreground:   #e0def4
 *.background:   #191724
+
 ! black
 *.color0:       #1f1d2e
 *.color8:       #6e6a86
+
 ! red
-*.color1:       #b4637a
-*.color9:       #eb6f92
+*.color1:       #eb6f92
+*.color9:       #f38ba8
+
 ! green
 *.color2:       #3e8fb0
 *.color10:      #31748f
+
 ! yellow
-*.color3:       #f6c177
+*.color3:       #ebbcba
 *.color11:      #ebbcba
+
 ! blue
 *.color4:       #56949f
 *.color12:      #9ccfd8
+
 ! magenta
 *.color5:       #907aa9
 *.color13:      #c4a7e7
+
 ! cyan
 *.color6:       #9ccff5
-*.color14:      #9ccfd8
+*.color14:      #94e2d5
+
 ! white
-*.color7:       #908caa
-*.color15:      #e0def4
+*.color7:       #6e6a86
+*.color15:      #908caa

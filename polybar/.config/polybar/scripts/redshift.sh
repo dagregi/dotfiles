@@ -48,7 +48,7 @@ is_redshift_running() {
 
 start_redshift() {
 	local temp=$1
-	redshift -O "$temp" >/dev/null 2>&1 &
+	redshift -m randr -O "$temp" >/dev/null 2>&1 &
 	echo $! >"$PID_FILE"
 }
 

@@ -17,7 +17,7 @@ else
 fi
 
 bspc config border_width 2
-bspc config window_gap 4
+bspc config window_gap 1
 bspc config split_ratio 0.51
 bspc config top_padding 0
 bspc config bottom_padding 0
@@ -36,14 +36,14 @@ bspc config normal_border_color "#6e6a86"
 brillo -I &
 bash $XDG_CONFIG_HOME/polybar/scripts/redshift.sh default &
 
-autostart="picom mpd battery sxhkd bspwm-swallow bspwm-fullscreen"
+autostart="picom mpd battery sxhkd bspwm-swallow"
 for program in $autostart; do
 	pkill -f $program
 	$program &
 done &
 sh $XDG_CONFIG_HOME/polybar/scripts/launch.sh &
 
-feh -z --no-fehbg --bg-fill ~/Pictures/Walls/flower.jpg &
+feh -z --no-fehbg --bg-fill ~/Pictures/Walls/fractal.png &
 
 bspc rule -a st-256color desktop='^1' follow=on focus=on
 bspc rule -a Firefox desktop='^2' state=fullscreen follow=on focus=on
@@ -55,7 +55,7 @@ bspc rule -a transmission desktop='^6' state=floating follow=on focus=on
 bspc rule -a CustomFloat focus=on sticky=on state=floating rectangle=620x390+960+42
 bspc rule -a Lutris desktop='^5' follow=on focus=on
 
-floating="obsidian discord steam Upwork Virt-viewer TelegramDesktop Slack Thunderbird burp-StartBurp"
+floating="Zulip obsidian discord steam Upwork Virt-viewer TelegramDesktop Slack Thunderbird burp-StartBurp"
 for app in $floating; do
 	bspc rule -a $app desktop='^6' state=floating follow=on focus=on
 done

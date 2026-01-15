@@ -9,7 +9,6 @@ alias ls='eza --color=auto --icons=always --group-directories-first' \
 alias cat='bat --style=plain --paging=never'
 # GIT: Stats
 alias gls='git --no-pager log --oneline --graph -20'
-alias gwhat='git whatchanged --oneline --graph --stat'
 # CONFIG
 alias reloadst='xrdb merge $XDG_CONFIG_HOME/X11/xresources && kill -USR1 $(pidof st)'
 # XBPS

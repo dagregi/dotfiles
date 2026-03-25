@@ -54,6 +54,7 @@ bspc rule -a Zathura desktop='^4' state=fullscreen follow=on focus=on
 bspc rule -a transmission desktop='^6' state=floating follow=on focus=on
 bspc rule -a CustomFloat focus=on sticky=on state=floating rectangle=620x390+960+42
 bspc rule -a "net.lutris.Lutris" desktop='^5' follow=on focus=on state=floating
+bspc rule -a Lutris desktop='^5' follow=on focus=on state=floating
 
 floating="Zulip obsidian discord steam Upwork Virt-viewer TelegramDesktop Slack Thunderbird burp-StartBurp"
 for app in $floating; do
